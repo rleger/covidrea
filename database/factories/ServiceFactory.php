@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Service::class, function (Faker $faker) {
     return [
         'name'                          => $faker->name,
-        'type'                          => $faker->randomElement(['reanimation', 'conventionnel']),
-        'gravite'                       => $faker->randomElement(['intube', 'non-intube']),
+        'type'                          => $faker->randomElement(config('covidrea.enums.service.type')),
+        'gravite'                       => $faker->randomElement(config('covidrea.enums.service.gravite')),
         'place_disponible'              => $faker->numberBetween(0, 50),
         'place_bientot_disponible'      => $faker->numberBetween(0, 50),
         'place_preparation'             => $faker->numberBetween(0, 50),

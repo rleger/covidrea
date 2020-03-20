@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Etablissement::class, function (Faker $faker) {
     return [
         'name'       => $faker->name,
-        'type'       => $faker->randomElement(['public', 'prive', 'temporaire']),
+        'type'       => $faker->randomElement(config('covidrea.enums.etablissement.type')),
         'adresse'    => $faker->streetAddress,
         'codepostal' => $faker->postcode,
         'ville'      => $faker->city,
