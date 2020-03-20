@@ -18,9 +18,9 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('gravite');
+            $table->integer('place_totales');
             $table->integer('place_disponible');
             $table->integer('place_bientot_disponible');
-            $table->integer('place_preparation');
 
             // Un service appartient à un établissement
             $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');

@@ -20,4 +20,12 @@ class Etablissement extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Un établissement a plusieurs services.
+     */
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

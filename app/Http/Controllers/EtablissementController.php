@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Etablissement;
-use Illuminate\Http\Request;
+use DB;
 
 class EtablissementController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,72 +24,31 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        return view('etablissement.index');
-    }
+        // $etablissements = Etablissement::with('service')->withCount('service')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        // Position of the user's etablissement
+        $etablissement = auth()->user()->services()->first()->etablissement;
+        $lat = $etablissement->lat;
+        $long = $etablissement->long;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Construct the sqlDistance query
+        $sqlDistance = DB::raw('( 111.045 * acos( cos( radians('.$lat.') )
+            * cos( radians( etablissements.lat ) )
+            * cos( radians( etablissements.long )
+            - radians('.$long.') )
+            + sin( radians('.$lat.') )
+            * sin( radians( etablissements.lat ) ) ) )');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Etablissement  $etablissement
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Etablissement $etablissement)
-    {
-        //
-    }
+        // Run the query
+        $paginator = DB::table('etablissements')
+            ->select('etablissements.*')
+            ->selectRaw("{$sqlDistance} AS distance")
+            ->orderBy('distance', 'ASC')
+            ->paginate(10);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Etablissement  $etablissement
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Etablissement $etablissement)
-    {
-        //
-    }
+        // https://laracasts.com/discuss/channels/laravel/hydraterawfromquery-with-pagination
+        $etablissements = Etablissement::hydrate($paginator->items());
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Etablissement  $etablissement
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Etablissement $etablissement)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Etablissement  $etablissement
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Etablissement $etablissement)
-    {
-        //
+        return view('etablissement.index', compact('etablissements', 'paginator'));
     }
 }
