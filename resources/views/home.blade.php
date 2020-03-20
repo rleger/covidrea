@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title', 'Tableau de bord')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

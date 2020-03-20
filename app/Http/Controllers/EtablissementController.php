@@ -14,7 +14,7 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        //
+        return view('etablissement.index');
     }
 
     /**

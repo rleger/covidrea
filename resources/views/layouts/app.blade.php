@@ -36,11 +36,9 @@
                                 </div>
                                 <div class="hidden md:block">
                                     <div class="ml-10 flex items-baseline">
-                                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Tableau de bord</a>
-                                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
-                                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
-                                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
-                                        <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
+                                        <a href="{{ route('home') }}" class="px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('home') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Tableau de bord</a>
+                                        <a href="{{ route('etablissements.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('etablissements.index') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Lits disponibles</a>
+                                        <a href="{{ route('user.services.show', ['user' => auth()->user()->id]) }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('user.services.show') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Mettre à jour mes lits</a>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +117,7 @@
                 <header class="bg-white shadow-sm">
                     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         <h2 class="text-lg leading-6 font-semibold text-gray-900">
-                            Tableau de bord
+                            @yield('page_title', 'Tableau de bord')
                         </h2>
                     </div>
                 </header>
