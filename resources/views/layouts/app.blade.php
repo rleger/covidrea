@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="hidden md:block">
                                     <div class="ml-10 flex items-baseline">
-                                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
+                                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Tableau de bord</a>
                                         <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
                                         <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
                                         <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
@@ -50,7 +50,9 @@
                                     <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
                                         <div>
                                             <button @click="open = !open" class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid">
-                                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                                <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-400">
+                                                    <span class="text-sm font-medium leading-none text-white">{{ auth()->user()->initials() }}</span>
+                                                </span>
                                             </button>
                                         </div>
                                         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
@@ -89,11 +91,13 @@
                         <div class="pt-4 pb-3 border-t border-gray-700">
                             <div class="flex items-center px-5">
                                 <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                    <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-400">
+                                        <span class="text-md font-medium leading-none text-white">{{ auth()->user()->initials() }}</span>
+                                    </span>
                                 </div>
                                 <div class="ml-3">
-                                    <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                                    <div class="mt-1 text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+                                    <div class="text-base font-medium leading-none text-white">{{ auth()->user()->name }}</div>
+                                    <div class="mt-1 text-sm font-medium leading-none text-gray-400">{{ auth()->user()->email }}</div>
                                 </div>
                             </div>
                             <div class="mt-3 px-2">
@@ -107,7 +111,7 @@
                 <header class="bg-white shadow-sm">
                     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         <h2 class="text-lg leading-6 font-semibold text-gray-900">
-                            Dashboard
+                            Tableau de bord
                         </h2>
                     </div>
                 </header>
