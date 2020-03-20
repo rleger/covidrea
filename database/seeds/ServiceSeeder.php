@@ -11,6 +11,6 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Service::class, 3)->create();
     }
 }

@@ -21,8 +21,8 @@ class CreateEtablissementsTable extends Migration
             $table->string('codepostal');
             $table->string('ville');
             $table->string('region');
-            $table->decimal('long', 10, 7);
-            $table->decimal('lat', 10, 7);
+            $table->decimal('long', 10, 7)->nullable();
+            $table->decimal('lat', 10, 7)->nullable();
 
             // Utilisateur responsable
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
