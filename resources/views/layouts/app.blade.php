@@ -27,8 +27,12 @@
                         <div class="flex items-center justify-between h-16">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0">
-                                    {{-- <img class="h-8 w-8" src="/img/logos/workflow-mark-on-dark.svg" alt="" /> --}}
-                                    logo
+                                    <a href="/">
+                                        {{-- <img class="h-8 w-auto sm:h-10" src="/img/logos/workflow-mark-on-white.svg" alt="" /> --}}
+                                        <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                                        </svg>
+                                    </a>
                                 </div>
                                 <div class="hidden md:block">
                                     <div class="ml-10 flex items-baseline">
@@ -47,6 +51,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                                         </svg>
                                     </button>
+                                    @if(auth()->check())
                                     <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
                                         <div>
                                             <button @click="open = !open" class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid">
@@ -68,6 +73,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endif
                                 </div>
                             </div>
                             <div class="-mr-2 flex md:hidden">
@@ -89,6 +95,7 @@
                             <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
                         </div>
                         <div class="pt-4 pb-3 border-t border-gray-700">
+                            @if(auth()->check())
                             <div class="flex items-center px-5">
                                 <div class="flex-shrink-0">
                                     <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-400">
@@ -100,6 +107,7 @@
                                     <div class="mt-1 text-sm font-medium leading-none text-gray-400">{{ auth()->user()->email }}</div>
                                 </div>
                             </div>
+                        @endif
                             <div class="mt-3 px-2">
                                 <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Your Profile</a>
                                 <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Settings</a>
