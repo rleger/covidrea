@@ -10,8 +10,8 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
-        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+        {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script> --}}
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -23,7 +23,7 @@
         <div id="app">
             <div class="min-h-screen bg-gray-100">
                 @if(auth()->check())
-                    <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="bg-gray-800">
+                    <nav @keydown.window.escape="open = false" class="bg-gray-800">
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="flex items-center justify-between h-16">
                                 <div class="flex items-center">
@@ -50,25 +50,16 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                                             </svg>
                                         </button>
-                                        <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                                        <div  class="ml-3 relative">
                                             <div>
-                                                <button @click="open = !open" class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid">
-                                                    <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-400">
-                                                        <span class="text-sm font-medium leading-none text-white">{{ auth()->user()->initials() }}</span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                                                <div class="py-1 rounded-md bg-white shadow-xs">
-                                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
-                                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                                                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                        Logout
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                                                        @csrf
-                                                    </form>
-                                                </div>
+
+                                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        Se déconnecter
+                                                    </button>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                                    @csrf
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -83,13 +74,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden">
+                        <div :class="{'block': open, 'hidden': !open}" class=" md:hidden">
                             <div class="px-2 pt-2 pb-3 sm:px-3">
-                                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
-                                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
-                                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
-                                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
-                                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
+                                <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Tableau de bord</a>
+                                <a href="{{ route('etablissements.index') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Lits disponibles</a>
+                                <a href="{{ route('user.services.edit', ['user' => auth()->user()->id]) }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Mettre à jour mes lits</a>
                             </div>
                             <div class="pt-4 pb-3 border-t border-gray-700">
                                 <div class="flex items-center px-5">
@@ -104,20 +93,18 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 px-2">
-                                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Your Profile</a>
-                                    <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Settings</a>
-                                    <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sign out</a>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Se déconnecter</a>
                                 </div>
                             </div>
                         </div>
                     </nav>
-                <header class="bg-white shadow-sm">
-                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-                        <h2 class="text-lg leading-6 font-semibold text-gray-900">
-                            @yield('page_title', 'Tableau de bord')
-                        </h2>
-                    </div>
-                </header>
+                    <header class="bg-white shadow-sm">
+                        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                            <h2 class="text-lg leading-6 font-semibold text-gray-900">
+                                @yield('page_title', 'Tableau de bord')
+                            </h2>
+                        </div>
+                    </header>
                 @endif
                 <main>
                     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
