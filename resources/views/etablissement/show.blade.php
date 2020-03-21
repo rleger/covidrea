@@ -31,7 +31,7 @@
                                         {{ $service->name }}
                                     </span>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-gray-100 text-gray-800">
-                                        {{ $service->gravite }}
+                                        patients {{ $service->gravite }}
                                     </span>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
