@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Service::class, function (Faker $faker) {
     return [
-        'name'                                     => $faker->name,
+        'name'                                     => "Service " . $faker->name,
         'type'                                     => $faker->randomElement(config('covidrea.enums.service.type')),
         'gravite'                                  => $faker->randomElement(config('covidrea.enums.service.gravite')),
         'place_totales'                            => $faker->numberBetween(0, 50),
