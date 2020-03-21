@@ -12,6 +12,7 @@ $factory->define(Service::class, function (Faker $faker) {
         'place_totales'                            => $faker->numberBetween(0, 50),
         'place_disponible'                         => $faker->numberBetween(0, 50),
         'place_bientot_disponible'                 => $faker->numberBetween(0, 50),
+        'contact'                                  => $faker->phoneNumber(),
         'etablissement_id'                         => function () {
             return factory(App\Etablissement::class)->create()->id;
         },

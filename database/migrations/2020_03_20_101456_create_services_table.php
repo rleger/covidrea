@@ -16,11 +16,12 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
             $table->string('gravite');
+            $table->string('type');
             $table->integer('place_totales');
             $table->integer('place_disponible');
             $table->integer('place_bientot_disponible');
+            $table->string('contact');
 
             // Un service appartient à un établissement
             $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');
