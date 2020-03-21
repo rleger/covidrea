@@ -27,20 +27,21 @@ class ServiceController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Service $service, Request $request)
+    {
+        //
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
     {
     }
 
@@ -69,6 +70,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+
+        $validatedData = $request->validate([
+            'place_totales' => 'required|integer',
+            'place_disponible' => 'required|integer',
+            'place_bientot_disponible' => 'required|integer',
+        ]);
+
+        $service->update($validatedData);
+
+        return back()->withInput();
     }
 
     /**

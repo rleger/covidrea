@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class UserServiceController extends Controller
 {
     /**
-     * Show a list of services
+     * Edit the number of available beds for the user
      *
      * @param User $user
      */
-    public function show(User $user)
+    public function edit(User $user)
     {
         // Attention get() doit être ici dans la chaine
         $services = $user->services()
@@ -20,6 +20,6 @@ class UserServiceController extends Controller
                          ->get()
                          ->groupBy(['etablissement_id']);
 
-        return view('user.service.show', compact('services'));
+        return view('user.service.edit', compact('services'));
     }
 }
