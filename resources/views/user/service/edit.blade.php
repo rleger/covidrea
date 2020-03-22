@@ -17,7 +17,7 @@
             <div>
                 @foreach($grouped_service as $service_key => $service)
                     <dl>
-                        <div class="{{ $service_key ? 'border-t' : '' }} sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-8 sm:pb-10">
+                        <div class="{{ $service_key ? 'border-t' : '' }} px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-8 sm:pb-10">
                             <dt class="text-sm leading-5 font-medium text-gray-500">
                             <span class="flex">
                                 {{ $service->name }}
