@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('page_title', "Lits disponibles")
+@section('page_subtitle', "Retrouvez sur cette page l'ensemble des lits disponibles pour les patients covid, cliquez sur l'établissement pour obtenir des précisions")
 
 @section('content')
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- Begining of list --}}
