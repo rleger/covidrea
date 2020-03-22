@@ -24,7 +24,7 @@
                                                 {{ $etablissement->service()->sum('place_disponible') }} disponibles
                                             </span>
 
-                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
                                                 {{ $etablissement->service()->sum('place_bientot_disponible') }} prochainement
                                             </span>
 

@@ -28,8 +28,8 @@
                             </dt>
                             <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
 
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Mise à jour des données</h3>
-                            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">Veillez à bien valider vos changements.</p>
+                            <h3 class="text-lg leading-6 font-medium text-gray-900 hidden sm:block">Mise à jour des données</h3>
+                            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500 hidden sm:block">Veillez à bien valider vos changements.</p>
 
 
                             {{-- Success message --}}
