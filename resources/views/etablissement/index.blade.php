@@ -14,12 +14,12 @@
                         <li class="{{ $key ? 'border-t border-gray-200' : ''}}">
                             <a href="{{ $etablissement->service_count ? route('etablissement.show', $etablissement) : '#' }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                 <div class="px-4 py-4 sm:px-6">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-sm leading-5 font-medium text-indigo-600 truncate">
+                                    <div class="flex flex-wrap items-center justify-between">
+                                        <div class="pb-2 sm:pb-0 text-sm leading-5 font-medium text-indigo-600">
                                             {{ $etablissement->name }}
                                             ({{ $etablissement->service_count }} {{Str::plural('service', $etablissement->service_count)}})
                                         </div>
-                                        <div class="ml-2 flex-shrink-0 flex">
+                                        <div class="sm:ml-2 flex-shrink-0 flex">
                                             <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 {{ $etablissement->service()->sum('place_disponible') }} disponibles
                                             </span>
