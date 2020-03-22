@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 class UserServiceController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkuserhasahospital');
+    }
+
+    /**
      * Edit the number of available beds for the user
      *
      * @param User $user
