@@ -30,10 +30,21 @@
                             <h3 class="text-lg leading-6 font-medium text-gray-900">Mise à jour des données</h3>
                             <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">Veillez à bien valider vos changements.</p>
 
+
+                            {{-- Success message --}}
+                            @if (session('status') && $service->id == session('service_id'))
+                                <div class="border border-green-400 rounded bg-green-100 mt-4 px-4 py-3 text-green-700">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
                             <form action="/service/{{$service->id}}" method="POST">
                                 @method('PATCH')
                                 @csrf
-                                @if ($errors->any())
+
+                                {{-- {{ session('service_id') }} --}}
+                                {{-- Display errors if any --}}
+                                @if ($errors->any() && $service->id == session('service_id'))
                                     <div role="alert">
                                         <div class="border border-red-400 rounded bg-red-100 mt-4 px-4 py-3 text-red-700">
                                             <ul>
