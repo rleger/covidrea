@@ -15,12 +15,9 @@ return [
     */
 
     'mailgun' => [
-        // 'domain' => env('MAILGUN_DOMAIN'),
-        // 'secret' => env('MAILGUN_SECRET'),
-        // 'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
-        'domain' => "mail.covid-moi-un-lit.com",
-        'secret' => 'key-7d609fb8d1517b573754d962946de74c',
-        'endpoint' => 'api.eu.mailgun.net',
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
     ],
 
     'postmark' => [
