@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,4 +27,3 @@ Route::post('invite', 'InviteController@process')->name('invite.process');
 Route::get('accept/{token}/{etablissement_id}', 'InviteController@accept')->name('invite.accept');
 Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 
-// Route::view('debug', 'user/afterinvite');

@@ -1,16 +1,19 @@
-<p>
-    Bonjour,
-</p>
+@component('mail::message')
+{{-- # {{ $details['title'] }} --}}
 
-<p>
-    Nous vous invitons à rejoindre <strong>gratuitement</strong> l'application covid-moi-un-lit.com afin de vous aider à trouver des lits plus facilement pour vos malades covid+ (intubés ou non intubés).
-</p>
-<p>
-    Vous pourrez également indiquer et mettre à jour le nombre de lits disponibles pour votre unité.
-</p>
+# Activez votre compte Covid-moi-un-lit.com
 
-<a href="{{ route('invite.accept', ['token' => $invite->token, 'etablissement_id' => $invite->etablissement_id, 'email' => $invite->email ]) }}">Activer mon compte</a>
+Bonjour,
 
-<p>
-    Nous vous remercions pour votre précieuse collaboration.
-</p>
+Vous avez été invité à rejoindre **gratuitement** l'application [covid-moi-un-lit.com](https://covid-moi-un-lit.com) afin de vous aider à trouver des lits plus facilement pour vos malades covid+ (intubés ou non intubés).
+
+Vous pourrez également mettre à jour en temps réel le nombre de lits disponibles pour votre unité.
+
+@component('mail::button', ['url' => route('invite.accept', ['token' => $invite->token, 'etablissement_id' => $invite->etablissement_id, 'email' => $invite->email ]) ])
+Activer mon compte
+@endcomponent
+
+Vous pourrez également indiquer et mettre à jour le nombre de lits disponibles pour votre unité.
+
+{{ config('app.name') }}
+@endcomponent
