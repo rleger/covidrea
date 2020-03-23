@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Validator;
-use App\Invite;
 use App\Etablissement;
-use Illuminate\Http\Request;
+use App\Invite;
 use App\Jobs\InviteNewUsersByEmail;
+use App\User;
+use Illuminate\Http\Request;
+use Validator;
 
 class InviteController extends Controller
 {
@@ -85,11 +85,12 @@ class InviteController extends Controller
         // Such a mess I'm ashamed.. pleasssse clean this up !!
 
         Validator::make($request->all(), [
-            'name'              => "required|alpha_dash",
-            'email'             => "required|email|unique:users,email|exists:invites,email",
-            'phone_mobile'      => "phone:FR,mobile",
-            'password'          => "same:password_confirmation",
-            'service'          => "required",
+            'name'                           => 'required|alpha_dash',
+            'email'                          => 'required|email:rfc,dns|unique:users,email|exists:invites,email',
+            'phone_mobile'                   => 'phone:FR,mobile',
+            'password'                       => 'required|same:password_confirmation',
+            'password_confirmation'          => 'required',
+            'service'                        => 'required',
         ])->validate();
 
         $inputs = $request->all();
