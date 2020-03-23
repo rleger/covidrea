@@ -32,6 +32,7 @@ class InviteCreated extends Mailable
     public function build()
     {
         return $this->from(config('covidrea.email.default_sender'))
+                    ->subject("Invitation à rejoindre l'application de recherche de lits pour les patients COVID")
                     ->view('emails.invite');
     }
 }

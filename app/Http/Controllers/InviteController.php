@@ -40,13 +40,12 @@ class InviteController extends Controller
         // Validate
         // @todo: improve error message
         // @todo: limit the number of emails
-        $validator = Validator::make($request->all(), [
-            'emails.*' => 'required|email',
+        Validator::make($request->all(), [
+            'emails.*'      => 'required|email',
             'etablissement' => 'required|exists:etablissements,id',
         ])->validate();
 
         // @todo: remove emails that exists either in user or invite class
-
         // Create Invite with a token
         InviteNewUsersByEmail::dispatch($request->all());
 
@@ -75,18 +74,48 @@ class InviteController extends Controller
         }
 
         // The user will fill in the missing fields (name, etc..)
-        return view('invite.finalize', compact('etablissement', 'services'));
+        return view('invite.finalize', compact('etablissement', 'services', 'token'));
     }
 
-    public function finalize()
+    /**
+     * Une fois que l'utilisateur a saisi les informations.
+     */
+    public function finalize(Request $request)
     {
-        // create the user with the details from the invite
-        User::create(['email' => $invite->email]);
+        // Such a mess I'm ashamed.. pleasssse clean this up !!
+
+        Validator::make($request->all(), [
+            'name'              => "required|alpha_dash",
+            'email'             => "required|email|unique:users,email|exists:invites,email",
+            'phone_mobile'      => "phone:FR,mobile",
+            'password'          => "same:password_confirmation",
+            'service'          => "required",
+        ])->validate();
+
+        $inputs = $request->all();
+
+        $user = User::create([
+            'name'              => $inputs['name'],
+            'email'             => $inputs['email'],
+            'phone_mobile'      => $inputs['phone_mobile'],
+            'password'          => bcrypt($inputs['password']),
+            'email_verified_at' => \Carbon\Carbon::now(),
+        ]);
+
+        $services = array_keys($inputs['service']);
+
+        $user->services()->attach($services);
 
         // delete the invite so it can't be used again
-        $invite->delete();
+        // Look up the invite
+        if ($invite = Invite::where('token', $inputs['token'])->first()) {
+            //if the invite doesn't exist do something more graceful than this
+            $invite->delete();
+        }
 
-        // here you would probably log the user in and show them the dashboard, but we'll just prove it worked
+        auth()->login($user);
+
+        return redirect()->route('home');
 
         return 'Good job! Invite accepted!';
     }
