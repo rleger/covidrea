@@ -2,6 +2,9 @@
 
 return [
 
+    'email' => [
+        'default_sender' => 'mail@covid-moi-un-lit.com',
+    ],
     'enums' => [
         'service' => [
             'type' => [

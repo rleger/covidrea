@@ -15,7 +15,9 @@
         "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0"
+        "laravel/ui": "^2.0",
+        "pda/pheanstalk": "^4.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "astrotomic/ignition-stackoverflow": "^1.5",
