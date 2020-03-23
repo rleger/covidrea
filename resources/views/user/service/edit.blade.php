@@ -64,7 +64,7 @@
                                             Places totales
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input value="{{ $service->place_totales }}" id="place_totales" name="place_totales" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" value="{{ $service->place_totales }}" id="place_totales" name="place_totales" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
 
@@ -73,7 +73,7 @@
                                             Places disponibles
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input value="{{ $service->place_disponible }}" id="place_disponible" name="place_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" value="{{ $service->place_disponible }}" id="place_disponible" name="place_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
 
@@ -82,7 +82,7 @@
                                             Places bientôt disponibles
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input value="{{ $service->place_bientot_disponible }}" name="place_bientot_disponible" id="place_bientot_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" value="{{ $service->place_bientot_disponible }}" name="place_bientot_disponible" id="place_bientot_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
                                     <div class="sm:col-span-2">
