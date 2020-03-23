@@ -17,6 +17,10 @@ class CreateInvitesTable extends Migration
         $table->increments('id');
         $table->string('email');
         $table->string('token', 16)->unique();
+
+        // Etablissement lié à cette nouvelle invitation
+        $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');
+
         $table->timestamps();
     });
     }

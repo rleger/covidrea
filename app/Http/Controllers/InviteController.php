@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Validator;
 use App\Invite;
+use App\Etablissement;
 use Illuminate\Http\Request;
 use App\Jobs\InviteNewUsersByEmail;
 
@@ -20,6 +21,8 @@ class InviteController extends Controller
      */
     public function invite(User $user)
     {
+        $user->load('etablissement');
+
         return view('invite', compact('user'));
     }
 
@@ -27,23 +30,25 @@ class InviteController extends Controller
      * validate the incoming request data *.
      */
     public function process(Request $request)
-        // public function process(InviteRequest $request)
     {
         // extract emails to array
         $emails = $request->get('emails');
         $emails = array_map('trim', explode(',', str_replace(';', ',', $emails)));
 
+        $request->merge(compact('emails'));
+
         // Validate
         // @todo: improve error message
         // @todo: limit the number of emails
-        $validator = Validator::make((compact('emails')), [
+        $validator = Validator::make($request->all(), [
             'emails.*' => 'required|email',
+            'etablissement' => 'required|exists:etablissements,id',
         ])->validate();
 
         // @todo: remove emails that exists either in user or invite class
 
         // Create Invite with a token
-        InviteNewUsersByEmail::dispatch($emails);
+        InviteNewUsersByEmail::dispatch($request->all());
 
         // redirect back where we came from
         return back()
@@ -57,14 +62,20 @@ class InviteController extends Controller
      *
      * @param mixed $token
      */
-    public function accept($token)
-    {    // Look up the invite
+    public function accept($token, $etablissement_id)
+    {
+        $etablissement = Etablissement::with('service')->findOrFail($etablissement_id);
+
+        $services = $etablissement->service;
+        // dd($etablissement->toArray());
+        // Look up the invite
         if (!$invite = Invite::where('token', $token)->first()) {
             //if the invite doesn't exist do something more graceful than this
             abort(404);
         }
 
-        return view('invite.finalize');
+        // The user will fill in the missing fields (name, etc..)
+        return view('invite.finalize', compact('etablissement', 'services'));
     }
 
     public function finalize()

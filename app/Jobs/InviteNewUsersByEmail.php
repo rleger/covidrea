@@ -21,16 +21,24 @@ class InviteNewUsersByEmail implements ShouldQueue
      *
      * @var array
      */
+    protected $request;
+
     protected $emails;
+
+    protected $etablissement_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($emails)
+    public function __construct($request)
     {
-        $this->emails = $emails;
+        $this->request = $request;
+
+        $this->emails = $request['emails'];
+
+        $this->etablissement_id = $request['etablissement'];
     }
 
     /**
@@ -62,6 +70,7 @@ class InviteNewUsersByEmail implements ShouldQueue
         //create a new invite record
         $invite = Invite::create([
             'email' => $email,
+            'etablissement_id' => $this->etablissement_id,
             'token' => $token
         ]);
 

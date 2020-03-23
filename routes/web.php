@@ -23,7 +23,7 @@ Route::get('/user/{user}/service', 'UserServiceController@edit')->name('user.ser
 Route::get('invite/{user:token}', 'InviteController@invite')->name('invite');
 Route::post('invite', 'InviteController@process')->name('invite.process');
 // {token} is a required parameter that will be exposed to us in the controller method
-Route::get('finalize', 'InviteController@finalize')->name('invite.finalize');
+Route::get('accept/{token}/{etablissement_id}', 'InviteController@accept')->name('invite.accept');
 Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 
 // Route::view('debug', 'user/afterinvite');

@@ -5,8 +5,30 @@
 @section('content')
     <div class="bg-white overflow-hidden shadow rounded-lg">
         <form action="{{ route('invite.process') }}" method="post">
-            <div class="border-b border-gray-200 text-indigo-600 px-4 py-5 sm:px-6">
-                Saisissez les email des utilisateurs à inviter de la part de <strong>{{ $user->name }}</strong>
+            <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+                <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
+                    <div class="ml-4 mt-2">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Saisissez les email des utilisateurs à inviter de la part de {{ $user->name }} pour
+                        </h3>
+                    </div>
+                    <div class="ml-4 mt-2 flex-shrink-0">
+                        <span class="inline-flex rounded-md shadow-sm">
+                            @if($user->etablissement->count() > 1)
+                                <select class="mt-1 block form-select w-full py-2 px-3 pr-8 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" name="etablissement" id="etablissement">
+                                    @foreach($user->etablissement as $etablissement)
+                                        <option value="{{$etablissement->id}}">
+                                        {{$etablissement->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            @else
+                                {{ $user->etablissement->first()->name }}
+                                <input type="hidden" name="etablissement" value="{{ $user->etablissement->first()->id}}"></input>
+                            @endif
+                        </span>
+                    </div>
+                </div>
             </div>
             <div class="px-4 py-5 sm:p-6">
                 @csrf
@@ -39,7 +61,8 @@
                         par exemple : medecin@gmail.com, doctor@hopital.com;personne@example.com
                     </p>
 
-                    <label for="email" class="hidden block text-sm font-medium leading-5 text-gray-700">Liste d'adresses mails</label>
+                    {{-- Liste d'adresses mail --}}
+                    <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Liste d'adresses mails</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
                         <textarea rows="6" id="emails" name="emails" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="you@example.com,unautre@hopital.com" /></textarea>
                     </div>

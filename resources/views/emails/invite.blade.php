@@ -9,7 +9,8 @@
     Vous pourrez également indiquer et mettre à jour le nombre de lits disponibles pour votre unité.
 </p>
 
-<a href="{{ route('invite.accept', $invite->token) }}">Activer mon compte</a>
+<a href="{{ route('invite.accept', ['token' => $invite->token, 'etab' => $invite->etablissement_id]) }}">Activer mon compte</a>
+{{-- <a href="{{ route('invite.accept', ['token' => $invite->token, 'etab' => $invite->etablissement_id]) }}">Activer mon compte</a> --}}
 
 <p>
     Nous vous remercions pour votre précieuse collaboration.
