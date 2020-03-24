@@ -88,8 +88,8 @@ class InviteController extends Controller
             'name'                           => 'required|alpha_dash',
             'email'                          => 'required|email:rfc,dns|unique:users,email|exists:invites,email',
             'phone_mobile'                   => 'phone:FR,mobile',
-            'password'                       => 'required|same:password_confirmation',
-            'password_confirmation'          => 'required',
+            'password'                       => 'required|same:password_confirm',
+            'password_confirm'               => 'required',
             'service'                        => 'required',
         ])->validate();
 
