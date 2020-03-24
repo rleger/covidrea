@@ -10,7 +10,7 @@
                     Dernières statistiques
                 </h2>
                 <p class="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
-                    Evolution des disponibilités des lits
+                    Disponibilités des lits de <span class="font-bold">réanimation</span> pour les patients COVID
                 </p>
             </div>
         </div>

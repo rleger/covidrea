@@ -94,7 +94,7 @@
                                 <br class="xl:hidden" />
                                 <span class="text-indigo-600">COVID-19</span>
                             </h2>
-                            <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Application dédiée aux professionnels de santé à la recherche d'un lit pour leurs malades.</p>
+                            <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Application dédiée aux professionnels de santé à la recherche d'un lit de <span class="font-bold">réanimation</span> pour leurs malades.</p>
                             <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                 <div class="rounded-md shadow">
                                     <a href="{{ route('home') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">Rechercher un lit</a>

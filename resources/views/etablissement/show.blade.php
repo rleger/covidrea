@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title', 'Etablissements')
+@section('page_title', 'Disponibilité des lits de réanimation')
 
 @section('content')
     <div class="bg-white shadow overflow-hidden  sm:rounded-lg">
@@ -16,17 +16,17 @@
             <dl>
 
                 @foreach($etablissement->service as $key => $service)
-                    <div class="{{ $key ? 'border-t pt-2' : ''}} sm:border-t-0 mb-10 sm:mb-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+                    <div class="{{ $key ? 'border-t pt-2' : ''}} mb-5 sm:border-t-0 sm:mb-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
                         <dt class="text-sm leading-5 font-medium text-gray-500">
                         <span class="flex text-gray-900">
                             {{ $service->name }}
                         </span>
-                        <span class="flex text-xs">
-                            {{ $service->type }}
-                        </span>
-                        <span class="flex text-xs">
-                            patients {{ $service->gravite }}
-                        </span>
+                        {{-- <span class="flex text-xs"> --}}
+                            {{-- {{ $service->type }} --}}
+                        {{-- </span> --}}
+                        {{-- <span class="flex text-xs"> --}}
+                            {{-- patients {{ $service->gravite }} --}}
+                        {{-- </span> --}}
                         </dt>
                         <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                         <div class="flex-shrink-0">
