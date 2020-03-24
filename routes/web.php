@@ -9,12 +9,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// No auth required
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Auth
 Route::get('/etablissements', 'EtablissementController@index')->name('etablissements.index');
 Route::get('/etablissement/{etablissement}', 'EtablissementController@show')->name('etablissement.show');
-
-
 Route::patch('/service/{service}', 'ServiceController@update')->name('service.update');
 
 Route::get('/user/{user}/service', 'UserServiceController@edit')->name('user.services.edit');
