@@ -37,7 +37,7 @@
                             <span class="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-orange-100 text-orange-800">
                                 {{ $service->place_bientot_disponible }} prochainement
                             </span>
-                            <span class="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800">
+                            <span class="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-indigo-100 text-indigo-800">
                                 {{ $service->place_totales }} totales
                             </span>
                         </div>
