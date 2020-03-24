@@ -10,7 +10,7 @@
                         Dernières statistiques
                     </h2>
                     <p class="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
-                        Evolution des disponibilités des lits
+                        Evolution des disponibilités des lits (en construction)
                     </p>
                 </div>
             </div>
@@ -34,6 +34,9 @@
                                     </p>
                                     <p class="mt-2 text-lg leading-6 font-medium text-gray-500">
                                         Lits bientôt disponibles
+                                    </p>
+                                    <p class="mt-2 text-lg leading-6 font-medium text-gray-500">
+                                        En cours de développement
                                     </p>
                                 </div>
                                 <div class="border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
