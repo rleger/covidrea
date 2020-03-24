@@ -131,7 +131,7 @@
                                                         </div>
                                                         <div class="pl-7 text-sm leading-5">
                                                             <label for="candidates" class="font-medium text-gray-700">{{ $service->name }}</label>
-                                                            <p class="text-gray-500">{{ $service->type}}</p>
+                                                            {{-- <p class="text-gray-500">{{ $service->type}}</p> --}}
                                                         </div>
                                                     </div>
                                                 </div>
