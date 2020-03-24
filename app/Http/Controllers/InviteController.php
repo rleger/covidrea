@@ -13,7 +13,6 @@ class InviteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -21,6 +20,8 @@ class InviteController extends Controller
      */
     public function invite(User $user)
     {
+        $this->middleware('auth');
+
         $user->load('etablissement');
 
         return view('invite', compact('user'));
@@ -110,7 +111,6 @@ class InviteController extends Controller
         // delete the invite so it can't be used again
         // Look up the invite
         if ($invite = Invite::where('token', $inputs['token'])->first()) {
-            //if the invite doesn't exist do something more graceful than this
             $invite->delete();
         }
 

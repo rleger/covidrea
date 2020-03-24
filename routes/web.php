@@ -27,3 +27,6 @@ Route::post('invite', 'InviteController@process')->name('invite.process');
 Route::get('accept/{token}/{etablissement_id}', 'InviteController@accept')->name('invite.accept');
 Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 
+Route::get('email', function() {
+    \Mail::to('romainleger@mac.com')->send(new \App\Mail\OrderShipped());
+});
