@@ -3,7 +3,6 @@
 
 # Activez votre compte covid-moi-un-lit.com
 
-
 Bonjour,
 
 Vous avez été invité à rejoindre **gratuitement** l'application covid-moi-un-lit.com afin de vous aider à trouver des lits plus facilement pour vos malades covid+ (intubés ou non intubés).
