@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\InviteCreated;
+use App\Service;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $places = [];
+
+        $places['places_totales'] = Service::sum('place_totales');
+        $places['place_disponible'] = Service::sum('place_disponible');
+        $places['place_bientot_disponible'] = Service::sum('place_bientot_disponible');
+
+        return view('home', compact('places'));
     }
 }

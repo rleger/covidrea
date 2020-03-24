@@ -23,7 +23,7 @@
                             <div class="border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
                                 <a href="{{ route('etablissements.index') }}">
                                     <p class="text-5xl leading-none font-extrabold text-green-400">
-                                        120
+                                        {{ $places['place_disponible'] }}
                                     </p>
                                     <p class="mt-2 text-lg leading-6 font-medium text-gray-500">
                                         Lits disponibles
@@ -33,7 +33,7 @@
                             <div class="border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
                                 <a href="{{ route('etablissements.index') }}">
                                     <p class="text-5xl leading-none font-extrabold text-orange-400">
-                                        100
+                                        {{ $places['place_bientot_disponible'] }}
                                     </p>
                                     <p class="mt-2 text-lg leading-6 font-medium text-gray-500">
                                         Lits bientôt disponibles
@@ -43,7 +43,7 @@
                             <div class="border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
                                 <a href="{{ route('etablissements.index') }}">
                                     <p class="text-5xl leading-none font-extrabold text-indigo-400">
-                                        800
+                                        {{ $places['places_totales'] }}
                                     </p>
                                     <p class="mt-2 text-lg leading-6 font-medium text-gray-500">
                                         Lits affectés
