@@ -34,7 +34,7 @@ class EtablissementController extends Controller
         $long = $etablissement->long;
 
         // Construct the sqlDistance query
-        $sqlDistance = DB::raw('( 111.045 * acos( cos( radians('.$lat.') )
+        $sqlDistance = DB::raw('( 6371 * acos( cos( radians('.$lat.') )
             * cos( radians( etablissements.lat ) )
             * cos( radians( etablissements.long )
             - radians('.$long.') )
@@ -52,7 +52,7 @@ class EtablissementController extends Controller
             ->select('etablissements.*')
             ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count, {$sqlPlace} as places")
             // ->orderBy('service_count', 'DESC')
-            ->orderBy('places', 'DESC')
+            // ->orderBy('places', 'DESC')
             ->orderBy('distance', 'ASC')
             ->paginate(10);
 

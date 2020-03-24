@@ -28,4 +28,26 @@ class Etablissement extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+    /**
+     * Scope is within distance (km).
+     *
+     * @param mixed $query
+     * @param mixed $coordinates
+     * @param int   $radius
+     */
+    public function scopeIsWithinMaxDistance($query, $coordinates, $radius = 5)
+    {
+        // $haversine = "(6371 * acos(cos(radians(" . $coordinates['lat'] . "))
+        // $haversine = '( 111.045 * acos( cos( radians('.$coordinates['lat'].') )
+        $haversine = '( 6371 * acos( cos( radians('.$coordinates['lat'].') )
+            * cos(radians(etablissements.lat))
+            * cos(radians(etablissements.long)
+            - radians('.$coordinates['long'].'))
+            + sin(radians('.$coordinates['lat'].'))
+            * sin(radians(etablissements.lat))))';
+
+        return $query->selectRaw("{$haversine} AS distance")
+                     ->whereRaw("{$haversine} < ?", [$radius]);
+    }
 }

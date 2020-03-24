@@ -24,7 +24,7 @@ class CreateServicesTable extends Migration
             $table->string('contact');
 
             // Un service appartient à un établissement
-            $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

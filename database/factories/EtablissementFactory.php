@@ -13,7 +13,7 @@ $factory->define(Etablissement::class, function (Faker $faker) {
         'ville'      => $faker->city,
         'region'     => $faker->departmentName,
         'long'       => $faker->longitude(41, 51),
-        'lat'        => $faker->latitude(2, 9),
+        'lat'        => $faker->latitude(2, 10),
         'user_id'    => function () {
             return factory(App\User::class)->create()->id;
         },

@@ -25,7 +25,7 @@ class CreateEtablissementsTable extends Migration
             $table->decimal('lat', 10, 7)->nullable();
 
             // Utilisateur responsable
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
