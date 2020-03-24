@@ -47,7 +47,7 @@
                                     Nom
                                 </label>
                                 <input name="etablissement_id" id="etablissement_id" type="hidden" value="{{ $etablissement->id }}" />
-                                <input name="token" id="token" type="hidden" value="{{ $etablissement->id }}" />
+                                <input name="token" id="token" type="hidden" value="{{ $token }}" />
 
 
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
