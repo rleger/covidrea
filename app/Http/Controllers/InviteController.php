@@ -87,7 +87,7 @@ class InviteController extends Controller
 
         // Validate the request
         Validator::make($request->all(), [
-            'name'                           => 'required|alpha_dash|max:20',
+            'name'                           => 'required|alpha_dash|max:30',
             'email'                          => 'required|email:rfc,dns|unique:users,email',
             'phone_mobile'                   => 'phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
