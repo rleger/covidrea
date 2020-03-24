@@ -98,8 +98,8 @@ class InviteController extends Controller
         $inputs = $request->all();
 
         $user = User::create([
-            'name'              => $inputs['name'],
-            'email'             => $inputs['email'],
+            'name'              => ucfirst(strtolower($inputs['name'])),
+            'email'             => strtolower($inputs['email']),
             'phone_mobile'      => $inputs['phone_mobile'],
             'password'          => bcrypt($inputs['password']),
             'email_verified_at' => \Carbon\Carbon::now(),
