@@ -118,5 +118,5 @@
         </div>
         {{-- EndHero --}}
 
-
+        @include('partials.footer')
     </body>
