@@ -45,14 +45,22 @@ class EtablissementController extends Controller
         // SELECT *, (SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id`) AS cnt FROM etablissements
         $sqlCount = DB::raw("( SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id` )");
 
+        $sqlPlace = DB::raw("( SELECT sum(place_disponible) + sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )");
+        // $sqlPlaceDisponible = DB::raw("( SELECT sum(place_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )");
+        // $sqlPlaceBientotDisponible = DB::raw("( SELECT sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )");
+
         // Run the query
         $paginator = DB::table('etablissements')
             ->select('etablissements.*')
-            ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count")
-            ->orderBy('service_count', 'DESC')
+            ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count, {$sqlPlace} as places")
+            // ->where('service_count', '>=', 0)
+            // ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count, {$sqlPlaceDisponible} as place_disponible, {$sqlPlaceBientotDisponible} as place_bientot_disponible")
+            ->orderBy('places', 'DESC')
+            // ->orderBy('service_count', 'DESC')
             ->orderBy('distance', 'ASC')
             ->paginate(10);
 
+        // dd($paginator->items());
         // https://laracasts.com/discuss/channels/laravel/hydraterawfromquery-with-pagination
         $etablissements = Etablissement::hydrate($paginator->items());
 
