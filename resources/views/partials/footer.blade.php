@@ -19,7 +19,7 @@
         {{-- </nav> --}}
         <div class="mt-8">
             <p class="text-center text-base leading-6 text-gray-400">
-                &copy; 2020 Romain Léger. All rights reserved.
+                &copy; 2020 covid moi un lit. Conception Romain LEGER et Dr Vincent BAILLY
             </p>
         </div>
     </div>
