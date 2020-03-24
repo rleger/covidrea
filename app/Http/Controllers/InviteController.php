@@ -28,7 +28,7 @@ class InviteController extends Controller
     }
 
     /**
-     * validate the incoming request data *.
+     * This is called when the administrator submits a list of emails
      */
     public function process(Request $request)
     {
@@ -67,7 +67,7 @@ class InviteController extends Controller
         $etablissement = Etablissement::with('service')->findOrFail($etablissement_id);
 
         $services = $etablissement->service;
-        // dd($etablissement->toArray());
+
         // Look up the invite
         if (!$invite = Invite::where('token', $token)->first()) {
             //if the invite doesn't exist do something more graceful than this
@@ -85,9 +85,9 @@ class InviteController extends Controller
     {
         // Such a mess I'm ashamed.. pleasssse clean this up !!
 
+        // Validate the request
         Validator::make($request->all(), [
             'name'                           => 'required|alpha_dash',
-            // 'email'                          => 'required|email:rfc,dns|unique:users,email|exists:invites,email',
             'email'                          => 'required|email:rfc,dns|unique:users,email',
             'phone_mobile'                   => 'phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
@@ -97,6 +97,7 @@ class InviteController extends Controller
 
         $inputs = $request->all();
 
+        // Create the user
         $user = User::create([
             'name'              => ucfirst(strtolower($inputs['name'])),
             'email'             => strtolower($inputs['email']),
@@ -105,6 +106,7 @@ class InviteController extends Controller
             'email_verified_at' => \Carbon\Carbon::now(),
         ]);
 
+        // Attach the user to the services selected
         $services = array_keys($inputs['service']);
 
         $user->services()->attach($services);
@@ -115,8 +117,10 @@ class InviteController extends Controller
             $invite->delete();
         }
 
+        // Log the user in
         auth()->login($user);
 
+        // return the view
         return redirect()->route('home');
     }
 }
