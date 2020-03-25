@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Service extends Model
+class Service extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     /**
      * Guarded properties.
      *
