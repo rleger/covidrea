@@ -64,9 +64,7 @@
                                         <div  class="ml-3 relative">
                                             <div>
 
-                                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                        Se déconnecter
-                                                    </button>
+                                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</button>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                                                     @csrf
