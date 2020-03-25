@@ -18,6 +18,8 @@ class CreateServiceUserPivotTable extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['service_id', 'user_id']);
+
+            $table->softDeletes();
         });
     }
 
