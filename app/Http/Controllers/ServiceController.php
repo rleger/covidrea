@@ -30,7 +30,13 @@ class ServiceController extends Controller
 
         // Validation
         $validatedData = $request->validate([
-            'place_totales'            => 'required|integer',
+            'place_totales'            => ['required', 'integer',
+            function($attribute, $value, $fail) {
+                // Le nombre de place totales ne peut exceder la somme des 2 autres
+                if(((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
+                    $fail("Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles");
+                }
+            }],
             'place_disponible'         => 'required|integer',
             'place_bientot_disponible' => 'required|integer',
         ]);
