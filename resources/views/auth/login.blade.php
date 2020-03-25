@@ -9,7 +9,7 @@
             </svg>
 
 
-            <h2 class="mt-3 sm:mt-6 text-center text-xl leading-9 font-extrabold text-gray-900 sm:text-3xl">Identifiez-vous</h2>
+            <h2 class="mt-3 sm:mt-6 text-center text-xl leading-9 font-extrabold text-gray-900 sm:text-3xl">{{ __('Login') }}</h2>
             {{-- <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w"> --}}
                 {{-- ou --}}
                 {{-- <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"> --}}
@@ -25,7 +25,7 @@
 
                     <div>
                         <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
-                            Adresse email
+                            {{ __('E-Mail Address') }}
                         </label>
                         <div class="mt-1 rounded-md shadow-sm">
                             <!-- <input id="email" type="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" /> -->
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <label for="password" class="block text-sm font-medium leading-5 text-gray-700">Mot de passe</label>
+                        <label for="password" class="block text-sm font-medium leading-5 text-gray-700">{{ __('Password') }}</label>
                         <div class="mt-1 rounded-md shadow-sm">
                             <input id="password" name="password" type="password" required autocomplete="current-password" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') is-invalid @enderror" />
 
@@ -51,18 +51,18 @@
                     </div>
 
                     <div class="mt-6 flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input id="remember" name="remember" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" {{ old('remember') ? 'checked' : '' }} />
+                        {{-- <div class="flex items-center"> --}}
+                            {{-- <input id="remember" name="remember" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" {{ old('remember') ? 'checked' : '' }} /> --}}
 
-                            <label for="remember_me" class="ml-2 block text-sm leading-5 text-gray-900">
-                                Se souvenir de moi
-                            </label>
-                        </div>
+                            {{-- <label for="remember_me" class="ml-2 block text-sm leading-5 text-gray-900"> --}}
+                                {{-- {{ __('Remember Me') }} --}}
+                            {{-- </label> --}}
+                        {{-- </div> --}}
 
                         @if (Route::has('password.request'))
                             <div class="text-sm leading-5">
                                 <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                                    mot de passe oublié
+                                    {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
                         @endif
@@ -71,7 +71,7 @@
                     <div class="mt-6">
                         <span class="block w-full rounded-md shadow-sm">
                             <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                                Connexion
+                                {{ __('Login') }}
                             </button>
                         </span>
                     </div>
