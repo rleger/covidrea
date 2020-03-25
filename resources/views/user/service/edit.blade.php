@@ -29,7 +29,7 @@
                             <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
 
                             <h3 class="text-lg leading-6 font-medium text-gray-900 hidden sm:block">Mise à jour des données</h3>
-                            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500 hidden sm:block">Veillez à bien valider vos changements.</p>
+                            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500 hidden sm:block">Veillez à bien enregistrer vos changements.</p>
 
 
                             {{-- Success message --}}
@@ -89,12 +89,12 @@
                                         <span class="inline-flex rounded-md shadow-sm">
                                             {{-- Valider --}}
                                             <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                                                Valider
+                                                {{ __('Save') }}
                                             </button>
 
                                             {{-- Annuler --}}
                                             <a href="{{ Request::url() }}" class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray active:bg-gray-200 transition ease-in-out duration-150">
-                                                Annuler
+                                                {{ __('Annuler') }}
                                             </a>
 
                                         </span>
