@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -51,7 +51,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Un utilisateur a plusieurs établissements
+     * Un utilisateur a plusieurs établissements.
      */
     public function etablissement()
     {
@@ -64,5 +64,13 @@ class User extends Authenticatable
     public function services()
     {
         return $this->belongsToMany(Service::class);
+    }
+
+    /**
+     * Is the user responsible for an etablissement
+     */
+    public function hasEtablissement()
+    {
+        return (bool) $this->etablissement->count();
     }
 }

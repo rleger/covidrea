@@ -30,3 +30,14 @@ Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 Route::get('email', function() {
     \Mail::to('romainleger@mac.com')->send(new \App\Mail\OrderShipped());
 });
+
+// Gestion des établissements
+Route::get('user/{user}/etablissement/', 'UserEtablissementController@index')->name('user.etablissement.index');
+Route::get('user/{user}/etablissement/{etablissement}/edit', 'UserEtablissementController@edit')->name('user.etablissement.edit');
+Route::patch('user/{user}/etablissement/{etablissement}/update', 'UserEtablissementController@update')->name('user.etablissement.update');
+
+Route::get('debug', function() {
+    // $u = \App\User::find(1);
+    // dd($u->hasEtablissement());
+    // return $u->hasEtablissement();
+});
