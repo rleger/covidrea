@@ -23,9 +23,10 @@ return [
         "idf" =>"Île-de-France",
         "loire" =>"Pays de la Loire",
         "paca" =>"Provence-Alpes-Côte d'Azur.  ",
-        "Suisse" =>"Suisse",
-        "Allemagne" =>"Allemagne",
-        "Autre" =>"Autre",
+        "suisse" =>"Suisse",
+        "allemagne" =>"Allemagne",
+        "belgique" =>"Belgique",
+        "autre" =>"Autre",
     ],
 
     'enums' => [
