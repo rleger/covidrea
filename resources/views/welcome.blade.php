@@ -341,7 +341,7 @@
                             </dt>
                             <dd class="mt-2">
                                 <p class="text-base leading-6 text-gray-500">
-                                    Nous accordons la plus grande importance à la sécurité et confidentialité des données. Nous ne communiquerons aucune information personnelle à une tierce partie. L'objectif de l'application est d'assister les praticiens dans la gestion opérationnelle de la crise. L'application ne requiert la saisie d'aucune donnée patient.
+                                Nous accordons la plus grande importance à la sécurité et confidentialité des données. Nous ne communiquerons aucune information personnelle à une tierce partie. L'objectif de l'application est d'assister les praticiens dans la gestion opérationnelle de la crise. L'application ne requiert la saisie <span class="font-bold">d'aucune donnée patient</span>.
                                 </p>
                             </dd>
                         </div>
