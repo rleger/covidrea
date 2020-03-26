@@ -279,7 +279,7 @@
                             </dt>
                             <dd class="mt-2">
                                 <p class="text-base leading-6 text-gray-500">
-                                Tous les acteurs de soins (urgentistes et réanimateurs notamment) impliqués dans la prise en charge des malades COVID nécessitant des soins de réanimation.
+                                Tous les acteurs de soins (<span class="font-bold">urgentistes</span> et <span class="font-bold">réanimateurs</span> notamment) impliqués dans la prise en charge des malades COVID nécessitant des soins de réanimation.
                                 </p>
                             </dd>
                         </div>
