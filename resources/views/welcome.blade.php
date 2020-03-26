@@ -185,7 +185,7 @@
                         <div class="mt-5">
                             <h5 class="text-lg leading-6 font-medium text-gray-900 text-indigo-700">Réactif et efficient</h5>
                             <p class="mt-2 text-base leading-6 text-gray-500">
-                                Nous avons mis l'accent sur l'ergonomie et l'accessibilité <span class="font-bold">sur smartphone</span> pour que vous ne perdiez pas de temps !
+                                Nous avons mis l'accent sur l'ergonomie et l'accessibilité <span class="font-bold">sur smartphone</span> afin que vous ne perdiez pas de temps !
                             </p>
                         </div>
                     </div>
