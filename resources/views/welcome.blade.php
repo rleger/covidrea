@@ -355,9 +355,7 @@
             </svg>
 
             <div class="relative">
-
                 <div class="mx-auto flex items-center justify-center h-40 w-40 mb-10 rounded-full bg-white">
-
                     <svg class="mx-auto h-20" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 32 32">
                         <path fill="#EAEAEA" d="M29 3h-7V1a1 1 0 00-1-1H11a1 1 0 00-1 1v2H3a1 1 0 00-1 1v28h28V4a1 1 0 00-1-1z" />
                         <path fill="#FFF" d="M11 24h10v8H11z" />
@@ -376,7 +374,7 @@
                 </div>
 
                 <blockquote class="mt-8">
-                    <div class="max-w-3xl mx-auto text-center text-lg sm:text-2xl leading-9 font-medium text-gray-600">
+                    <div class="max-w-3xl mx-auto text-center text-lg sm:text-2xl leading-7 sm:leading-9 font-medium text-gray-600">
                         <p class="mb-4">
                             Avec <span class="text-indigo-600 font-bold">Covid moi un lit</span> les informations sont issues directement du terrain sans la complexité des filtres administratifs.
                         </p>
@@ -384,8 +382,8 @@
                             Elles sont disponibles <span class="text-indigo-600 font-bold">en temps réel</span> et exploitables pour l’ensemble des acteurs de la prise en charge des malades.
                         </p>
 
-                        <p class="text-indigo-600 text-xl sm:text-2xl leading-9 font-medium text-gray-900 border-t py-6 my-6">
-                            En vous permettant de gagner un temps précieux<br /> <span class="font-bold">Covid moi un lit</span> vous aide à sauver des vies !
+                        <p class="text-indigo-600 text-xl sm:text-2xl leading-8 sm:leading-9 font-medium text-gray-900 border-t py-6 my-6">
+                            En vous permettant de gagner un temps précieux<br/> <span class="font-bold">Covid moi un lit</span> vous aide à sauver des vies !
                         </p>
                     </div>
                     <footer class="mt-8">
