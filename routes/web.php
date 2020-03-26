@@ -36,8 +36,5 @@ Route::get('user/{user}/etablissement/', 'UserEtablissementController@index')->n
 Route::get('user/{user}/etablissement/{etablissement}/edit', 'UserEtablissementController@edit')->name('user.etablissement.edit');
 Route::patch('user/{user}/etablissement/{etablissement}/update', 'UserEtablissementController@update')->name('user.etablissement.update');
 
-Route::get('debug', function() {
-    // $u = \App\User::find(1);
-    // dd($u->hasEtablissement());
-    // return $u->hasEtablissement();
-});
+// Interested people
+Route::post('interested', 'InterestedController@store')->name('interested.store');
