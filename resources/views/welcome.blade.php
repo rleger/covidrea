@@ -376,7 +376,7 @@
                 </div>
 
                 <blockquote class="mt-8">
-                    <div class="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-600">
+                    <div class="max-w-3xl mx-auto text-center text-lg sm:text-2xl leading-9 font-medium text-gray-600">
                         <p class="mb-4">
                             Avec <span class="text-indigo-600 font-bold">Covid moi un lit</span> les informations sont issues directement du terrain sans la complexité des filtres administratifs.
                         </p>
@@ -384,7 +384,7 @@
                             Elles sont disponibles <span class="text-indigo-600 font-bold">en temps réel</span> et exploitables pour l’ensemble des acteurs de la prise en charge des malades.
                         </p>
 
-                        <p class="text-indigo-600 text-2xl leading-9 font-medium text-gray-900 border-t py-6 my-6">
+                        <p class="text-indigo-600 text-xl sm:text-2xl leading-9 font-medium text-gray-900 border-t py-6 my-6">
                             En vous permettant de gagner un temps précieux<br /> <span class="font-bold">Covid moi un lit</span> vous aide à sauver des vies !
                         </p>
                     </div>
