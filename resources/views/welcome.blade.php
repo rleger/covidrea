@@ -275,6 +275,16 @@
                     <div>
                         <div>
                             <dt class="text-lg leading-6 font-medium text-gray-900">
+                            Qui peut utiliser covid moi un lit ?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                Tous les acteurs de soins (urgentistes et réanimateurs notamment) impliqués dans la prise en charge des malades COVID nécessitant des soins de réanimation.
+                                </p>
+                            </dd>
+                        </div>
+                        <div class="mt-12">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
                                 Comment ça marche ?
                             </dt>
                             <dd class="mt-2">
