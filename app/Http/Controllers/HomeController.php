@@ -43,7 +43,7 @@ class HomeController extends Controller
 
         // Array with places
         $places = [
-            'places_totales' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_disponible'),
+            'places_totales' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_totales'),
             'place_disponible' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_disponible'),
             'place_bientot_disponible' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_bientot_disponible'),
         ];
