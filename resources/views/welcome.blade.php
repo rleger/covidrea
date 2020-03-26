@@ -205,7 +205,7 @@
                         Manifestez-nous votre intérêt
                     </h2>
                     <p class="mt-3 max-w-3xl text-lg font-bold leading-6 text-indigo-200">
-                        Nous débutons en Bourgogne Franche Comté mais on ne va pas s'arrêter là.
+                        Nous débutons en Bourgogne Franche Comté mais nous n'allons pas nous arrêter là.
                     </p>
                     <p class="mt-3 max-w-3xl text-sm leading-6 text-indigo-200">
                         En vous incrivant, vous nous manifestez votre intérêt et nous aidez à poursuivre notre mission pour vous amener covid-moi-un-lit partout où vous en aurez besoin.
@@ -331,7 +331,7 @@
                             </dt>
                             <dd class="mt-2">
                                 <p class="text-base leading-6 text-gray-500">
-                                    Nous accordons la plus grande importance à la sécurité et confidentialité des données. Nous ne communiquerons aucune information personnelle à une tierce partie. L'objectif de l'application est d'assister les praticiens dans la gestion opérationnelle de la crise. L'application ne requière la saisie d'aucune donnée patient.
+                                    Nous accordons la plus grande importance à la sécurité et confidentialité des données. Nous ne communiquerons aucune information personnelle à une tierce partie. L'objectif de l'application est d'assister les praticiens dans la gestion opérationnelle de la crise. L'application ne requiert la saisie d'aucune donnée patient.
                                 </p>
                             </dd>
                         </div>
