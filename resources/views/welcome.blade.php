@@ -76,7 +76,7 @@
             <div class="relative lg:grid lg:grid-cols-3 lg:col-gap-8">
                 <div class="lg:col-span-1">
                     <h3 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-                        Trouver un lit c'est sauver des vies
+                        Trouver <span class="text-indigo-600">un lit</span> c'est sauver <span class="text-indigo-600">une vie</span>
                     </h3>
                 </div>
                 <div class="mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0">
