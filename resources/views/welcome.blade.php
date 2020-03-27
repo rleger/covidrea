@@ -14,8 +14,8 @@
     {
         "@context" : "https://schema.org",
         "@type" : "Organization",
-        "name" : "",
-        "url" : "http://www.your-site.com",
+        "name" : "Covid moi un lit",
+        "url" : "https://covid-moi-un-lit.com",
         "sameAs" : [
         "https://www.facebook.com/Covid-Moi-Un-Lit-100434308283391",
         "https://twitter.com/CovidMoiUnLit"
