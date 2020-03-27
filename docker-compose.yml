@@ -27,10 +27,11 @@ services:
       APP_KEY: base64:3D7jAxA4Ki5VF3+jNTa1BZ45JS1Pfb0eikO9kUZC9oA=
       MAIL_HOST: mailcatcher
       MAIL_PORT: 1025
-      MAIL_USERNAME: 
-      MAIL_PASSWORD:
+      MAIL_USERNAME: null
+      MAIL_PASSWORD: null
       MAIL_FROM_ADDRESS: mail@covid-moi-un-lit.com
       MAIL_FROM_NAME: covid-moi-un-lit.com
+      MAIL_ENCRYPTION: ''
     links:
       - mysql
       - mailcatcher
@@ -39,6 +40,7 @@ services:
     image: jeanberu/mailcatcher
     ports: 
       - 8002:1080
+      - 1025:1025
 
   adminer:
     image: adminer
