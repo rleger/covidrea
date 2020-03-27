@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+. Pour les professionnels, par les professionnels.">
+    <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
