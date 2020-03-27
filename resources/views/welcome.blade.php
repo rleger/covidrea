@@ -8,8 +8,20 @@
     <!-- CSRF Token -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+. Pour les professionnels, par les professionnels.">
+    <meta name="description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
     <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
+    <script type="application/ld+json">
+    {
+        "@context" : "https://schema.org",
+        "@type" : "Organization",
+        "name" : "",
+        "url" : "http://www.your-site.com",
+        "sameAs" : [
+        "https://www.facebook.com/Covid-Moi-Un-Lit-100434308283391",
+        "https://twitter.com/CovidMoiUnLit"
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -29,11 +41,11 @@
                 <div class="pt-6 px-4 sm:px-6 lg:px-8"></div>
                 <div class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                     <div class="sm:text-center lg:text-left">
-                        <h2 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+                        <h1 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
                             Lits de réanimation
                             <br class="xl:hidden" />
                             <span class="text-indigo-600">COVID-19</span>
-                        </h2>
+                        </h1>
                         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                             Première application dédiée <span class="font-bold">aux professionnels</span> de santé à la recherche d’un <span class="font-bold">lit de réanimation</span> pour leurs malades COVID+.
                         </p>
@@ -76,9 +88,9 @@
 
             <div class="relative lg:grid lg:grid-cols-3 lg:col-gap-8">
                 <div class="lg:col-span-1">
-                    <h3 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+                    <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
                         Trouver <span class="text-indigo-600">un lit</span> c'est sauver <span class="text-indigo-600">une vie</span>
-                    </h3>
+                    </h2>
                 </div>
                 <div class="mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0">
                     <div>
