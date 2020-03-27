@@ -20,7 +20,7 @@ install: up ## Install project
 	docker-compose exec web yarn install
 	docker-compose exec web yarn production
 	docker-compose exec web php artisan migrate
-	
+	docker-compose exec web php artisan db:seed
 
 .PHONY: up
 up: ## Start containers

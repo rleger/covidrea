@@ -22,3 +22,12 @@ Commandes utiles :
 * `make stop` : Stoppe les containers en cours
 * `make up` : (Re) Lance les containers
 * `make bash` : Attache le terminal au container
+
+## Contribuer : 
+
+1. **Fork** ce repository sur GitHub
+2. **Cloner** le projet forké sur votre machine
+3. **Effectuez** les changements souhaités et pushez sur votre branche
+4. **Créez** votre pull request
+
+**NOTE: Assurez vous de vous baser sur la branche `develop` avant tout développement et création de pull request**
