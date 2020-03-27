@@ -14,7 +14,7 @@ class InterestedController extends Controller
     {
         // Validation
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email:rfc,dns|unique:users,email',
+            'email' => 'required|email:rfc,dns|unique:interesteds,email',
         ]);
 
         if ($validator->fails()) {
