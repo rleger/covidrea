@@ -1,0 +1,63 @@
+version: '2'
+
+
+volumes:
+  mysql-data:
+
+services:
+  web:
+    image: thecodingmachine/php:7.4-v3-apache-node10
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/html
+    environment:
+      TZ: Europe/Paris
+      PHP_INI_DATE__TIMEZONE: Europe/Paris
+      APACHE_DOCUMENT_ROOT: public/
+      PHP_EXTENSION_XDEBUG: 1
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: covidrea
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      APP_DEBUG: 'true'
+      APP_ENV: local
+      APP_URL: http://localhost:8000
+      APP_KEY: base64:3D7jAxA4Ki5VF3+jNTa1BZ45JS1Pfb0eikO9kUZC9oA=
+      MAIL_HOST: mailcatcher
+      MAIL_PORT: 1025
+      MAIL_USERNAME: null
+      MAIL_PASSWORD: null
+      MAIL_FROM_ADDRESS: mail@covid-moi-un-lit.com
+      MAIL_FROM_NAME: covid-moi-un-lit.com
+      MAIL_ENCRYPTION: ''
+    links:
+      - mysql
+      - mailcatcher
+
+  mailcatcher:
+    image: jeanberu/mailcatcher
+    ports: 
+      - 8002:1080
+      - 1025:1025
+
+  adminer:
+    image: adminer
+    environment: 
+      ADMINER_DEFAULT_SERVER: mysql
+    ports:
+      - 8001:8080
+    links:
+      - mysql
+  
+  mysql:
+    image: mysql:5.7
+    command: "--default-authentication-plugin=mysql_native_password"
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: covidrea
+    volumes: 
+      - mysql-data:/var/lib/mysql
