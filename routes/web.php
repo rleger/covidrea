@@ -17,7 +17,7 @@ Route::get('/etablissements', 'EtablissementController@index')->name('etablissem
 Route::get('/etablissement/{etablissement}', 'EtablissementController@show')->name('etablissement.show');
 Route::patch('/service/{service}', 'ServiceController@update')->name('service.update');
 
-Route::get('/user/{user}/service', 'UserServiceController@edit')->name('user.services.edit');
+Route::get('/user/service', 'UserServiceController@edit')->name('user.services.edit');
 
 
 // Invites
@@ -32,9 +32,9 @@ Route::get('email', function() {
 });
 
 // Gestion des établissements
-Route::get('user/{user}/etablissement/', 'UserEtablissementController@index')->name('user.etablissement.index');
-Route::get('user/{user}/etablissement/{etablissement}/edit', 'UserEtablissementController@edit')->name('user.etablissement.edit');
-Route::patch('user/{user}/etablissement/{etablissement}/update', 'UserEtablissementController@update')->name('user.etablissement.update');
+Route::get('user/etablissement/', 'UserEtablissementController@index')->name('user.etablissement.index');
+Route::get('user/etablissement/{etablissement}/edit', 'UserEtablissementController@edit')->name('user.etablissement.edit');
+Route::patch('user/etablissement/{etablissement}/update', 'UserEtablissementController@update')->name('user.etablissement.update');
 
 // Interested people
 Route::post('interested', 'InterestedController@store')->name('interested.store');
