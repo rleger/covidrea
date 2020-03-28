@@ -60,29 +60,29 @@
 
                                 <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
                                     <div class="sm:col-span-2">
-                                        <label for="place_totales" class="block text-sm font-medium leading-5 text-gray-700">
+                                        <label for="place_totales_{{ $service->id}}" class="block text-sm font-medium leading-5 text-gray-700">
                                             Places totales
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_totales }}" id="place_totales" name="place_totales" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_totales }}" id="place_totales_{{ $service->id}}" name="place_totales" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label for="place_disponible" class="block text-sm font-medium leading-5 text-gray-700">
+                                        <label for="place_disponible_{{ $service->id}}" class="block text-sm font-medium leading-5 text-gray-700">
                                             Places disponibles
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_disponible }}" id="place_disponible" name="place_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_disponible }}" id="place_disponible_{{ $service->id}}" name="place_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label for="place_bientot_disponible" class="block text-sm font-medium leading-5 text-gray-700">
+                                        <label for="place_bientot_disponible_{{ $service->id}}" class="block text-sm font-medium leading-5 text-gray-700">
                                             Places bientôt disponibles
                                         </label>
                                         <div class="mt-1 rounded-md shadow-sm">
-                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_bientot_disponible }}" name="place_bientot_disponible" id="place_bientot_disponible" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                            <input type="number" min=0 max=100 step=1 value="{{ $service->place_bientot_disponible }}" name="place_bientot_disponible" id="place_bientot_disponible_{{ $service->id}}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                         </div>
                                     </div>
                                     <div class="sm:col-span-2">
