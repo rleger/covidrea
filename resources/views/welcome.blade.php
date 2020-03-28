@@ -9,6 +9,11 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
+    <meta property="og:title" content="Covid moi un lit">
+    <meta property="og:site_name" content="Covid moi un lit">
+    <meta property="og:url" content="https://covid-moi-un-lit.com">
+    <meta property="og:description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
+    <meta property="og:type" content="website">
     <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
     <script type="application/ld+json">
     {
