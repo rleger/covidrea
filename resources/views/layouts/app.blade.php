@@ -10,7 +10,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
 
         <!-- Styles -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">

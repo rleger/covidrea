@@ -10,7 +10,7 @@ mix.postCss('resources/css/main.css', 'public/css', [
     ...process.env.NODE_ENV === 'production' ? [
         require('@fullhuman/postcss-purgecss')({
 
-            // Specify the paths to all of the template files in your project
+            // Specify the paths to all of thetemplate files in your project
             content: [
                 './resources/views/**/*.blade.php',
             ],
@@ -20,6 +20,12 @@ mix.postCss('resources/css/main.css', 'public/css', [
         })
     ] : [],
 ]);
+
+// Minification in prod
+mix.styles(['resources/css/inter.css'], 'public/css/inter.css');
+
+// Copy fonts 
+mix.copyDirectory('resources/fonts', 'public/fonts');
 
 if (mix.inProduction()) {
     mix.version();
