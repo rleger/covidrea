@@ -12,7 +12,7 @@
                 <ul>
                     @foreach($etablissements as $key => $etablissement)
                         <li class="{{ $key ? 'border-t border-gray-200' : '' }}">
-                            <a href="{{ route('user.etablissement.edit', ['user' => auth()->user(), 'etablissement' => $etablissement]) }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                            <a href="{{ route('user.etablissement.edit', ['etablissement' => $etablissement]) }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex items-center justify-between">
                                         <div class="text-sm leading-5 font-medium text-indigo-600 truncate">

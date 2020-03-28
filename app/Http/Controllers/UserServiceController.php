@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class UserServiceController extends Controller
 {
@@ -24,10 +26,10 @@ class UserServiceController extends Controller
      *
      * @param User $user
      */
-    public function edit(User $user)
+    public function edit()
     {
         // Attention get() doit être ici dans la chaine
-        $services = $user->services()
+        $services = auth()->user()->services()
                          ->with('etablissement')
                          ->get()
                          ->groupBy(['etablissement_id']);
