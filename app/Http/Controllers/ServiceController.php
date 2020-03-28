@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ServiceController extends Controller
 {
@@ -24,6 +25,8 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        Gate::authorize('edit-service', $service);
+
         // We will need the service_id to display success or error message in the
         // right form
         $request->session()->flash('service_id', $service->id);
