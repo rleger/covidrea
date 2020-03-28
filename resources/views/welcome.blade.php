@@ -24,7 +24,7 @@
     </script>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
 
     {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
