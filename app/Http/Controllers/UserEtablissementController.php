@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Etablissement;
+use Illuminate\Support\Facades\Gate;
 
 class UserEtablissementController extends Controller
 {
@@ -12,15 +13,17 @@ class UserEtablissementController extends Controller
         //
     }
 
-    public function index(User $user)
+    public function index()
     {
-        $etablissements = $user->etablissement;
+        $etablissements = auth()->user()->etablissement;
 
         return view('user.etablissement.index', compact('etablissements'));
     }
 
     public function edit(User $user, Etablissement $etablissement)
     {
+        Gate::authorize('edit-etablissement', $etablissement);
+
         $services = $etablissement->services;
 
         return view('user.etablissement.edit', compact('etablissement', 'services'));
@@ -29,5 +32,7 @@ class UserEtablissementController extends Controller
 
     public function update(User $user, Etablissement $etablissement)
     {
+        Gate::authorize('edit-etablissement', $etablissement);
+
     }
 }
