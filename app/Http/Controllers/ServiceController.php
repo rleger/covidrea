@@ -54,4 +54,21 @@ class ServiceController extends Controller
                 'status' => 'Nombre de lits mis à jour',
             ]);
     }
+
+    public function delete(Service $service)
+    {
+        // Check user has permissions
+        Gate::authorize('delete-service', $service);
+
+        // Delete service
+        $service->delete();
+
+        // Back to the view
+        return back()
+            ->withInput()
+            ->with([
+                'status_deleted' => 'Service effacé',
+            ]);
+    }
+
 }

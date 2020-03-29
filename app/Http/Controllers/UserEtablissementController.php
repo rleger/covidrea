@@ -58,7 +58,7 @@ class UserEtablissementController extends Controller
         return back()
             ->withInput()
             ->with([
-                'status' => 'Nombre de lits mis à jour',
+                'status_etablissement' => "L'établissement à été mis à jour.",
             ]);
     }
 }
