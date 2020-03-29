@@ -15,16 +15,18 @@
                             <a href="{{ $etablissement->service_count ? route('etablissement.show', $etablissement) : '#' }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex flex-wrap items-center justify-between">
-                                        <div class="pb-2 sm:pb-0 text-sm leading-5 font-medium text-indigo-600">
+                                        <div class="pb-2 sm:pb-0 text-lg sm:text-xl leading-7 font-medium text-indigo-600">
                                             {{ $etablissement->name }}
+                                            <span class="text-sm sm:text-md text-gray-400">
                                             ({{ $etablissement->service_count }} {{Str::plural('service', $etablissement->service_count)}})
+                                            </span>
                                         </div>
                                         <div class="sm:ml-2 flex-shrink-0 flex">
-                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 {{ $etablissement->service()->sum('place_disponible') }} disponibles
                                             </span>
 
-                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
+                                            <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
                                                 {{ $etablissement->service()->sum('place_bientot_disponible') }} prochainement
                                             </span>
 
