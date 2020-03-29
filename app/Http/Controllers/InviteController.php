@@ -34,7 +34,10 @@ class InviteController extends Controller
     {
         // extract emails to array
         $emails = $request->get('emails');
-        $emails = array_map('trim', explode(',', str_replace(';', ',', $emails)));
+
+        preg_match_all("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/", $emails, $return);
+
+        $emails = array_unique($return[0]);
 
         $request->merge(compact('emails'));
 
