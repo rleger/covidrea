@@ -8,6 +8,11 @@
             Selectionnez l'établissement à modifier
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:p-6">
+            @if(!$etablissements->count())
+                <div class="text-gray-400">
+                    Aucun établissement à modifier
+                </div>
+            @endif
             <div class="bg-white shadow overflow-hidden sm:rounded-md">
                 <ul>
                     @foreach($etablissements as $key => $etablissement)
