@@ -31,7 +31,7 @@ class UserEtablissementController extends Controller
     {
         Gate::authorize('edit-etablissement', $etablissement);
 
-        $services = $etablissement->services;
+        $services = $etablissement->service;
 
         return view('user.etablissement.edit', compact('etablissement', 'services'));
     }
