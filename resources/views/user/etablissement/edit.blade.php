@@ -7,31 +7,41 @@
         <form action="/user/etablissement/{{$etablissement->id}}/update" method="POST">
             @method('PATCH')
             @csrf
-            {{-- Display errors if any --}}
-            @if ($errors->any() && $etablissement->id == session('etablissement_id'))
-                <div role="alert">
-                    <div class="border border-red-400 rounded bg-red-100 mt-4 px-4 py-3 text-red-700">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endif
             <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="text-lg leading-6 font-medium text-indigo-600">
                     {{ $etablissement->name }}
                 </h3>
                 <div class="mt-1 flex items-center text-sm leading-5 text-gray-500">
-                  <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
                     </svg>
                     {{ $etablissement->type }}
                 </div>
             </div>
             <div class="px-4 pb-8">
-                <div class="border-t border-gray-200">
+                {{-- Display errors if any --}}
+                @if ($errors->any() && $etablissement->id == session('etablissement_id'))
+                    <div role="alert">
+                        <div class="border border-red-400 rounded bg-red-100 mt-4 px-4 py-3 text-red-700">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+
+                {{-- Success message --}}
+                @if (session('status'))
+                    <div class="border border-green-400 rounded bg-green-100 mt-4 px-4 py-3 text-green-700">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+
+
+                <div class="">
                     <div class="mt-6 sm:mt-5">
                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
                             <label for="name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
@@ -49,17 +59,17 @@
                             </label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                 <div class="max-w-xs rounded-md shadow-sm">
-                                    <select name="type" id="type" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />>
+                                    <select name="type" id="type" class="mt-1 block form-select w-full py-2 px-3 pr-8 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />>
                                         <option value="public" {{ $etablissement->type == "public" ? "selected" : "" }}>Public</option>
                                         <option value="prive" {{ $etablissement->type == "prive" ? "selected" : "" }}>Privé</option>
                                         <option value="temporaire" {{ $etablissement->type == "temporaire" ? "selected" : "" }}>Temporaire</option>
                                     </select>
-                                    
+
                                 </div>
                             </div>
                         </div>
 
-                      
+
                     </div>
                 </div>
             </div>
