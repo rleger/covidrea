@@ -19,6 +19,14 @@ class ServiceController extends Controller
     }
 
     /**
+     * Show edit page.
+     */
+    public function edit(Service $service)
+    {
+        return view('service.edit', compact('service'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @return \Illuminate\Http\Response
@@ -33,15 +41,8 @@ class ServiceController extends Controller
 
         // Validation
         $validatedData = $request->validate([
-            'place_totales'            => ['required', 'integer',
-            function($attribute, $value, $fail) {
-                // Le nombre de place totales ne peut exceder la somme des 2 autres
-                if(((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
-                    $fail("Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles");
-                }
-            }],
-            'place_disponible'         => 'required|integer',
-            'place_bientot_disponible' => 'required|integer',
+            'name'    => 'required',
+            'contact' => 'required',
         ]);
 
         // Model update
@@ -51,10 +52,13 @@ class ServiceController extends Controller
         return back()
             ->withInput()
             ->with([
-                'status' => 'Nombre de lits mis à jour',
+                'status' => 'Service mis à jour',
             ]);
     }
 
+    /**
+     * Delete a service.
+     */
     public function delete(Service $service)
     {
         // Check user has permissions
@@ -70,5 +74,4 @@ class ServiceController extends Controller
                 'status_deleted' => 'Service effacé',
             ]);
     }
-
 }

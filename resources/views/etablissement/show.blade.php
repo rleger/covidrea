@@ -46,9 +46,9 @@
                         <span class="flex text-gray-900">
                             {{ $service->name }}
                         </span>
-                        {{-- <span class="flex text-xs"> --}}
-                            {{-- {{ $service->type }} --}}
-                            {{-- </span> --}}
+                        <span class="flex text-xs">
+                            {{ $service->contact }}
+                            </span>
                         {{-- <span class="flex text-xs"> --}}
                             {{-- patients {{ $service->gravite }} --}}
                             {{-- </span> --}}

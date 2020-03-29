@@ -15,11 +15,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Auth
 Route::get('/etablissements', 'EtablissementController@index')->name('etablissements.index');
 Route::get('/etablissement/{etablissement}', 'EtablissementController@show')->name('etablissement.show');
+Route::get('/service/{service}', 'ServiceController@edit')->name('service.edit');
 Route::patch('/service/{service}', 'ServiceController@update')->name('service.update');
 Route::delete('/service/{service}', 'ServiceController@delete')->name('service.delete');
 
 Route::get('/user/service', 'UserServiceController@edit')->name('user.services.edit');
 Route::post('/user/service', 'UserServiceController@store')->name('user.services.store');
+Route::patch('user/service/{service}', 'UserServiceController@update')->name('user.services.update');
 
 
 // Invites

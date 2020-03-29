@@ -101,7 +101,7 @@
                                 @forelse($services as $service_key => $service)
 
                                     <li class="{{ $service_key ? 'border-t border-gray-200' : '' }}">
-                                        <a href="#" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                                        <a href="{{ route('service.edit', $service) }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                             <div class="px-4 py-3 sm:px-6">
                                                 <div class="flex items-center justify-between">
                                                     <div class="text-sm leading-5 font-medium ">

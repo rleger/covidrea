@@ -39,7 +39,7 @@
                                 </div>
                             @endif
 
-                            <form action="/service/{{$service->id}}" method="POST">
+                            <form action="{{ route('user.services.update', $service->id) }}" method="POST">
                                 @method('PATCH')
                                 @csrf
 
@@ -94,7 +94,7 @@
 
                                             {{-- Annuler --}}
                                             <a href="{{ Request::url() }}" class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray active:bg-gray-200 transition ease-in-out duration-150">
-                                                {{ __('Annuler') }}
+                                                {{ __('Cancel') }}
                                             </a>
 
                                         </span>

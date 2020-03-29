@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Etablissement;
@@ -37,6 +38,48 @@ class UserServiceController extends Controller
         return view('user.service.edit', compact('services'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Service $service)
+    {
+        Gate::authorize('edit-service', $service);
+
+        // We will need the service_id to display success or error message in the
+        // right form
+        $request->session()->flash('service_id', $service->id);
+
+        // Validation
+        $validatedData = $request->validate([
+            'place_totales'            => ['required', 'integer',
+            function($attribute, $value, $fail) {
+                // Le nombre de place totales ne peut exceder la somme des 2 autres
+                if(((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
+                    $fail("Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles");
+                }
+            }],
+            'place_disponible'         => 'required|integer',
+            'place_bientot_disponible' => 'required|integer',
+        ]);
+
+        // Model update
+        $service->update($validatedData);
+
+        // Back to the view
+        return back()
+            ->withInput()
+            ->with([
+                'status' => 'Nombre de lits mis à jour',
+            ]);
+    }
+
+    /**
+     * Create a new service attached to an etablissement
+     *
+     * @param Request $request
+     */
     public function store(Request $request)
     {
         // Find Etablissement to attach the service to
