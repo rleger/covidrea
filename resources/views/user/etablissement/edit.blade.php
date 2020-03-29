@@ -64,12 +64,68 @@
                                         <option value="prive" {{ $etablissement->type == "prive" ? "selected" : "" }}>Privé</option>
                                         <option value="temporaire" {{ $etablissement->type == "temporaire" ? "selected" : "" }}>Temporaire</option>
                                     </select>
-
                                 </div>
                             </div>
                         </div>
+                        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                            <label for="type" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+                                Services
+                            </label>
+                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+
+                                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                                    <ul>
+                                        @forelse($services as $service_key => $service)
 
 
+                                            <li class="{{ $service_key ? 'border-t border-gray-200' : '' }}">
+                                                <a href="#" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                                                    <div class="px-4 py-3 sm:px-6">
+                                                        <div class="flex items-center justify-between">
+                                                            <div class="text-sm leading-5 font-medium ">
+                                                                <span class="text-indigo-600 truncate">{{ $service->name }}</span>
+
+                                                                <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium leading-4 bg-indigo-100 text-indigo-800">
+                                                                    {{ $service->place_totales }} totales
+                                                                </span>
+                                                            </div>
+                                                            @if($service->count() > 1)
+                                                                <div class="ml-2 flex-shrink-0 flex">
+                                                                    <span class="inline-flex rounded-md shadow-sm">
+                                                                        <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition ease-in-out duration-150">
+                                                                            {{ __('Delete') }}
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @empty
+                                            <li>
+                                                L'établissement n'a encore aucun service
+                                            </li>
+                                        @endforelse
+
+                                        <div class="border-t border-gray-200 bg-gray-100 px-4 py-3 sm:px-6">
+                                            <div class="mt-1 flex rounded-md shadow-sm">
+                                                <div class="relative flex-grow focus-within:z-10">
+                                                    <input id="name" name="name" class="form-input block w-full rounded-none rounded-l-md border-r-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Nom du service" />
+                                                </div>
+                                                <div class="relative flex-grow focus-within:z-10">
+                                                    <input id="place_totales" name="place_totales" type="number" min=0 max=100 class="form-input block w-full rounded-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Places totales" />
+                                                </div>
+                                                <button class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-gray-50 hover:text-gray-500 hover:bg-white focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                                                    <span class="ml-2">{{ __('Ajouter') }}</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
