@@ -24,6 +24,8 @@ Route::post('/user/service', 'UserServiceController@store')->name('user.services
 Route::patch('user/service/{service}', 'UserServiceController@update')->name('user.services.update');
 
 
+Route::post('/etablissement/service', 'EtablissementServiceController@store')->name('etablissement.services.store');
+
 // Invites
 Route::get('invite/{user:token}', 'InviteController@invite')->name('invite');
 Route::post('invite', 'InviteController@process')->name('invite.process');

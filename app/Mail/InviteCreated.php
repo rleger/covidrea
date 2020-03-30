@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Etablissement;
 use App\Invite;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -31,8 +32,12 @@ class InviteCreated extends Mailable
      */
     public function build()
     {
+        $etablissement_name = Etablissement::FindOrFail($this->invite->etablissement_id)->name;
+
+        $subject = "L'établissement $etablissement_name vous invite à rejoindre COVID moi un lit";
+
         return $this->from(config('covidrea.email.default_sender'))
-                    ->subject("Invitation à rejoindre l'application de recherche de lits pour les patients COVID")
+                    ->subject($subject)
                     ->markdown('emails.invite');
     }
 }

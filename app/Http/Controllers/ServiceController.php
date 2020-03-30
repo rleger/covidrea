@@ -64,6 +64,8 @@ class ServiceController extends Controller
         // Check user has permissions
         Gate::authorize('delete-service', $service);
 
+        // @todo: do not allow deletion of the last service of an etablissement
+        //
         // Delete service
         $service->delete();
 

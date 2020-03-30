@@ -22,7 +22,7 @@ class InviteController extends Controller
     {
         $this->middleware('auth');
 
-        $user->load('etablissement');
+        $user->load('etablissement', 'etablissement.service');
 
         return view('invite', compact('user'));
     }
@@ -30,33 +30,46 @@ class InviteController extends Controller
     /**
      * This is called when the administrator submits a list of emails
      */
-    public function process(Request $request)
+    public function process(Request $request, Etablissement $etablissement)
     {
         // extract emails to array
         $emails = $request->get('emails');
+        $request->merge(["unprocessed_emails" => $emails]);
 
-        preg_match_all("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/", $emails, $return);
+        $emails = array_map('trim', explode(',', str_replace(';', ',', $emails)));
 
-        $emails = array_unique($return[0]);
+        // Ne fonctionne pas
+        // preg_match_all("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/", $emails, $return);
+        // $emails = array_unique($return[0]);
 
         $request->merge(compact('emails'));
+
+        // Allow to display error messages in the right place when there are more than 1 form
+        $request->session()->flash('form', 'invite');
+        $request->session()->flash('etablissement_id', $request->get('etablissement'));
 
         // Validate
         // @todo: improve error message
         // @todo: limit the number of emails
-        Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'emails.*'      => 'required|email',
             'etablissement' => 'required|exists:etablissements,id',
-        ])->validate();
+        ]);
 
-        // @todo: remove emails that exists either in user or invite class
+        if ($validator->fails()) {
+            return back()
+                        ->withErrors($validator)
+                        ->with(['unprocessed_emails' => $request->get('unprocessed_emails') ])
+                        ->withInput();
+        }
+
         // Create Invite with a token
         InviteNewUsersByEmail::dispatch($request->all());
 
         // redirect back where we came from
         return back()
             ->with([
-                'status' => "Les invitations sont en cours d'envoi, nous vous enverrons une confirmation par email.",
+                'status_invitation' => "Les invitations sont en cours d'envoi, nous vous enverrons une confirmation par email.",
             ]);
     }
 
