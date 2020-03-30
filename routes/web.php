@@ -27,7 +27,8 @@ Route::patch('user/service/{service}', 'UserServiceController@update')->name('us
 Route::post('/etablissement/service', 'EtablissementServiceController@store')->name('etablissement.services.store');
 
 // Invites
-Route::get('invite/{user:token}', 'InviteController@invite')->name('invite');
+Route::get('invite', 'InviteController@invite')->name('invite');
+// Route::get('invite/{user:token}', 'InviteController@invite')->name('invite');
 Route::post('invite', 'InviteController@process')->name('invite.process');
 // {token} is a required parameter that will be exposed to us in the controller method
 Route::get('accept/{token}/{etablissement_id}', 'InviteController@accept')->name('invite.accept');
@@ -40,3 +41,8 @@ Route::patch('user/etablissement/{etablissement}/update', 'UserEtablissementCont
 
 // Interested people
 Route::post('interested', 'InterestedController@store')->name('interested.store');
+
+// Register prospects
+Route::get('register/{prospect}', 'RegisterController@register')->name('register')->middleware('signed');
+Route::post('register', 'RegisterController@process')->name('register.process');
+

@@ -19,8 +19,10 @@ class InviteController extends Controller
     /**
      * View where we can invite new users.
      */
-    public function invite(User $user)
+    public function invite()
     {
+        $user = auth()->user();
+
         $user->load('etablissement', 'etablissement.service');
 
         return view('invite', compact('user'));
