@@ -13,6 +13,7 @@ class InviteController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth')->except('finalize');
     }
 
     /**
@@ -20,8 +21,6 @@ class InviteController extends Controller
      */
     public function invite(User $user)
     {
-        $this->middleware('auth');
-
         $user->load('etablissement', 'etablissement.service');
 
         return view('invite', compact('user'));
