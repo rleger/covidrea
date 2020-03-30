@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // No auth required
 Route::get('/home', 'HomeController@index')->name('home');
