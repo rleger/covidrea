@@ -1,5 +1,6 @@
 <?php
 
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -118,6 +119,15 @@ return [
     'uuid'        => 'Le champ :attribute doit être un UUID valide',
     'phone'       => "Le champ :attribute n'est pas un numéro valide",
 
+    'etab_name'                      => "Nom d'établissement",
+    'etab_type'                      => "Type d'établissement",
+    'etab_adresse'                   => 'Adresse',
+    'etab_codepostal'                => 'Code postal',
+    'etab_ville'                     => 'Ville',
+    'etab_region'                    => 'Région',
+    'user_name'                      => "Nom de l'utilisateur",
+    'user_email'                     => 'Email',
+    'user_phone'                     => 'Téléphone',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
