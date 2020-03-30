@@ -147,7 +147,7 @@
                                 {{-- Display errors if any --}}
                                 @if ($errors->any() && $etablissement->id == session('etablissement_id') && session('form') == "invite")
                                     <div role="alert">
-                                        <div class="border border-red-400 rounded bg-red-100 mt-4 px-4 py-3 text-red-700 pb-4">
+                                        <div class="mb-4 border border-red-400 rounded bg-red-100 mt-4 px-4 py-3 text-red-700 pb-4">
                                             <ul>
                                                 @foreach ($errors->all() as $error)
                                                     <li>{{ $error }}</li>
