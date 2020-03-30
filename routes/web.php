@@ -41,3 +41,7 @@ Route::patch('user/etablissement/{etablissement}/update', 'UserEtablissementCont
 
 // Interested people
 Route::post('interested', 'InterestedController@store')->name('interested.store');
+
+// Register prospects
+Route::get('register/{prospect}', 'RegisterController@register')->name('register')->middleware('signed');
+Route::post('register', 'RegisterController@process')->name('register.process');
