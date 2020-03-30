@@ -3,11 +3,6 @@
 
 # Madame la Directrice / Monsieur le Directeur, Cher collègue, 
 
-{{-- $prospect->makeSignedUrl('register') --}}
-@component('mail::button', ['url' => $prospect->makeTemporarySignedUrl('register', 7, [ "prospect" => $prospect->id ]) ])
-Activer mon compte
-@endcomponent
-
 
 Covid moi un lit est la première application dédiée aux professionnels de santé
 à la recherche d’un lit de réanimation pour leurs malades COVID+.
@@ -17,6 +12,10 @@ propose un mode de communication réactif, efficient.
 
 L’objectif n’est pas de concurrencer ou de parasiter les systèmes actuels mis en place mais d’apporter une aide supplémentaire pour la gestion opérationnelle de cette crise.
 
+{{-- $prospect->makeSignedUrl('register') --}}
+@component('mail::button', ['url' => $prospect->makeTemporarySignedUrl('register', 7, [ "prospect" => $prospect->id ]) ])
+Activer mon compte
+@endcomponent
 
 ## FACILE À UTILISER:
 
