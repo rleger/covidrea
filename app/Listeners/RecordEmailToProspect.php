@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Prospect;
 use App\Events\EmailWasSentToProspect;
+use App\ProspectNotification;
+use Log;
 
 class RecordEmailToProspect
 {
-
     /**
      * Create the event listener.
      *
@@ -24,6 +24,13 @@ class RecordEmailToProspect
      */
     public function handle(EmailWasSentToProspect $event)
     {
-        \Log::info('Email sent to : '.$event->prospect->user_email);
+        // Record a prospect notificiation
+        ProspectNotification::create([
+            'type'        => 'email',
+            'name'        => 'initial invite',
+            'prospect_id' => $event->prospect->id,
+        ]);
+
+        Log::info('Email sent to : '.$event->prospect->user_email);
     }
 }
