@@ -10,8 +10,7 @@ use Illuminate\Queue\SerializesModels;
 
 class InviteCreated extends Mailable
 {
-    use Queueable;
-    use SerializesModels;
+    use Queueable, SerializesModels;
 
     public $invite;
 

@@ -50,7 +50,7 @@
                                                                 {{ $service->place_totales }} totales
                                                             </span>
                                                         </div>
-                                                        @if($service->count() > 1)
+                                                        @if($etablissement->service->count() > 1)
                                                             <div class="ml-2 flex-shrink-0 flex">
                                                                 <span class="inline-flex rounded-md shadow-sm">
                                                                     <form method="POST" id="delete_service_{{$service->id}}" action="{{ route('service.delete', $service) }}">
@@ -59,8 +59,8 @@
                                                                         <button type="submit" form="delete_service_{{$service->id}}" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
 
                                                                             {{ __('Delete') }}
-                                                                    </form>
                                                                         </button>
+                                                                    </form>
                                                                 </span>
                                                             </div>
                                                         @endif
@@ -70,7 +70,13 @@
                                         </li>
                                     @empty
                                         <li>
-                                            L'établissement n'a encore aucun service
+                                            <div class="px-4 py-3 sm:px-6">
+                                                <div class="text-sm leading-5 font-medium ">
+                                                    <span class="text-gray-600 truncate">
+                                                        L'établissement n'a encore aucun service
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </li>
                                     @endforelse
                                 </ul>
@@ -105,7 +111,7 @@
                                             <input id="place_totales" name="place_totales" type="number" min=0 max=100 class="form-input block w-full rounded-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Places totales" />
                                         </div>
 
-                                        <button type="submit" form="form_services_{{$etablissement->id}}" class="rounded-l-none inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                                        <button type="submit" form="form_service_{{$etablissement->id}}" class="rounded-l-none inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                                             {{ __('Add') }}
                                         </button>
                                     </div>
@@ -117,6 +123,7 @@
             </div>
         </div>
 
+        @if($etablissement->service->count())
 
         <div class="hidden sm:block">
             <div class="py-5">
@@ -171,7 +178,7 @@
 
                                         <label for="emails" class="block text-sm font-medium leading-5 text-gray-700">Liste d'adresses mails</label>
 
-                                        <textarea rows="6" id="emails" name="emails" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="you@example.com,unautre@hopital.com">{{ session('unprocessed_emails') }}</textarea>
+                                        <textarea rows="6" id="emails" name="emails" class="paste-enabled mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="you@example.com,unautre@hopital.com">{{ session('unprocessed_emails') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -185,5 +192,6 @@
                 </div>
             </div>
         </div>
+    @endif
     @endforeach
 @endsection

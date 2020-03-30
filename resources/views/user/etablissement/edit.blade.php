@@ -111,7 +111,7 @@
                                                             {{ $service->place_totales }} totales
                                                         </span>
                                                     </div>
-                                                    @if($service->count() > 1)
+                                                    @if($services->count() > 1)
                                                         <div class="ml-2 flex-shrink-0 flex">
                                                             <span class="inline-flex rounded-md shadow-sm">
                                                                 <form method="POST" id="delete_service_{{$service->id}}" action="{{ route('service.delete', $service) }}">
@@ -120,8 +120,8 @@
                                                                     <button type="submit" form="delete_service_{{$service->id}}" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
 
                                                                         {{ __('Delete') }}
+                                                                    </button>
                                                                 </form>
-                                                                </button>
                                                             </span>
                                                         </div>
                                                     @endif
@@ -131,16 +131,20 @@
                                     </li>
                                 @empty
                                     <li>
-                                        L'établissement n'a encore aucun service
+                                        <div class="px-4 py-3 sm:px-6">
+                                            <div class="text-sm leading-5 font-medium ">
+                                                <span class="text-gray-600 truncate">
+                                                    L'établissement n'a encore aucun service
+                                                </span>
+                                            </div>
+                                        </div>
                                     </li>
                                 @endforelse
-
                             </ul>
                         </div>
                         <div class="px-4 py-4 border-t border-gray-200 bg-gray-50 text-right sm:px-4">
                             <form id="form_services" action="{{ route('user.services.store') }}" method="POST">
                                 @csrf
-
                                 <div class="text-left">
                                     {{-- Display errors if any --}}
                                     @if ($errors->any())
@@ -158,8 +162,6 @@
 
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="hidden" name="etablissement_id" value="{{ $etablissement->id }}">
-
-
                                     <div class="relative flex-grow focus-within:z-10">
                                         <input id="name" name="name" class="form-input block w-full rounded-none rounded-l-md border-r-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Nom du service" />
                                     </div>
@@ -168,7 +170,7 @@
                                     </div>
 
                                     <button type="submit" form="form_services" class="rounded-l-none inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                                        {{ __('Ajouter') }}
+                                        {{ __('Add') }}
                                     </button>
                                 </div>
                             </form>
