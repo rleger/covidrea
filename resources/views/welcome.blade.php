@@ -451,21 +451,21 @@
                 Ils soutiennent Covid moi un lit
             </p>
             <div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-                <div class="col-span-1 flex justify-center py-8 px-8">
+                <div class="col-span-1 flex justify-center px-8">
                     <a href="https://hacking-health.org/fr/besancon-fr/" target="_blank">
-                        <img class="max-h-12" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
+                        <img class="max-h-24" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
                     </a>
                 </div>
 
-                <div class="col-span-1 flex justify-center py-8 px-8">
-                    <a href="https://www.siliconcomte.fr/" target="_blank">
-                        <img class="max-h-12" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
+                <div class="col-span-1 flex justify-end px-8">
+                    <a href="https://www.siliconcomte.fr/" target="_blank" class="relative h-full w-full text-center">
+                        <img class="max-h-24 absolute top-0 bottom-0 m-auto left-0 right-0" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
                     </a>
                 </div>
 
-                <div class="col-span-1 flex justify-center py-8 px-8">
+                <div class="col-span-1 flex justify-center  px-8">
                     <a href="https://www.doubs.cci.fr/" target="_blank">
-                        <img class="max-h-12" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
+                        <img class="max-h-24" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
                     </a>
                 </div>
             </div>
