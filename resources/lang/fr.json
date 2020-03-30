@@ -1,6 +1,7 @@
 {
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de vérification a été envoyé à votre adresse email.",
     "All rights reserved.": "Tous droits réservés.",
+    "Add": "Ajouter",
     "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez vérifier votre courrier électronique pour un lien de vérification.",
     "Cancel": "Annuler",
     "click here to request another": "cliquer ici pour faire une autre demande",
@@ -36,6 +37,7 @@
     "Reset Password": "Réinitialisation du mot de passe",
     "Reset Password Notification": "Notification de réinitialisation du mot de passe",
     "Send Password Reset Link": "Envoyer le lien de réinitialisation du mot de passe",
+    "Send invitation": "Envoyer l'invitation",
     "Server Error": "Erreur serveur",
     "Service Unavailable": "Service indisponible",
     "Save": "Enregistrer",
