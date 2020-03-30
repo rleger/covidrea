@@ -171,7 +171,7 @@
 
                                         <label for="emails" class="block text-sm font-medium leading-5 text-gray-700">Liste d'adresses mails</label>
 
-                                        <textarea rows="6" id="emails" name="emails" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="you@example.com,unautre@hopital.com">{{ session('unprocessed_emails') }}</textarea>
+                                        <textarea rows="6" id="emails" name="emails" class="paste-enabled mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="you@example.com,unautre@hopital.com">{{ session('unprocessed_emails') }}</textarea>
                                     </div>
                                 </div>
                             </div>
