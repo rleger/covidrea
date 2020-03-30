@@ -40,3 +40,16 @@ Route::patch('user/etablissement/{etablissement}/update', 'UserEtablissementCont
 
 // Interested people
 Route::post('interested', 'InterestedController@store')->name('interested.store');
+
+
+/** DEV ONLY */
+
+// Email Preview Route
+Route::get('/emailpreview', function () {
+    $invite = new \App\Invite();
+    $invite->id = 1;
+    $invite->email = 'samantha.halfon@gmail.com';
+    $invite->token = 'aaa';
+    $invite->etablissement_id = 1;
+    return new App\Mail\InviteCreated($invite);
+});
