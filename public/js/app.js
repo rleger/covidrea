@@ -12620,9 +12620,17 @@ if (document.querySelector("#emails.paste-enabled")) {
   document.querySelector("#emails.paste-enabled").addEventListener('paste', function (event) {
     // removes unnecessary text
     var formatEmails = function formatEmails(list) {
-      return list.split(";").join(",").split(",").map(function (email) {
-        var groups = email.match(/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/g);
-        return groups ? groups[0].trim() : email;
+      return list.replace(/[;,]/g, " ").split(" ").map(function (email) {
+        if (email.includes("@")) {
+          try {
+            return email.match(/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/g)[0];
+          } catch (e) {// silent
+          }
+        }
+
+        return undefined;
+      }).filter(function (s) {
+        return s != undefined;
       }).join(", ");
     };
 
