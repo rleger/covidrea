@@ -59,6 +59,5 @@ class AuthServiceProvider extends ServiceProvider
 
             return $authorized;
         });
-
     }
 }
