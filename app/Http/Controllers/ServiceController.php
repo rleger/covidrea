@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ServiceController extends Controller
 {
@@ -18,27 +19,30 @@ class ServiceController extends Controller
     }
 
     /**
+     * Show edit page.
+     */
+    public function edit(Service $service)
+    {
+        return view('service.edit', compact('service'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Service $service)
     {
+        Gate::authorize('edit-service', $service);
+
         // We will need the service_id to display success or error message in the
         // right form
         $request->session()->flash('service_id', $service->id);
 
         // Validation
         $validatedData = $request->validate([
-            'place_totales'            => ['required', 'integer',
-            function($attribute, $value, $fail) {
-                // Le nombre de place totales ne peut exceder la somme des 2 autres
-                if(((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
-                    $fail("Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles");
-                }
-            }],
-            'place_disponible'         => 'required|integer',
-            'place_bientot_disponible' => 'required|integer',
+            'name'    => 'required',
+            'contact' => 'required',
         ]);
 
         // Model update
@@ -48,7 +52,28 @@ class ServiceController extends Controller
         return back()
             ->withInput()
             ->with([
-                'status' => 'Nombre de lits mis à jour',
+                'status' => 'Service mis à jour',
+            ]);
+    }
+
+    /**
+     * Delete a service.
+     */
+    public function delete(Service $service)
+    {
+        // Check user has permissions
+        Gate::authorize('delete-service', $service);
+
+        // @todo: do not allow deletion of the last service of an etablissement
+        //
+        // Delete service
+        $service->delete();
+
+        // Back to the view
+        return back()
+            ->withInput()
+            ->with([
+                'status_deleted' => 'Service effacé',
             ]);
     }
 }

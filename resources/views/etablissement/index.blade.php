@@ -15,16 +15,18 @@
                             <a href="{{ $etablissement->service_count ? route('etablissement.show', $etablissement) : '#' }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex flex-wrap items-center justify-between">
-                                        <div class="pb-2 sm:pb-0 text-sm leading-5 font-medium text-indigo-600">
+                                        <div class="pb-2 sm:pb-0 text-md sm:text-lg leading-6 font-medium text-indigo-600">
                                             {{ $etablissement->name }}
+                                            <span class="text-sm sm:text-md text-gray-400">
                                             ({{ $etablissement->service_count }} {{Str::plural('service', $etablissement->service_count)}})
+                                            </span>
                                         </div>
                                         <div class="sm:ml-2 flex-shrink-0 flex">
-                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                 {{ $etablissement->service()->sum('place_disponible') }} disponibles
                                             </span>
 
-                                            <span class="mr-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
+                                            <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
                                                 {{ $etablissement->service()->sum('place_bientot_disponible') }} prochainement
                                             </span>
 
@@ -51,7 +53,7 @@
                                                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                                                 </svg>
                                                 <span class="hidden sm:inline">
-                                                    mis à jour&nbsp;
+                                                    &nbsp;Mis à jour&nbsp;
                                                 </span>
                                                 <span>
                                                     {{-- <time datetime="2020-01-07">January 7, 2020</time> --}}
@@ -67,11 +69,11 @@
                 </ul>
                 <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
                     <div class="flex-1 flex justify-between sm:hidden">
-                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                            Previous
+                        <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                            {{ __('Previous') }}
                         </a>
-                        <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                            Next
+                        <a href="{{ $paginator->nextPageUrl() }}" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                            {{ __('Next') }}
                         </a>
                     </div>
                     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">

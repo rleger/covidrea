@@ -16,7 +16,9 @@ class EtablissementController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkuserhasahospital');
+        // The user needs either to have a hospital or to have services
+        // (that are linked to hospitals)
+        $this->middleware('checkuserhasahospitalorservice');
     }
 
     /**
@@ -28,8 +30,15 @@ class EtablissementController extends Controller
     {
         // $etablissements = Etablissement::with('service')->withCount('service')->get();
 
-        // Position of the user's etablissement
-        $etablissement = auth()->user()->services()->first()->etablissement;
+        // Etablissement est soit la liste des établissements des services de l'utilisateur
+        // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
+        if (auth()->user()->services()->count()) {
+            // Position of the user's etablissement
+            $etablissement = auth()->user()->services()->first()->etablissement;
+        } else {
+            $etablissement = auth()->user()->etablissement()->first();
+        }
+
         $lat = $etablissement->lat;
         $long = $etablissement->long;
 
@@ -43,9 +52,9 @@ class EtablissementController extends Controller
 
         // Construct the service count query
         // SELECT *, (SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id`) AS cnt FROM etablissements
-        $sqlCount = DB::raw("( SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id` )");
+        $sqlCount = DB::raw('( SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id` )');
 
-        $sqlPlace = DB::raw("( SELECT sum(place_disponible) + sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )");
+        $sqlPlace = DB::raw('( SELECT sum(place_disponible) + sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )');
 
         // Run the query
         $paginator = DB::table('etablissements')
@@ -64,9 +73,7 @@ class EtablissementController extends Controller
     }
 
     /**
-     * Show etablissement
-     *
-     * @param Etablissement $etablissement
+     * Show etablissement.
      */
     public function show(Etablissement $etablissement)
     {

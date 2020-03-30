@@ -34,7 +34,7 @@
     </script>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
 
     {{-- Scripts --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
@@ -74,7 +74,7 @@
                                 <a href="{{ route('home') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">Rechercher un lit</a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="{{ auth()->check() ? route('user.services.edit', ['user' => auth()->user()->id]) : route('login') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                                <a href="{{ auth()->check() ? route('user.services.edit', []) : route('login') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                                     Mettre à jour mes lits
                                 </a>
                             </div>
@@ -446,6 +446,26 @@
                         </div>
                     </footer>
                 </blockquote>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-white">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <p class="text-center text-base leading-6 font-semibold uppercase text-gray-600 tracking-wider">
+            Ils soutiennent Covid moi un lit
+            </p>
+            <div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
+                </div>
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
+                </div>
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
+                </div>
             </div>
         </div>
     </div>

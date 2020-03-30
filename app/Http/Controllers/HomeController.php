@@ -17,8 +17,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        $this->middleware('checkuserhasahospital');
     }
 
     /**
@@ -31,8 +29,14 @@ class HomeController extends Controller
         $radius = request()->query('radius', 20);
         $places = [];
 
-        // Position of the user's etablissement
-        $etablissement = auth()->user()->services()->first()->etablissement;
+        // Etablissement est soit la liste des établissements des services de l'utilisateur
+        // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
+        if(auth()->user()->services()->count()) {
+            // Position of the user's etablissement
+            $etablissement = auth()->user()->services()->first()->etablissement;
+        } else {
+            $etablissement = auth()->user()->etablissement()->first();
+        }
 
         $coordinates = [
             'lat' => $etablissement->lat,
