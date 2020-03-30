@@ -39,8 +39,8 @@
                                     <div class="flex-shrink-0">
                                         <a href="/">
                                             {{-- <img class="h-8 w-auto sm:h-10" src="/img/logos/workflow-mark-on-white.svg" alt="" /> --}}
-                                            <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                                            <svg class="h-6 w-6 text-gray-500" fill="currentColor" viewBox="0 0 274 375" stroke="currentColor">
+                                                <g fill-rule="nonzero" fill="none"><path d="M274 137.986C274 62.199 212.664.776 137 .744 61.336.76 0 62.2 0 137.986c0 28.598 8.744 55.157 23.697 77.136h-.048L137 374.744h.032l113.351-159.622h-.048C265.256 193.142 274 166.584 274 137.986z" fill="#5850EC"/><circle fill="#FFF" cx="161" cy="109.744" r="36"/><path d="M127.443 156.896c-25.57-5.031-50.546 6.816-63.443 27.81 25.185 2.476 53.389 12.442 77.963 34.32l-33.103 46.635c-5.38 9.5-.401 21.589 10.119 24.515 6.939 1.897 15.002-1.03 18.824-7.652l38.066-53.563c6.473-32.97-15.531-65.603-48.426-72.065z" fill="#FFF"/></g></svg>
                                             </svg>
                                         </a>
                                     </div>
@@ -117,7 +117,7 @@
                 @endif
                 <main>
                     <div class="max-w-7xl mx-auto py-2 sm:py-6 sm:px-6 lg:px-8">
-                    <!-- Replace with your content -->
+                        <!-- Replace with your content -->
                         <div class="sm:px-0">
                             @yield('content')
                         </div>
