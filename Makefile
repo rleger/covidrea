@@ -34,3 +34,13 @@ stop: ## Stop containers
 restart: ## Restart containers
 	docker-compose stop
 	docker-compose up -d
+
+.PHONY: test
+test: ## Restart containers
+	docker-compose exec web php artisan test
+
+.PHONY: populate-production-db
+populate-production-db: ## Inserts CSV file into DB
+	docker-compose exec web php artisan populate-production-db $(FILE)
+
+	

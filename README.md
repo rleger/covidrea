@@ -22,6 +22,7 @@ Commandes utiles :
 * `make stop` : Stoppe les containers en cours
 * `make up` : (Re) Lance les containers
 * `make bash` : Attache le terminal au container
+* `make populate-production-db FILE=<path to csv file>...` : Importe les données du fichier CSV présent dans le paramètre `FILE`
 
 ## Contribuer : 
 
