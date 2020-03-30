@@ -15,6 +15,11 @@
     <meta property="og:description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
     <meta property="og:type" content="website">
     <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="images/favicon-32.png" type="image/png"> 
+    <link rel="icon" sizes="48x48" href="images/favicon-64.png" type="image/png">
+    <link rel="icon" sizes="96x96" href="images/favicon-96.png" type="image/png">
+    <link rel="icon" sizes="128x128" href="images/favicon-96.png" type="image/png">
     <script type="application/ld+json">
     {
         "@context" : "https://schema.org",
@@ -445,28 +450,21 @@
         </div>
     </div>
 
+
     <div class="bg-white">
         <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <p class="text-center text-base leading-6 font-semibold uppercase text-gray-600 tracking-wider">
-                Ils soutiennent Covid moi un lit
+            Ils soutiennent Covid moi un lit
             </p>
             <div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-                <div class="col-span-1 flex justify-center px-8">
-                    <a href="https://hacking-health.org/fr/besancon-fr/" target="_blank">
-                        <img class="max-h-24" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
-                    </a>
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
                 </div>
-
-                <div class="col-span-1 flex justify-end px-8">
-                    <a href="https://www.siliconcomte.fr/" target="_blank" class="relative h-full w-full text-center">
-                        <img class="max-h-24 absolute top-0 bottom-0 m-auto left-0 right-0" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
-                    </a>
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
                 </div>
-
-                <div class="col-span-1 flex justify-center  px-8">
-                    <a href="https://www.doubs.cci.fr/" target="_blank">
-                        <img class="max-h-24" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
-                    </a>
+                <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+                    <img class="max-h-16" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
                 </div>
             </div>
         </div>

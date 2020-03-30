@@ -27,8 +27,10 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // only authorize service editing when the service actually belongs to the logged-in user
+        // or to the admin
         Gate::define('edit-service', function ($user, $service) {
-            $authorized = $user->services()->get()->contains($service->id);
+            $authorized = $user->services()->get()->contains($service->id) || $service->etablissement->user_id == $user->id;
+
             Log::info('Is user '.$user->id.' authorized to edit service '.$service->id.' => '.$authorized);
 
             return $authorized;
