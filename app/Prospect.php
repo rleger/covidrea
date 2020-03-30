@@ -6,8 +6,9 @@ use URL;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Prospect extends Model
+class Prospect extends Model implements AuditableContract
 {
     use SoftDeletes, \OwenIt\Auditing\Auditable;
 
