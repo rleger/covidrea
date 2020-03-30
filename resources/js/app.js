@@ -28,3 +28,31 @@ const app = new Vue({
         }
     }
 });
+
+if(document.querySelector("#emails.paste-enabled")) {
+    document.querySelector("#emails.paste-enabled").addEventListener('paste', (event) => {
+
+        // removes unnecessary text
+        let formatEmails = (list) => {
+            return list.split(";").join(",").split(",").map(email => {
+                let groups = email.match(/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/g);
+                return groups ? groups[0].trim() : email;
+            }).join(", ");
+        }
+        let paste = (event.clipboardData || window.clipboardData).getData('text');
+        
+        let emails = paste;
+        
+        // try formating
+        try {
+            emails = formatEmails(paste);
+        } catch(e) {
+            // silent, error. let the original text be pasted
+        }
+        let textarea = event.srcElement;
+        let contentPresent = !!(textarea.value.trim());
+        
+        textarea.value = (contentPresent ? textarea.value + ", " : "") + emails;
+        event.preventDefault();
+    });
+}
