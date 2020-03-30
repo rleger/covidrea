@@ -26,6 +26,7 @@ class CreateProspectsTable extends Migration
             $table->string('user_name')->nullable();
             $table->string('user_email')->nullable();
             $table->string('user_phone', 30)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
