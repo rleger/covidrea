@@ -11,7 +11,7 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 body {
     -webkit-text-size-adjust: none;
     background-color: #ffffff;
-    color: #718096;
+    color: #4a4e55;
     height: 100%;
     line-height: 1.4;
     margin: 0;
@@ -28,7 +28,7 @@ blockquote {
 }
 
 a {
-    color: #3869d4;
+    color: #5850ed;
 }
 
 a img {
@@ -236,34 +236,35 @@ img {
 .button-blue,
 .button-primary {
     background-color: #5850ed;
-    border-bottom: 8px solid #5850ed;
-    border-left: 18px solid #5850ed;
-    border-right: 18px solid #5850ed;
-    border-top: 8px solid #5850ed;
+    border-bottom: 14px solid #5850ed;
+    border-left: 28px solid #5850ed;
+    border-right: 28px solid #5850ed;
+    border-top: 14px solid #5850ed;
+    font-size: 1.2em;
 }
 
 .button-green,
 .button-success {
     background-color: #48bb78;
-    border-bottom: 8px solid #48bb78;
-    border-left: 18px solid #48bb78;
-    border-right: 18px solid #48bb78;
-    border-top: 8px solid #48bb78;
+    border-bottom: 12px solid #48bb78;
+    border-left: 22px solid #48bb78;
+    border-right: 22px solid #48bb78;
+    border-top: 12px solid #48bb78;
 }
 
 .button-red,
 .button-error {
     background-color: #e53e3e;
-    border-bottom: 8px solid #e53e3e;
-    border-left: 18px solid #e53e3e;
-    border-right: 18px solid #e53e3e;
-    border-top: 8px solid #e53e3e;
+    border-bottom: 12px solid #e53e3e;
+    border-left: 22px solid #e53e3e;
+    border-right: 22px solid #e53e3e;
+    border-top: 12px solid #e53e3e;
 }
 
 /* Panels */
 
 .panel {
-    border-left: #2d3748 solid 4px;
+    border-left: #5850ed solid 4px;
     margin: 21px 0;
 }
 
@@ -274,7 +275,7 @@ img {
 }
 
 .panel-content p {
-    color: #718096;
+    color: #5850ed;
 }
 
 .panel-item {
