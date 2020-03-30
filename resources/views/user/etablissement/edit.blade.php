@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <div class="px-4 py-3 b border-t border-gray-200 g-gray-50 text-right sm:px-6">
                             <button type="submit" form="form_etablissement" class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-indigo-600 transition duration-150 ease-in-out">
                                 {{ __('Save') }}
                             </button>
@@ -137,7 +137,7 @@
 
                             </ul>
                         </div>
-                        <div class="px-4 py-4 bg-gray-50 text-right sm:px-4">
+                        <div class="px-4 py-4 border-t border-gray-200 bg-gray-50 text-right sm:px-4">
                             <form id="form_services" action="{{ route('user.services.store') }}" method="POST">
                                 @csrf
 
