@@ -12616,6 +12616,31 @@ var app = new Vue({
   }
 });
 
+if (document.querySelector("#emails.paste-enabled")) {
+  document.querySelector("#emails.paste-enabled").addEventListener('paste', function (event) {
+    // removes unnecessary text
+    var formatEmails = function formatEmails(list) {
+      return list.split(";").join(",").split(",").map(function (email) {
+        var groups = email.match(/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/g);
+        return groups ? groups[0].trim() : email;
+      }).join(", ");
+    };
+
+    var paste = (event.clipboardData || window.clipboardData).getData('text');
+    var emails = paste; // try formating
+
+    try {
+      emails = formatEmails(paste);
+    } catch (e) {// silent, error. let the original text be pasted
+    }
+
+    var textarea = event.srcElement;
+    var contentPresent = !!textarea.value.trim();
+    textarea.value = (contentPresent ? textarea.value + ", " : "") + emails;
+    event.preventDefault();
+  });
+}
+
 /***/ }),
 
 /***/ 0:
@@ -12625,8 +12650,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/romainleger/Sites/covidrea/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/romainleger/Sites/covidrea/resources/css/main.css */"./resources/css/main.css");
+__webpack_require__(/*! /home/ben/Documents/git/oss/covid/covidrea/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/ben/Documents/git/oss/covid/covidrea/resources/css/main.css */"./resources/css/main.css");
 
 
 /***/ })
