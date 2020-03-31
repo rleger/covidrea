@@ -53,6 +53,12 @@ class AuthServiceProvider extends ServiceProvider
             return $authorized;
         });
 
+        // only authorize user to acess the invitation page if he is responsible for at least one establishment
+        Gate::define('invite', function ($user) {
+            $authorized = $user->hasEtablissement();
+            Log::info('Is user '.$user->id.' authorized to invite colleagues (because he is responsible for at least one establishment => '. $authorized);
+            return $authorized;
+        });
 
         // only authorize a user to add a service in an etablissement when he is the administrator
         Gate::define('create-service', function ($user, $etablissement) {
