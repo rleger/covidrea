@@ -15,7 +15,7 @@ class InviteController extends Controller
     {
         $this->middleware('auth')->except('finalize');
 
-        $this->middleware('checkuseradministersahospital')->only('invite');
+        // $this->middleware('checkuseradministersahospital')->only('invite');
     }
 
     /**
