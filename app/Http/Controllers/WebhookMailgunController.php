@@ -38,7 +38,7 @@ class WebhookMailgunController extends Controller
         $name_id = $type . '_id';
 
         // Create the object
-        $$handler::create([
+        $handler::create([
             $name_id => $request['event-data']['user-variables']['id'],
             'type' => 'email',
             'name' => $request['event-data']['user-variables']['name'],
