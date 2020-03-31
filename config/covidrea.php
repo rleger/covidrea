@@ -7,7 +7,8 @@ return [
     ],
 
     'email' => [
-        'default_sender' => 'mail@covid-moi-un-lit.com',
+        'default_sender' => 'DrLeger@covid-moi-un-lit.com',
+        'default_sender_name' => 'Dr Léger Romain',
     ],
     'regions-france' => [
         "alsace" =>"Alsace, Champagne-Ardenne et Lorraine",
