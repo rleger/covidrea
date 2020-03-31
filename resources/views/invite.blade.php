@@ -4,9 +4,11 @@
 
 @section('content')
     @foreach($user->etablissement as $etablissement_key => $etablissement)
-        <h2>
-            {{$etablissement->name}}
-        </h2>
+        <div class="px-4 md:px-0">
+            <h2>
+                {{$etablissement->name}}
+            </h2>
+        </div>
         <div class="hidden sm:block">
             <div class="py-5">
                 <div class="border-t border-gray-200"></div>
@@ -100,16 +102,16 @@
                                         @endif
                                     </div>
 
-                                    <div class="mt-1 flex rounded-md shadow-sm">
+                                    <div class="mt-1 flex flex-wrap rounded-md shadow-sm">
                                         <input type="hidden" name="etablissement_id" value="{{ $etablissement->id }}">
-                                        <div class="relative flex-grow focus-within:z-10">
+                                        <div class="relative flex-grow w-full md:w-3/6 focus-within:z-10">
                                             <input id="name" name="name" class="form-input block w-full rounded-none rounded-l-md border-r-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Nom du service" />
                                         </div>
-                                        <div class="relative flex-grow focus-within:z-10">
+                                        <div class="relative flex-grow w-4/6 md:w-2/6 focus-within:z-10">
                                             <input id="place_totales" name="place_totales" type="number" min=0 max=100 class="form-input block w-full rounded-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Places totales" />
                                         </div>
 
-                                        <button type="submit" form="form_service_{{$etablissement->id}}" class="rounded-l-none inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                                        <button type="submit" form="form_service_{{$etablissement->id}}" class="w-2/6 md:w-1/6 rounded-l-none inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
                                             {{ __('Add') }}
                                         </button>
                                     </div>
