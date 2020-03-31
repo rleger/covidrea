@@ -50,7 +50,7 @@ class RecordMailgunWebhook implements ShouldQueue
         $name_id = $type.'_id';
 
         // Create the object
-        $handler::create([
+        $handler::firstOrCreate([
             $name_id   => $this->request['event-data']['user-variables']['id'],
             'type'     => 'email',
             'name'     => $this->request['event-data']['user-variables']['name'],
