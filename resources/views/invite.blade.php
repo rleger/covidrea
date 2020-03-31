@@ -17,9 +17,9 @@
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">Services</h3>
-                        <p class="mt-1 text-sm leading-5 text-gray-500">
-                            Cette section vous permet d'ajouter des services à l'établissement
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Ajouter des services</h3>
+                        <p class="mt-1 text-sm leading-5 text-gray-500">Ajouter des services
+                            Cette section vous permet d'ajouter des services à l'établissement. Les utilisateurs pourront <span class="font-medium">choisir un ou plusieurs</span> de ces services lors de leur inscription.
                         </p>
                     </div>
                 </div>
@@ -102,8 +102,6 @@
 
                                     <div class="mt-1 flex rounded-md shadow-sm">
                                         <input type="hidden" name="etablissement_id" value="{{ $etablissement->id }}">
-
-
                                         <div class="relative flex-grow focus-within:z-10">
                                             <input id="name" name="name" class="form-input block w-full rounded-none rounded-l-md border-r-none transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Nom du service" />
                                         </div>
@@ -135,12 +133,12 @@
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">Invitez</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Invitez des praticiens</h3>
                         <p class="mt-1 text-sm leading-5 text-gray-500">
-                            Saisissez les email des utilisateurs à inviter de la part de {{ $user->name }}
+                            Saisissez les email des praticiens qui seront invités à utiliser covid un moi un lit.
                         </p>
 
-                        <p class="mt-1 text-sm leading-5 text-gray-500 mb-8">
+                        <p class="mt-1 text-sm leading-5 text-blue-500 mb-8">
                             par exemple : medecin@gmail.com, doctor@hopital.com;personne@example.com
                         </p>
                     </div>
