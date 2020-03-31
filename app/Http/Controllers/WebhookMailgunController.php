@@ -9,9 +9,11 @@ class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
+        \Log::info("request : " . print_r($request->all(), true));
+
         $request = $request->all();
         $signatureArray = $request['signature'];
-        $eventData = $request['eventData'];
+        // $eventData = $request['eventData'];
 
 
         // \Log::info("request " . print_r($request->all(), true));
@@ -19,6 +21,8 @@ class WebhookMailgunController extends Controller
         if (!$this->isFromMailgun($signatureArray)) {
             \Log::info("auth failed");
             // throw new UnauthorizedHttpException('Check failed !');
+        } else {
+            \Log::info("auth ok");
         }
 
 
@@ -26,8 +30,8 @@ class WebhookMailgunController extends Controller
 
         $payload = [
             'type'       => 'mail',
-            'status'     => $eventData['event'],
-            'created_at' => date('Y-m-d H:i:s', $eventData['timestamp']),
+            // 'status'     => $eventData['event'],
+            // 'created_at' => date('Y-m-d H:i:s', $eventData['timestamp']),
         ];
         \Log::info("Nouveau " .  print_r($payload, true));
 
