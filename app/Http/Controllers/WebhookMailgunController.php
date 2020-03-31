@@ -9,6 +9,7 @@ class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
+        \Log::info("request ", print_r($request->all(), true));
         //verify mailgun token
         if (!$this->isFromMailgun($request)) {
             throw new UnauthorizedHttpException('Check failed !');
