@@ -43,7 +43,11 @@ class HomeController extends Controller
             'long' => $etablissement->long
         ];
 
-        $etablissements_within_radius = Etablissement::select('id')->isWithinMaxDistance($coordinates, $radius)->get()->toArray();
+        $etablissements_within_radius = Etablissement::select('id')->isWithinMaxDistance($coordinates, $radius)->get();
+
+        $etablissements_within_radius = $etablissements_within_radius->map(function($item) {
+            return $item['id'];
+        });
 
         // Array with places
         $places = [
