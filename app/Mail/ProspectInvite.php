@@ -33,7 +33,18 @@ class ProspectInvite extends Mailable
     {
         $etablissement_name = $this->prospect->etab_name;
 
+        $mailgunVariables =  json_encode([
+            'type' => 'prospect',
+            'mail' => 'initial invite',
+            'id' => $this->prospect->id,
+        ]);
+
         $subject = "Gestion de lits de réanimation  ($etablissement_name)";
+
+        $this->withSwiftMessage(function ($message) use ($mailgunVariables) {
+            $message->getHeaders()
+                    ->addTextHeader('X-Mailgun-Variables', $mailgunVariables);
+        });
 
         return $this->from(config('covidrea.email.default_sender'), config('covidrea.email.default_sender_name'))
                     ->subject($subject)

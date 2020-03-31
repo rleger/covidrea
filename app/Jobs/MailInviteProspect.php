@@ -35,17 +35,9 @@ class MailInviteProspect implements ShouldQueue
      */
     public function handle()
     {
-        $mailgunVariables =  json_encode([
-            'type' => 'prospect',
-            'mail' => 'initial invite',
-            'id' => $this->prospect->id,
-        ]);
-
         // Send the email
         Mail::to($this->prospect->user_email)
-            ->send(new ProspectInvite($this->prospect), [], function($message) use ($mailgunVariables) {
-                $message->getHeaders()->addTextHeader('X-Mailgun-Variables', $mailgunVariables);
-            });
+            ->send(new ProspectInvite($this->prospect));
 
         // Emit an event once an email has been sent
         event(new EmailWasSentToProspect($this->prospect));
