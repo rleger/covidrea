@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\EmailWasSentToProspect;
-use App\ProspectNotification;
 use Log;
+use App\ProspectNotification;
+use App\Events\EmailWasSentToProspect;
 
 class RecordEmailToProspect
 {
