@@ -27,8 +27,8 @@ class WebhookMailgunController extends Controller
 
         $payload = [
             'type'       => 'mail',
-            'status'     => $request['event'],
-            'created_at' => date('Y-m-d H:i:s', $request['timestamp']),
+            'status'     => $request['event-data']['event'],
+            'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
         ];
         \Log::info("Nouvel evenement ... " .  print_r($payload, true));
 
