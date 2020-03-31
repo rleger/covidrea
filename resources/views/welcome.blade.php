@@ -461,13 +461,19 @@
         </p>
         <div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-                <img class="max-h-16" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
+                <a href="https://hacking-health.org/fr/besancon-fr/" target="_blank">
+                    <img class="max-h-16" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
+                </a>
             </div>
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-                <img class="max-h-16" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
+                <a href="https://www.siliconcomte.fr/" target="_blank" class="relative h-full w-full text-center">
+                    <img class="max-h-16" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
+                </a>
             </div>
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-                <img class="max-h-16" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
+                <a href="https://www.doubs.cci.fr/" target="_blank">
+                    <img class="max-h-16" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
+                </a>
             </div>
         </div>
     </div>
