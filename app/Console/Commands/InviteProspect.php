@@ -39,7 +39,7 @@ class InviteProspect extends Command
      */
     public function handle()
     {
-        $prospects = Prospect::where('user_email', '!=', '')->get();
+        $prospects = Prospect::isActive()->where('user_email', '!=', '')->get();
         $i = 0;
 
         $prospects->each(function($prospect) use (&$i) {

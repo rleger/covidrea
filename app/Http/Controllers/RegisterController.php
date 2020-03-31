@@ -58,7 +58,10 @@ class RegisterController extends Controller
         ]);
 
         // Delete the prospect
-        Prospect::findOrFail($request->get('prospect'))->delete();
+        // Prospect::findOrFail($request->get('prospect'))->delete();
+        $prospect = Prospect::findOrFail($request->get('prospect'));
+        $prospect->active = 0;
+        $prospect->save();
 
         // Log the user in
         auth()->login($user);
