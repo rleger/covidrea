@@ -87,8 +87,16 @@ class InviteNewUsersByEmail implements ShouldQueue
      */
     protected function sendInvitationEmail($invite)
     {
+        $mailgunVariables =  json_encode([
+            'type' => 'invite',
+            'name' => 'initial invite',
+            'id' => $invite->id,
+        ]);
+
         // send the email
-        Mail::to($invite->email)->send(new InviteCreated($invite));
+        Mail::to($invite->email)->send(new InviteCreated($invite), [], function($message) {
+            $message->getHeaders()->addTextHeader('X-Mailgun-Variables', $mailgunVariables);
+        });
 
         // Emit an event once an email has been sent
         event(new EmailWasSentToInvite($invite));

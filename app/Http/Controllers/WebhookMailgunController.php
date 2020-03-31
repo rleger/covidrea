@@ -17,17 +17,40 @@ class WebhookMailgunController extends Controller
         //verify mailgun token
         if (!$this->isFromMailgun($signatureArray)) {
             \Log::info("auth failed");
+            throw new UnauthorizedHttpException('Mailgun webhook failed !');
         }
 
+        // Get the type
+        $type = $request['event-data']['type'];
+
+        // define the recorders
+        $recorder = [
+            'prospect' => 'ProspectNotification',
+            'invite' => 'InviteNotification',
+        ];
+
+        // Find a handler
+        $handler = $recoder[$type];
+
+        // name of id
+        $name_id = $type . '_id';
+
+        // Create the object
+        $$handler::create([
+            $name_id => $request['event-data']['id'],
+            'type' => 'email',
+            'name' => $request['event-data']['name'],
+            'feedback' => $request['event-data']['status'],
+        ]);
 
         // $booking_id = $request->get('booking_id');
 
-        $payload = [
-            'type'       => 'mail',
-            'status'     => $request['event-data']['event'],
-            'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
-        ];
-        \Log::info("Nouvel evenement ... " .  print_r($payload, true));
+        // $payload = [
+            // 'type'       => 'mail',
+            // 'status'     => $request['event-data']['event'],
+            // 'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
+        // ];
+        // \Log::info("Nouvel evenement ... " .  print_r($payload, true));
 
 
         // dispatch(new RecordBookingCommunication(decodeId($booking_id), $payload));
