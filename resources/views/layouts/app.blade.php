@@ -50,7 +50,7 @@
                                             <a href="{{ route('etablissements.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('etablissements.index') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Lits disponibles</a>
                                             <a href="{{ route('user.services.edit', ['user' => auth()->user()->id]) }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('user.services.edit') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Mettre à jour mes lits</a>
                                             @can('invite')
-                                                <a href="{{ route('invite') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('invite') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Inviter des collègues</a>
+                                                <a href="{{ route('invite') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('invite') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Inviter des utilisateurs</a>
                                             @endcan
                                         </div>
                                     </div>
