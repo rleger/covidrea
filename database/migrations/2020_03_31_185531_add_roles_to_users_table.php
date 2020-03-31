@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddRolesToUsersTable extends Migration
 {
@@ -14,13 +14,8 @@ class AddRolesToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->nullable()->after('token');
+            $table->string('role')->default('standard')->nullable()->after('token');
         });
-        $users = \App\User::whereIn('email', [
-            'legerrom@gmail.com',
-            'samantha.halfon@gmail.com'
-        ]);
-        $users->update(array('role' => 'administrator'));
     }
 
     /**
