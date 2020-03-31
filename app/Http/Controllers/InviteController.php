@@ -13,9 +13,9 @@ class InviteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('finalize');
+        $this->middleware('auth')->only(['finalize', 'process']);
 
-        // $this->middleware('checkuseradministersahospital')->only('invite');
+        $this->middleware('checkuseradministersahospital')->only('invite');
     }
 
     /**
