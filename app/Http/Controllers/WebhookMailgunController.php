@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\InviteNotification;
 use Illuminate\Http\Request;
+use App\ProspectNotification;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class WebhookMailgunController extends Controller
@@ -25,8 +27,8 @@ class WebhookMailgunController extends Controller
 
         // define the recorders
         $recorder = [
-            'prospect' => 'ProspectNotification',
-            'invite' => 'InviteNotification',
+            'prospect' => ProspectNotification::class,
+            'invite' => InviteNotification::class,
         ];
 
         // Find a handler
