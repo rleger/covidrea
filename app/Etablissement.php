@@ -32,6 +32,27 @@ class Etablissement extends Model implements Auditable
         return $this->hasMany(Service::class);
     }
 
+    public function numberOfAvailableBeds(): int
+     {
+        return array_reduce($this->service->all(), function($carry, $item) {     
+            return $carry + $item->place_disponible;
+        }, 0);
+    }
+
+    public function numberOfSoonAvailableBeds(): int
+    {
+       return array_reduce($this->service->all(), function($carry, $item) {     
+           return $carry + $item->place_bientot_disponible;
+       }, 0);
+    }
+
+   public function numberOfBeds(): int
+   {
+      return array_reduce($this->service->all(), function($carry, $item) {     
+          return $carry + $item->place_totales;
+      }, 0);
+    }
+
     /**
      * Scope is within distance (km).
      *
