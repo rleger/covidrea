@@ -21,7 +21,7 @@ class WebhookMailgunController extends Controller
         }
 
         // Get the type
-        $type = $request['event-data']['type'];
+        $type = $request['event-data']['user-variables']['type'];
 
         // define the recorders
         $recorder = [
@@ -37,10 +37,10 @@ class WebhookMailgunController extends Controller
 
         // Create the object
         $$handler::create([
-            $name_id => $request['event-data']['id'],
+            $name_id => $request['event-data']['user-variables']['id'],
             'type' => 'email',
-            'name' => $request['event-data']['name'],
-            'feedback' => $request['event-data']['status'],
+            'name' => $request['event-data']['user-variables']['name'],
+            'feedback' => $request['event-data']['delivery-status']['message'],
         ]);
 
         // $booking_id = $request->get('booking_id');
