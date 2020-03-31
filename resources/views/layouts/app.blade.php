@@ -49,6 +49,9 @@
                                             <a href="{{ route('home') }}" class="px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('home') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Tableau de bord</a>
                                             <a href="{{ route('etablissements.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('etablissements.index') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Lits disponibles</a>
                                             <a href="{{ route('user.services.edit', ['user' => auth()->user()->id]) }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('user.services.edit') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Mettre à jour mes lits</a>
+                                            @can('invite')
+                                                <a href="{{ route('invite') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 {{ Route::is('invite') ? 'bg-gray-900 text-white' : 'text-gray-300' }}">Inviter des collègues</a>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
@@ -87,6 +90,9 @@
                                 <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Tableau de bord</a>
                                 <a href="{{ route('etablissements.index') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Lits disponibles</a>
                                 <a href="{{ route('user.services.edit', ['user' => auth()->user()->id]) }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Mettre à jour mes lits</a>
+                                @can('invite')
+                                    <a href="{{ route('invite') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Inviter des collègues</a>
+                                @endcan
                             </div>
                             <div class="pt-4 pb-3 border-t border-gray-700">
                                 <div class="flex items-center px-5">
