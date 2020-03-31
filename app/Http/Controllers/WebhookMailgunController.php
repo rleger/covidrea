@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\InviteNotification;
-use Illuminate\Http\Request;
 use App\ProspectNotification;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
-        \Log::info("request : " . print_r($request->all(), true));
+        \Log::info('request : '.print_r($request->all(), true));
 
         $request = $request->all();
         $signatureArray = $request['signature'];
 
         //verify mailgun token
         if (!$this->isFromMailgun($signatureArray)) {
-            \Log::info("auth failed");
+            \Log::info('auth failed');
             throw new UnauthorizedHttpException('Mailgun webhook failed !');
         }
 
@@ -28,21 +28,21 @@ class WebhookMailgunController extends Controller
         // define the recorders
         $recorder = [
             'prospect' => ProspectNotification::class,
-            'invite' => InviteNotification::class,
+            'invite'   => InviteNotification::class,
         ];
 
         // Find a handler
         $handler = $recorder[$type];
 
         // name of id
-        $name_id = $type . '_id';
+        $name_id = $type.'_id';
 
         // Create the object
         $handler::create([
-            $name_id => $request['event-data']['user-variables']['id'],
-            'type' => 'email',
-            'name' => $request['event-data']['user-variables']['name'],
-            'feedback' => $request['event-data']['delivery-status']['message'],
+            $name_id   => $request['event-data']['user-variables']['id'],
+            'type'     => 'email',
+            'name'     => $request['event-data']['user-variables']['name'],
+            'feedback' => $request['event-data']['event'],
         ]);
 
         // $booking_id = $request->get('booking_id');
@@ -53,7 +53,6 @@ class WebhookMailgunController extends Controller
             // 'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
         // ];
         // \Log::info("Nouvel evenement ... " .  print_r($payload, true));
-
 
         // dispatch(new RecordBookingCommunication(decodeId($booking_id), $payload));
     }
@@ -68,9 +67,9 @@ class WebhookMailgunController extends Controller
     protected function isFromMailgun($request)
     {
         $apiKey = env('MAILGUN_SECRET');
-        $token = $request[ 'token' ];
-        $timestamp = $request[ 'timestamp' ];
-        $signature = $request[ 'signature' ];
+        $token = $request['token'];
+        $timestamp = $request['timestamp'];
+        $signature = $request['signature'];
 
         // Check if the timestamp is fresh
         if (time() - $timestamp > 15) {

@@ -33,7 +33,18 @@ class InviteCreated extends Mailable
     {
         $etablissement_name = Etablissement::FindOrFail($this->invite->etablissement_id)->name;
 
+        $mailgunVariables =  json_encode([
+            'type' => 'prospect',
+            'name' => 'initial invite',
+            'id' => $this->prospect->id,
+        ]);
+
         $subject = "$etablissement_name vous invite à rejoindre COVID moi un lit";
+
+        $this->withSwiftMessage(function ($message) use ($mailgunVariables) {
+            $message->getHeaders()
+                    ->addTextHeader('X-Mailgun-Variables', $mailgunVariables);
+        });
 
         return $this->from(config('covidrea.email.default_sender'), config('covidrea.email.default_sender_name'))
                     ->subject($subject)
