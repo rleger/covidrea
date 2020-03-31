@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Log;
 use Closure;
 
-class CheckUserHasAHospital
+class CheckUserAdministersAHospital
 {
     /**
      * Check that a user is attached to a service
@@ -19,8 +19,9 @@ class CheckUserHasAHospital
         if(!auth()->check()) {
             return redirect('/');
         }
-        if (!auth()->user()->services()->exists()) {
-            Log::error("User " . auth()->user()->id . " has no service and cannot go further");
+
+        if (!auth()->user()->etablissement()->exists()) {
+            Log::error("User " . auth()->user()->id . " does not administers any hospital and cannot go further");
             // Logout
             auth()->logout();
 

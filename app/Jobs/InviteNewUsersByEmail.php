@@ -7,6 +7,7 @@ use Mail;
 use App\Invite;
 use App\Mail\InviteCreated;
 use Illuminate\Bus\Queueable;
+use App\Events\EmailWasSentToInvite;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -88,5 +89,8 @@ class InviteNewUsersByEmail implements ShouldQueue
     {
         // send the email
         Mail::to($invite->email)->send(new InviteCreated($invite));
+
+        // Emit an event once an email has been sent
+        event(new EmailWasSentToInvite($invite));
     }
 }

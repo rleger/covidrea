@@ -14,7 +14,7 @@ class CreateInvitesTable extends Migration
     public function up()
     {
     Schema::create('invites', function (Blueprint $table) {
-        $table->increments('id');
+        $table->id();
         $table->string('email');
         $table->string('token', 16)->unique();
 
