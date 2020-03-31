@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @if(env('APP_ENV') != 'production')
+        @if(config('app.env') != 'production')
             <meta name="robots" content="noindex">
             <meta name="googlebot" content="noindex">
         @endif
