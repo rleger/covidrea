@@ -30,7 +30,7 @@ class WebhookMailgunController extends Controller
         ];
 
         // Find a handler
-        $handler = $recoder[$type];
+        $handler = $recorder[$type];
 
         // name of id
         $name_id = $type . '_id';
