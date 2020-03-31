@@ -35,7 +35,7 @@ class InviteCreated extends Mailable
         $etablissement_name = Etablissement::FindOrFail($this->invite->etablissement_id)->name;
 
         $mailgunVariables = json_encode([
-            'type' => 'prospect',
+            'type' => 'invite',
             'name' => 'initial invite',
             'id'   => $this->invite->id,
         ]);

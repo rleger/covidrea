@@ -36,6 +36,7 @@ class RecordMailgunWebhook implements ShouldQueue
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
 
+
         // define the recorders
         $recorder = [
             'prospect' => ProspectNotification::class,
