@@ -13,10 +13,7 @@ class WebhookMailgunController extends Controller
 
         $request = $request->all();
         $signatureArray = $request['signature'];
-        // $eventData = $request['eventData'];
 
-
-        // \Log::info("request " . print_r($request->all(), true));
         //verify mailgun token
         if (!$this->isFromMailgun($signatureArray)) {
             \Log::info("auth failed");
@@ -31,6 +28,7 @@ class WebhookMailgunController extends Controller
             'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
         ];
         \Log::info("Nouvel evenement ... " .  print_r($payload, true));
+
 
         // dispatch(new RecordBookingCommunication(decodeId($booking_id), $payload));
     }
