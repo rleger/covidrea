@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\InviteNotification;
-use App\ProspectNotification;
+use App\Jobs\RecordMailgunWebhook;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -11,50 +10,17 @@ class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
-        \Log::info('request : '.print_r($request->all(), true));
-
+        // \Log::info('request : '.print_r($request->all(), true));
         $request = $request->all();
-        $signatureArray = $request['signature'];
 
         //verify mailgun token
-        if (!$this->isFromMailgun($signatureArray)) {
-            \Log::info('auth failed');
+        if (!$this->isFromMailgun($request['signature'])) {
+            // \Log::info('auth failed');
             throw new UnauthorizedHttpException('Mailgun webhook failed !');
         }
 
-        // Get the type
-        $type = $request['event-data']['user-variables']['type'];
-
-        // define the recorders
-        $recorder = [
-            'prospect' => ProspectNotification::class,
-            'invite'   => InviteNotification::class,
-        ];
-
-        // Find a handler
-        $handler = $recorder[$type];
-
-        // name of id
-        $name_id = $type.'_id';
-
-        // Create the object
-        $handler::create([
-            $name_id   => $request['event-data']['user-variables']['id'],
-            'type'     => 'email',
-            'name'     => $request['event-data']['user-variables']['name'],
-            'feedback' => $request['event-data']['event'],
-        ]);
-
-        // $booking_id = $request->get('booking_id');
-
-        // $payload = [
-            // 'type'       => 'mail',
-            // 'status'     => $request['event-data']['event'],
-            // 'created_at' => date('Y-m-d H:i:s', $request['event-data']['timestamp']),
-        // ];
+        RecordMailgunWebhook::dispatch($request);
         // \Log::info("Nouvel evenement ... " .  print_r($payload, true));
-
-        // dispatch(new RecordBookingCommunication(decodeId($booking_id), $payload));
     }
 
     /**
