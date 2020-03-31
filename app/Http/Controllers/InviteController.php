@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Etablissement;
-use App\Invite;
-use App\Jobs\InviteNewUsersByEmail;
 use App\User;
-use Illuminate\Http\Request;
 use Validator;
+use App\Invite;
+use App\Etablissement;
+use Illuminate\Http\Request;
+use App\Jobs\InviteNewUsersByEmail;
 
 class InviteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('finalize');
+        $this->middleware('auth')->only(['process']);
 
         $this->middleware('checkuseradministersahospital')->only('invite');
     }
@@ -31,13 +31,13 @@ class InviteController extends Controller
     }
 
     /**
-     * This is called when the administrator submits a list of emails
+     * This is called when the administrator submits a list of emails.
      */
     public function process(Request $request, Etablissement $etablissement)
     {
         // extract emails to array
         $emails = $request->get('emails');
-        $request->merge(["unprocessed_emails" => $emails]);
+        $request->merge(['unprocessed_emails' => $emails]);
 
         $emails = array_map('trim', explode(',', str_replace(';', ',', $emails)));
 
@@ -62,7 +62,7 @@ class InviteController extends Controller
         if ($validator->fails()) {
             return back()
                         ->withErrors($validator)
-                        ->with(['unprocessed_emails' => $request->get('unprocessed_emails') ])
+                        ->with(['unprocessed_emails' => $request->get('unprocessed_emails')])
                         ->withInput();
         }
 

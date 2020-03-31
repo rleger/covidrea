@@ -16,6 +16,10 @@ class CheckUserAdministersAHospital
      */
     public function handle($request, Closure $next)
     {
+        if(!auth()->check()) {
+            return redirect('/');
+        }
+
         if (!auth()->user()->etablissement()->exists()) {
             Log::error("User " . auth()->user()->id . " does not administers any hospital and cannot go further");
             // Logout
