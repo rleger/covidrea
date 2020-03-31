@@ -9,10 +9,11 @@ class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
-        \Log::info("request ", print_r($request->all(), true));
+        \Log::info("request " . print_r($request->all(), true));
         //verify mailgun token
         if (!$this->isFromMailgun($request)) {
-            throw new UnauthorizedHttpException('Check failed !');
+            \Log::info("auth failed");
+            // throw new UnauthorizedHttpException('Check failed !');
         }
 
 
@@ -23,7 +24,7 @@ class WebhookMailgunController extends Controller
             'status'     => $request->get('event'),
             'created_at' => date('Y-m-d H:i:s', $request->get('timestamp')),
         ];
-        \Log::info("Nouveau ", print_r($payload, true));
+        \Log::info("Nouveau " .  print_r($payload, true));
 
         // dispatch(new RecordBookingCommunication(decodeId($booking_id), $payload));
     }
