@@ -33,9 +33,9 @@ class InviteCreated extends Mailable
     {
         $etablissement_name = Etablissement::FindOrFail($this->invite->etablissement_id)->name;
 
-        $subject = "L'établissement $etablissement_name vous invite à rejoindre COVID moi un lit";
+        $subject = "$etablissement_name vous invite à rejoindre COVID moi un lit";
 
-        return $this->from(config('covidrea.email.default_sender'))
+        return $this->from(config('covidrea.email.default_sender'), config('covidrea.email.default_sender_name'))
                     ->subject($subject)
                     ->markdown('emails.invite');
     }
