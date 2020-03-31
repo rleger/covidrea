@@ -59,10 +59,9 @@
                             </button>
 
                             {{-- Annuler --}}
-                            <button onclick="event.preventDefault();window.location='{{ URL::previous() }}'" class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray active:bg-gray-200 transition ease-in-out duration-150">
+                            <button onclick="event.preventDefault();window.history.back()" class="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray active:bg-gray-200 transition ease-in-out duration-150">
                                 {{ __('Cancel') }}
                             </button>
-
                         </div>
                     </div>
                 </form>
