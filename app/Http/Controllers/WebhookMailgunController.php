@@ -9,9 +9,14 @@ class WebhookMailgunController extends Controller
 {
     public function index(Request $request)
     {
-        \Log::info("request " . print_r($request->all(), true));
+        $request = $request->all();
+        $signatureArray = $request['signature'];
+        $eventData = $request['eventData'];
+
+
+        // \Log::info("request " . print_r($request->all(), true));
         //verify mailgun token
-        if (!$this->isFromMailgun($request)) {
+        if (!$this->isFromMailgun($signatureArray)) {
             \Log::info("auth failed");
             // throw new UnauthorizedHttpException('Check failed !');
         }
@@ -21,8 +26,8 @@ class WebhookMailgunController extends Controller
 
         $payload = [
             'type'       => 'mail',
-            'status'     => $request->get('event'),
-            'created_at' => date('Y-m-d H:i:s', $request->get('timestamp')),
+            'status'     => $eventData['event'],
+            'created_at' => date('Y-m-d H:i:s', $eventData['timestamp']),
         ];
         \Log::info("Nouveau " .  print_r($payload, true));
 
@@ -39,9 +44,18 @@ class WebhookMailgunController extends Controller
     protected function isFromMailgun($request)
     {
         $apiKey = env('MAILGUN_SECRET');
-        $token = $request->get('token');
-        $timestamp = $request->get('timestamp');
-        $signature = $request->get('signature');
+        // \Log::info("$apiKey " . $apiKey);
+
+        $token = $request[ 'token' ];
+        // \Log::info("$token " . $token);
+
+        $timestamp = $request[ 'timestamp' ];
+        // \Log::info("$timestamp " . $timestamp);
+
+        $signature = $request[ 'signature' ];
+        // \Log::info("$signature " . $signature);
+
+        \Log::info("hash that should = signature " . hash_hmac('sha256', $timestamp.$token, $apiKey));
 
         // Check if the timestamp is fresh
         if (time() - $timestamp > 15) {
