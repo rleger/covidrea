@@ -35,7 +35,7 @@ class ProspectInvite extends Mailable
 
         $mailgunVariables =  json_encode([
             'type' => 'prospect',
-            'mail' => 'initial invite',
+            'name' => 'initial invite',
             'id' => $this->prospect->id,
         ]);
 
