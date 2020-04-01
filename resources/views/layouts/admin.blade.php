@@ -22,7 +22,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="h-screen flex overflow-hidden bg-gray-100" x-data="{ sidebarOpen: false }" @keydown.window.escape="sidebarOpen = false">
+        <div id="app" class="h-screen flex overflow-hidden bg-gray-100" x-data="{ sidebarOpen: false }" @keydown.window.escape="sidebarOpen = false">
             <!-- Off-canvas menu for mobile -->
             <div x-show="sidebarOpen" class="md:hidden">
                 <div @click="sidebarOpen = false" x-show="sidebarOpen" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 transition-opacity ease-linear duration-300">
