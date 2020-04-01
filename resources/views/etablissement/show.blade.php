@@ -41,7 +41,7 @@
         <div class="px-4 py-5 sm:p-0">
             <dl>
                 @foreach($etablissement->service as $key => $service)
-                    <div class="{{ $key ? 'border-t pt-2' : ''}} mb-5 sm:border-t-0 sm:mb-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5 border-b border-gray-200">
+                    <div class="{{ $key ? 'border-t pt-2' : ''}} mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
                         <dt class="text-sm leading-5 font-medium text-gray-500">
                         <span class="flex text-gray-900">
                             {{ $service->name }}

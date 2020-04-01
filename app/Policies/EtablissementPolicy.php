@@ -52,7 +52,7 @@ class EtablissementPolicy
      * @return mixed
      */
     public function createService(User $user, Etablissement $etablissement) {
-        return $etablissement->user_id == $user->id;
+        return $etablissement->user_id == $user->id || $user->isAdmin();
     }
 
     /**
