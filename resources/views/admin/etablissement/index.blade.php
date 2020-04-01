@@ -12,17 +12,15 @@
   <div class="px-4 py-5 sm:p-6">
         <div class="md:flex md:items-center md:justify-between">
             <div class="flex-1 min-w-0">
-                <div>
-                    <div class="mt-1 flex rounded-md shadow-sm">
+                    <div class="flex rounded-md shadow-sm">
                         <div class="relative flex-grow focus-within:z-10">
                             <input id="email" class="form-input block w-full rounded-none rounded-l-md pl-4 transition ease-in-out duration-150 sm:text-sm sm:leading-5" placeholder="Rechercher un établissement" />
                         </div>
-                        <form action="{{ route('admin.etablissement.index') }}" method="get">
+                        <form action="{{ route('admin.etablissement.index') }}" method="get" class="m-0 p-0">
                             @csrf
                         <button type="submit" name="search" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-gray-50 hover:text-gray-500 hover:bg-white focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">Rechercher</button>
                         </form>
                     </div>
-                </div>
             </div>
             <div class="mt-4 flex md:mt-0 md:ml-4">
                 <span class="ml-3 shadow-sm rounded-md">
