@@ -14,3 +14,5 @@ yarn-error.log
 .php_cs.cache
 .DS_Store
 *.code-workspace
+# PHPStorm files
+.idea/
