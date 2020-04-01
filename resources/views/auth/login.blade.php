@@ -77,8 +77,8 @@
                         </span>
                     </div>
                 </form>
-
             </div>
+            <h3 class="text-center"><a href="/#inscription">Vous n'avez pas encore de compte manifestez votre intérêt !</a></h3>
         </div>
     </div>
 @endsection
