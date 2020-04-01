@@ -21,29 +21,29 @@
         <meta property="og:description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
         <meta property="og:type" content="website">
         <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
-        <link rel="icon" href="images/favicon.png" type="image/png">
-        <link rel="icon" sizes="32x32" href="images/favicon-32.png" type="image/png">
-        <link rel="icon" sizes="48x48" href="images/favicon-64.png" type="image/png">
-        <link rel="icon" sizes="96x96" href="images/favicon-96.png" type="image/png">
-        <link rel="icon" sizes="128x128" href="images/favicon-96.png" type="image/png">
+        <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
+        <link rel="icon" sizes="32x32" href="{{ asset('images/favicon-32.png') }}" type="image/png">
+        <link rel="icon" sizes="48x48" href="{{ asset('images/favicon-64.png') }}" type="image/png">
+        <link rel="icon" sizes="96x96" href="{{ asset('images/favicon-96.png') }}" type="image/png">
+        <link rel="icon" sizes="128x128" href="{{ asset('images/favicon-96.png') }}" type="image/png">
         <script type="application/ld+json">
             {
-        "@context" : "https://schema.org",
-        "@type" : "Organization",
-        "name" : "Covid moi un lit",
-        "url" : "https://covid-moi-un-lit.com",
-        "sameAs" : [
-        "https://www.facebook.com/Covid-Moi-Un-Lit-100434308283391",
-        "https://twitter.com/CovidMoiUnLit"
-        ]
-    }
+                "@context" : "https://schema.org",
+                "@type" : "Organization",
+                "name" : "Covid moi un lit",
+                "url" : "https://covid-moi-un-lit.com",
+                "sameAs" : [
+                "https://www.facebook.com/Covid-Moi-Un-Lit-100434308283391",
+                "https://twitter.com/CovidMoiUnLit"
+                ]
+            }
         </script>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
 
         {{-- Scripts --}}
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
+        {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script> --}}
 
         <!-- Styles -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="/images/cover-min-sm.jpg" alt="" />
+                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="{{ asset('images/cover-min-sm.jpg') }}" alt="" />
             </div>
         </div>
         {{-- EndHero --}}
@@ -441,13 +441,13 @@
                 <footer class="mt-8">
                     <div class="md:flex md:items-center md:justify-center">
                         <div class="md:flex-shrink-0 text-gray-900">
-                            <img class="mx-auto h-14 w-14 rounded-full" src="images/avatar-rl.png" alt="" />
+                            <img class="mx-auto h-14 w-14 rounded-full" src="{{ asset('images/avatar-rl.png') }}" alt="" />
                         </div>
                         <div class="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
                             <div class="text-base leading-6 font-medium text-gray-900">Dr Léger Romain</div>
                         </div>
                         <div class="pt-4 sm:pl-4 sm:pt-0 md:flex-shrink-0">
-                            <img class="mx-auto h-14 w-14 rounded-full" src="images/avatar-vb.png" alt="" />
+                            <img class="mx-auto h-14 w-14 rounded-full" src="{{ asset('images/avatar-vb.png') }}" alt="" />
                         </div>
                         <div class="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
                             <div class="text-base leading-6 font-medium text-gray-900">Dr Bailly Vincent</div>
@@ -468,17 +468,17 @@
         <div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
                 <a href="https://hacking-health.org/fr/besancon-fr/" target="_blank">
-                    <img class="max-h-16" src="images/partners/hh-besancon.png" alt="Hacking Health Besançon" />
+                    <img class="max-h-16" src="{{ asset('images/partners/hh-besancon.png') }}" alt="Hacking Health Besançon" />
                 </a>
             </div>
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
                 <a href="https://www.siliconcomte.fr/" target="_blank" class="relative h-full w-full text-center">
-                    <img class="max-h-16" src="images/partners/silicon-comte.jpg" alt="Silicon Comté" />
+                    <img class="max-h-16" src="{{ asset('images/partners/silicon-comte.jpg') }}" alt="Silicon Comté" />
                 </a>
             </div>
             <div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
                 <a href="https://www.doubs.cci.fr/" target="_blank">
-                    <img class="max-h-16" src="images/partners/cci-doubs.jpg" alt="CCI Doubs" />
+                    <img class="max-h-16" src="{{ asset('images/partners/cci-doubs.jpg') }}" alt="CCI Doubs" />
                 </a>
             </div>
         </div>
