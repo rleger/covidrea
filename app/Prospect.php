@@ -27,4 +27,9 @@ class Prospect extends Model implements AuditableContract
             $route, now()->addDays($days), $params
         );
     }
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('active', '>', 0);
+    }
 }

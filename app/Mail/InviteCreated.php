@@ -35,9 +35,9 @@ class InviteCreated extends Mailable
         $etablissement_name = Etablissement::FindOrFail($this->invite->etablissement_id)->name;
 
         $mailgunVariables = json_encode([
-            'type' => 'prospect',
+            'type' => 'invite',
             'name' => 'initial invite',
-            'id'   => $this->prospect->id,
+            'id'   => $this->invite->id,
         ]);
 
         $subject = "$etablissement_name vous invite à rejoindre COVID moi un lit";

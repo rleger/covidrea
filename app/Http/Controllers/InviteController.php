@@ -133,7 +133,9 @@ class InviteController extends Controller
         // delete the invite so it can't be used again
         // Look up the invite
         if ($invite = Invite::where('token', $inputs['token'])->first()) {
-            $invite->delete();
+            $invite->active = 0;
+            $invite->save();
+            // $invite->delete();
         }
 
         // Log the user in
