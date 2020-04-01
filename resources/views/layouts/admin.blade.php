@@ -42,6 +42,12 @@
                                 Covid moi un lit
                             </div>
                             <nav class="mt-5 px-2">
+                                <a href="{{ route('home') }}" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-indigo-300 hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700 transition ease-in-out duration-150">
+                                    <svg class="mr-4 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 20 20">
+                                        <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z"></path>
+                                    </svg>
+                                    Retour à l'interface
+                                </a>
                                 <a href="{{ route('admin.etablissement.index') }}" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-indigo-300 hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700 transition ease-in-out duration-150">
                                     <svg class="mr-4 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10M9 21h6"/>
@@ -51,9 +57,9 @@
                                 {{-- <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-indigo-300 hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700 transition ease-in-out duration-150"> --}}
                                     {{-- <svg class="mr-4 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 24 24"> --}}
                                         {{-- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/> --}}
-                                    {{-- </svg> --}}
+                                        {{-- </svg> --}}
                                     {{-- Reports --}}
-                                {{-- </a> --}}
+                                    {{-- </a> --}}
                             </nav>
                         </div>
                         <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">
@@ -92,9 +98,15 @@
                             {{-- <a href="#" class="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150"> --}}
                                 {{-- <svg class="mr-3 h-6 w-6 text-indigo-400 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 24 24"> --}}
                                     {{-- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10M9 21h6"/> --}}
-                                {{-- </svg> --}}
+                                    {{-- </svg> --}}
                                 {{-- Premier --}}
-                            {{-- </a> --}}
+                                {{-- </a> --}}
+                            <a href="{{ route('home') }}" class="mt-1 group flex items-center px-2 py-2 text-sm leading-5 font-medium {{ Route::is('home') ? 'bg-indigo-900 rounded-md text-white focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150' : 'text-indigo-300 rounded-md hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700 transition ease-in-out duration-150' }}">
+                                <svg class="mr-3 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 20 20">
+                                    <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z"></path>
+                                </svg>
+                                Retour à l'interface
+                            </a>
                             <a href="{{ route('admin.etablissement.index') }}" class="mt-1 group flex items-center px-2 py-2 text-sm leading-5 font-medium {{ Route::is('admin.etablissement.index') ? 'bg-indigo-900 rounded-md text-white focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150' : 'text-indigo-300 rounded-md hover:text-white hover:bg-indigo-700 focus:outline-none focus:text-white focus:bg-indigo-700 transition ease-in-out duration-150' }}">
                                 <svg class="mr-3 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -106,17 +118,11 @@
                     <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">
                         <a href="#" class="flex-shrink-0 w-full group block">
                             <div class="flex items-center">
-                                <div>
-                                    image
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm leading-5 font-medium text-white">
-                                        Tom Cook
-                                    </p>
-                                    <p class="text-xs leading-4 font-medium text-indigo-300 group-hover:text-indigo-100 transition ease-in-out duration-150">
-                                        View profile
-                                    </p>
-                                </div>
+                                <form class="m-0 mx-auto p-0" id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                    <button type="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="inline-flex items-center w-full px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-indigo-200 transition ease-in-out duration-150">
+                                        {{ __('Logout') }}
+                                    </button>
+
                             </div>
                         </a>
                     </div>
