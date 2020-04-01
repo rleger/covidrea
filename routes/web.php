@@ -48,3 +48,10 @@ Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 // Register prospects
 Route::get('register/{prospect}', 'RegisterController@register')->name('register')->middleware('signed');
 Route::post('register', 'RegisterController@process')->name('register.process');
+
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function() {
+    Route::redirect('/', '/admin/etablissement')->name('admin.index');
+    Route::get('etablissement', 'AdminEtablissementController@index')->name('admin.etablissement.index');
+    Route::get('etablissement/edit/{etablissement}', 'AdminEtablissementController@edit')->name('admin.etablissement.edit');
+    Route::get('etablissement/{etablissement}/invite', 'AdminEtablissementController@invite')->name('admin.etablissement.invite');
+});

@@ -33,7 +33,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        Gate::authorize('edit-service', $service);
+        $this->authorize('update', $service);
 
         // We will need the service_id to display success or error message in the
         // right form
@@ -62,7 +62,7 @@ class ServiceController extends Controller
     public function delete(Service $service)
     {
         // Check user has permissions
-        Gate::authorize('delete-service', $service);
+        $this->authorize('delete', $service);
 
         // @todo: do not allow deletion of the last service of an etablissement
         //

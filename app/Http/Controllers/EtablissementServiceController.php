@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Gate;
-use Illuminate\Http\Request;
 use App\Etablissement;
+use Illuminate\Http\Request;
 
 class EtablissementServiceController extends Controller
 {
     /**
-     * Create a new service attached to an etablissement
-     *
-     * @param Request $request
+     * You need to be authenticated to access this controller.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Create a new service attached to an etablissement.
      */
     public function store(Request $request)
     {
@@ -23,7 +28,7 @@ class EtablissementServiceController extends Controller
         $request->session()->flash('etablissement_id', $etablissement->id);
 
         // Check user has permissions
-        Gate::authorize('create-service', $etablissement);
+        $this->authorize('createService', $etablissement);
 
         // Validate the request
         $validatedData = $request->validate([
@@ -33,7 +38,6 @@ class EtablissementServiceController extends Controller
 
         // Force casting place totales to int so null => 0
         $validatedData['place_totales'] = (int) $validatedData['place_totales'];
-
         // Create the service linked to $etablissement
         $etablissement->service()->create($validatedData);
 
@@ -41,7 +45,7 @@ class EtablissementServiceController extends Controller
         return back()
             ->withInput()
             ->with([
-                'status_service' => 'Service ajouté',
+                'status_service'   => 'Service ajouté',
                 'etablissement_id' => $etablissement->id,
             ]);
     }
