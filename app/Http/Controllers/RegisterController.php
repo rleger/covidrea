@@ -35,7 +35,13 @@ class RegisterController extends Controller
             'user_phone'                     => 'required|phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
             'password_confirm'               => 'required',
+            'prospect'                       => 'required'
         ])->validate();
+
+        $prospectId = $request->get('prospect');
+        $prospect = Prospect::findOrFail($prospectId);
+        $prospect->active = 0;
+        $prospect->save();
 
         // Create User
         $user = User::create([
@@ -45,23 +51,20 @@ class RegisterController extends Controller
             'password'     => bcrypt($request->get('password')),
         ]);
 
-        $etablissement = Etablissement::create([
-            'name'       => $request->get('etab_name'),
-            'type'       => $request->get('etab_type'),
-            'adresse'    => $request->get('etab_adresse'),
-            'codepostal' => $request->get('etab_codepostal'),
-            'ville'      => $request->get('etab_ville'),
-            'region'     => $request->get('etab_region'),
-            'long'       => $request->get('etab_long'),
-            'lat'        => $request->get('etab_lat'),
-            'user_id'    => $user->id,
-        ]);
-
-        // Delete the prospect
-        // Prospect::findOrFail($request->get('prospect'))->delete();
-        $prospect = Prospect::findOrFail($request->get('prospect'));
-        $prospect->active = 0;
-        $prospect->save();
+        Etablissement::updateOrCreate(
+            ['prospect_id' => $prospectId],
+            [
+                'name'       => $request->get('etab_name'),
+                'type'       => $request->get('etab_type'),
+                'adresse'    => $request->get('etab_adresse'),
+                'codepostal' => $request->get('etab_codepostal'),
+                'ville'      => $request->get('etab_ville'),
+                'region'     => $request->get('etab_region'),
+                'long'       => $request->get('etab_long'),
+                'lat'        => $request->get('etab_lat'),
+                'user_id'    => $user->id
+            ]
+        );
 
         // Log the user in
         auth()->login($user);
