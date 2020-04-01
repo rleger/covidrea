@@ -20,7 +20,9 @@
         <meta property="og:url" content="https://covid-moi-un-lit.com">
         <meta property="og:description" content="La première application dédiée aux professionnels de santé à la recherche d’un lit de réanimation pour leurs malades COVID+.">
         <meta property="og:type" content="website">
-        <title>{{ config('app.name', 'Laravel') }} - application de recherche de lit de réanimation pour les professionnels</title>
+
+        <title>{{ config('app.env') == 'production' ? '' : "*" . substr(config('app.env'), 0, 3) . "." }} {{  config('app.name', 'Covid moi un lit') }} - application de recherche de lit de réanimation pour les professionnels</title>
+
         <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
         <link rel="icon" sizes="32x32" href="{{ asset('images/favicon-32.png') }}" type="image/png">
         <link rel="icon" sizes="48x48" href="{{ asset('images/favicon-64.png') }}" type="image/png">

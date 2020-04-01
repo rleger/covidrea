@@ -12,7 +12,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.env') == 'production' ? '' : "*" . substr(config('app.env'), 0, 3) . "." }} {{  config('app.name', 'Covid moi un lit') }} - application de recherche de lit de réanimation pour les professionnels</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
