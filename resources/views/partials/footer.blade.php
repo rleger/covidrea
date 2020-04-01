@@ -22,7 +22,7 @@
         </div>
         <div class="mt-8 md:mt-0 md:order-1">
             <p class="text-center text-base leading-6 text-gray-400">
-                &copy; {{ date('Y') }} covid moi un lit. Conception Romain LEGER et Dr Vincent BAILLY - <a href="/presse">Revue de presse</a>
+                &copy; {{ date('Y') }} covid moi un lit. Conception Romain LEGER et Dr Vincent BAILLY
             </p>
         </div>
     </div>
