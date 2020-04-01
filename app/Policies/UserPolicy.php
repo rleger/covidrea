@@ -27,4 +27,8 @@ class UserPolicy
     {
         return $user->isAdmin();
     }
+
+    public function invite(User $user) {
+        return $user->hasEtablissement();
+    }
 }

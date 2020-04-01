@@ -45,7 +45,7 @@ class UserServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        Gate::authorize('edit-service', $service);
+        $this->authorize('update', $service);
 
         // We will need the service_id to display success or error message in the
         // right form
@@ -86,7 +86,7 @@ class UserServiceController extends Controller
         $etablissement = Etablissement::findOrFail($request->get('etablissement_id'));
 
         // Check user has permissions
-        Gate::authorize('create-service', $etablissement);
+        $this->authorize('createService', $etablissement);
 
         // Validate the request
         $validatedData = $request->validate([

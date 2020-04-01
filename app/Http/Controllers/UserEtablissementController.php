@@ -29,7 +29,7 @@ class UserEtablissementController extends Controller
      */
     public function edit(User $user, Etablissement $etablissement)
     {
-        Gate::authorize('edit-etablissement', $etablissement);
+        $this->authorize('update', $etablissement);
 
         $services = $etablissement->service;
 
@@ -41,7 +41,7 @@ class UserEtablissementController extends Controller
      */
     public function update(Request $request, User $user, Etablissement $etablissement)
     {
-        Gate::authorize('edit-etablissement', $etablissement);
+        $this->authorize('update', $etablissement);
         Log::info('About to update etablissement '.$etablissement->id);
 
         $request->session()->flash('etablissement_id', $etablissement->id);

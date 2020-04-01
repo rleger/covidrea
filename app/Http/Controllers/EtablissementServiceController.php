@@ -23,7 +23,7 @@ class EtablissementServiceController extends Controller
         $request->session()->flash('etablissement_id', $etablissement->id);
 
         // Check user has permissions
-        Gate::authorize('create-service', $etablissement);
+        $this->authorize('createService', $etablissement);
 
         // Validate the request
         $validatedData = $request->validate([

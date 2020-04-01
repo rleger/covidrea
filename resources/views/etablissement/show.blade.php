@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="ml-4 mt-2 flex-shrink-0">
-                    @can('edit-etablissement', $etablissement)
+                    @can('update', $etablissement)
                     <span class="inline-flex rounded-md shadow-sm">
                         <a href="{{ route('user.etablissement.edit', $etablissement) }}" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700">
                             {{ __('Update') }}
