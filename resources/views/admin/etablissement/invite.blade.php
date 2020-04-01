@@ -84,7 +84,6 @@
                     <div class="px-4 py-4 bg-gray-50 border-t border-gray-200 text-right sm:px-4">
                         <form id="form_service_{{$etablissement->id}}" action="{{ route('etablissement.services.store') }}" method="POST">
                             @csrf
-
                             <div class="text-left">
                                 {{-- Display errors if any --}}
                                 @if ($errors->any() && $etablissement->id == session('etablissement_id') && session('form') != 'invite')
