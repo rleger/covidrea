@@ -11,22 +11,22 @@
                 <ul>
                     @foreach($etablissements as $key => $etablissement)
                     <li class="{{ $key ? 'border-t border-gray-200' : ''}}">
-                            <a href="{{ $etablissement->numberOfServices() > 0 ? route('etablissement.show', $etablissement) : '#' }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                            <a href="{{ $etablissement->number_of_services > 0 ? route('etablissement.show', $etablissement) : '#' }}" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                                 <div class="px-4 py-4 sm:px-6">
                                     <div class="flex flex-wrap items-center justify-between">
                                         <div class="pb-2 sm:pb-0 text-md sm:text-lg leading-6 font-medium text-indigo-600">
                                             {{ $etablissement->name }}
                                             <span class="text-sm sm:text-md text-gray-400">
-                                            ({{ $etablissement->numberOfServices() }} {{Str::plural('service', $etablissement->numberOfServices())}})
+                                            ({{ $etablissement->number_of_services }} {{Str::plural('service', $etablissement->number_of_services)}})
                                             </span>
                                         </div>
                                         <div class="sm:ml-2 flex-shrink-0 flex">
                                             <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                {{ $etablissement->numberOfAvailableBeds() }} disponibles
+                                                {{ $etablissement->number_of_available_beds }} disponibles
                                             </span>
 
                                             <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                                {{ $etablissement->numberOfSoonAvailableBeds() }} prochainement
+                                                {{ $etablissement->number_of_soon_available_beds }} prochainement
                                             </span>
                                         </div>
                                     </div>
@@ -46,8 +46,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-500 sm:mt-0">
-                                        <h1>{{ $etablissement->numberOfServices() }}</h1>
-                                            @if($etablissement->numberOfServices() > 0)
+                                            @if($etablissement->number_of_services > 0)
                                                 <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                                                 </svg>
