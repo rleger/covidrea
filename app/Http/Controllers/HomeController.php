@@ -38,11 +38,17 @@ class HomeController extends Controller
             $etablissement = auth()->user()->etablissement()->first();
         }
 
-        $places = $this->getPlaces($etablissement, $radius);
+        $places = $this->getPlaces($radius, $etablissement);
 
         return view('home', compact('places', 'etablissement'));
     }
 
+    /**
+     * Get places status in Etablissement within a radius
+     *
+     * @param int $radius
+     * @param Etablissement $etablissement
+     */
     private function getPlaces(int $radius, Etablissement $etablissement = null): array
     {
         if ($etablissement === null) {
