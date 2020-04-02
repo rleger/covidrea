@@ -51,4 +51,5 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('etablissement', 'AdminEtablissementController@index')->name('admin.etablissement.index');
     Route::get('etablissement/edit/{etablissement}', 'AdminEtablissementController@edit')->name('admin.etablissement.edit');
     Route::get('etablissement/{etablissement}/invite', 'AdminEtablissementController@invite')->name('admin.etablissement.invite');
+    Route::get('notifications/{type}', 'AdminNotificationController@index')->name('admin.notifications.index');
 });
