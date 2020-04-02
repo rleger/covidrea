@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Etablissement;
+use Illuminate\Http\Request;
 
 class AdminEtablissementController extends Controller
 {
     /**
-     * List of etablissements
+     * List of etablissements.
      */
     public function index()
     {
@@ -19,9 +19,7 @@ class AdminEtablissementController extends Controller
     }
 
     /**
-     * Invite new users
-     *
-     * @param Etablissement $etablissement
+     * Invite new users.
      */
     public function invite(Etablissement $etablissement)
     {
@@ -29,7 +27,7 @@ class AdminEtablissementController extends Controller
     }
 
     /**
-     * Create an etablissement
+     * Create an etablissement.
      */
     public function create()
     {
@@ -37,21 +35,40 @@ class AdminEtablissementController extends Controller
     }
 
     /**
-     * Stores an etablissement
+     * Stores an etablissement.
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        return back()->with([
-            'status' => "Etablissement ajouté",
+        $this->authorize('createEtablissement', auth()->user());
+
+        // Validation
+        $validatedData = $request->validate([
+            'name'       => 'required',
+            'type'       => 'required',
+            'adresse'    => 'required',
+            'codepostal' => 'required',
+            'ville'       => 'required|alpha_dash',
+            'pays'       => 'required',
+            'region'     => 'required',
+            'lat'        => 'required',
+            'long'       => 'required',
         ]);
+
+        // Model creation
+        $etablissement = Etablissement::create($validatedData);
+
+        // Back to the view
+        return back()
+            ->withInput()
+            ->with([
+                'status' => "Etablissement $etablissement->name crée",
+            ]);
     }
 
     /**
-     * Edit an etablissement
+     * Edit an etablissement.
      */
     public function edit()
     {
-        //
     }
 }
