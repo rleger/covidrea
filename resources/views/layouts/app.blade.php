@@ -32,12 +32,13 @@
 
             gtag('config', 'UA-161631692-1');
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUGV56p7Lh1xmAV6WZgmuZ9Dy9CnE6494"></script>
     </head>
-    <body>
-        <div id="app">
+    <body>        
+        <div id="app2">
             <div class="min-h-screen bg-gray-100">
                 @if(auth()->check())
-                    <nav @keydown.window.escape="open = false" class="bg-gray-800">
+                <nav @keydown.window.escape="open = false" class="bg-gray-800">
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="flex items-center justify-between h-16">
                                 <div class="flex items-center">
@@ -148,5 +149,6 @@
             </div>
             @include('partials.footer')
         </div>
+        
     </body>
 </html>
