@@ -25,6 +25,7 @@ class InviteNewUsersByEmail implements ShouldQueue
     protected $request;
 
     protected $emails;
+    protected $emailNames;
 
     protected $etablissement_id;
 
@@ -38,6 +39,7 @@ class InviteNewUsersByEmail implements ShouldQueue
         $this->request = $request;
 
         $this->emails = $request['emails'];
+        $this->emailNames = $request['emailNames'];
 
         $this->etablissement_id = $request['etablissement'];
     }
@@ -50,8 +52,8 @@ class InviteNewUsersByEmail implements ShouldQueue
     public function handle()
     {
         // Creating the Invite models
-        foreach($this->emails as $email) {
-            $this->createInviteModel($email);
+        foreach($this->emailNames as $email=>$name) {
+            $this->createInviteModel($email, $name);
         }
     }
 
@@ -60,7 +62,7 @@ class InviteNewUsersByEmail implements ShouldQueue
      *
      * @param mixed $email
      */
-    protected function createInviteModel($email)
+    protected function createInviteModel($email, $name = null)
     {
         //generate a random string using Laravel's str_random helper
         do {
@@ -71,6 +73,7 @@ class InviteNewUsersByEmail implements ShouldQueue
         //create a new invite record
         $invite = Invite::create([
             'email' => $email,
+            //'name' => $name, // @todo uncomment when name is added to the model
             'etablissement_id' => $this->etablissement_id,
             'token' => $token
         ]);

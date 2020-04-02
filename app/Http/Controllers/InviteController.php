@@ -39,13 +39,34 @@ class InviteController extends Controller
         $emails = $request->get('emails');
         $request->merge(['unprocessed_emails' => $emails]);
 
-        $emails = array_map('trim', explode(',', str_replace(';', ',', $emails)));
+        // Extract all emails with their name
+        // @see https://stackoverflow.com/questions/14010875/extract-email-and-name-with-regex#answer-48890442
+        \preg_match_all('/(?:("?(?:.*)"?)\s)?<(.*@.*)>|(.*@.*)/', $emails, $return, PREG_SET_ORDER, 0);
 
-        // Ne fonctionne pas
-        // preg_match_all("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/", $emails, $return);
-        // $emails = array_unique($return[0]);
+        // emailNames array will use unique email as index, and value will be name if found or null
+        $emailNames = [];
+        foreach($return as $r) {
+            $email = $name = null;
+            if (isset($r[3])) {
+                $email = $r[3];
+            } else {
+                $email = $r[2];
+                $name = trim(trim($r[1], '"'));
+            }
 
+            $email = trim(trim(trim(mb_strtolower($email)), ',;'));
+            if (!isset($emailNames[$email]) || !$emailNames[$email]) {
+                // If not set or without a name
+                $emailNames[$email] = $name;
+            }
+        }
+
+        // For now, just use email address, names aren't saved
+        $emails = array_keys($emailNames);
+
+        // Set both var to let check on simple emails var
         $request->merge(compact('emails'));
+        $request->merge(compact('emailNames'));
 
         // Allow to display error messages in the right place when there are more than 1 form
         $request->session()->flash('form', 'invite');
