@@ -33,44 +33,29 @@ class EtablissementController extends Controller
 
         // Etablissement est soit la liste des établissements des services de l'utilisateur
         // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
-       /* if (auth()->user()->services()->count()) {
+        if (auth()->user()->service()->count()) {
             // Position of the user's etablissement
-            $etablissement = auth()->user()->services()->first()->etablissement;
+            $etablissement = auth()->user()->service()->first()->etablissement;
         } else {
             $etablissement = auth()->user()->etablissement()->first();
         }
 
         $lat = $etablissement->lat;
-        $long = $etablissement->long;
-*/
-        // Construct the sqlDistance query
-       /* $sqlDistance = DB::raw('( 6371 * acos( cos( radians('.$lat.') )
-            * cos( radians( etablissements.lat ) )
-            * cos( radians( etablissements.long )
-            - radians('.$long.') )
-            + sin( radians('.$lat.') )
-            * sin( radians( etablissements.lat ) ) ) )');
-*/
-        // Construct the service count query
-        // SELECT *, (SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id`) AS cnt FROM etablissements
-       /* $sqlCount = DB::raw('( SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id` )');
+        $lon = $etablissement->long;
 
-        $sqlPlace = DB::raw('( SELECT sum(place_disponible) + sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )');
-*/
-        // Run the query
-       /* $paginator = DB::table('etablissements')
-            ->select('etablissements.*')
-            ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count, {$sqlPlace} as places")
-            // ->orderBy('service_count', 'DESC')
-            // ->orderBy('places', 'DESC')
-            ->orderBy('distance', 'ASC')
-            ->paginate(10);*/
-
-        // https://laracasts.com/discuss/channels/laravel/hydraterawfromquery-with-pagination
-        //$etablissements = Etablissement::hydrate($paginator->items());
-
-        $etablissements = Etablissement::with("service")->get(); //$this->repository->all();
-        //print_r($all);
+        $etablissements = Etablissement::hydrate(DB::select(
+            'select max(service.updated_at) as last_service_update, 
+                etablissements.*,
+                ( 6371 * acos( cos( radians(:lat) )
+                * cos( radians( etablissements.lat ) )
+                * cos( radians( etablissements.long )
+                - radians(:lon) )
+                + sin( radians(:lat_2) )
+                * sin( radians( etablissements.lat ) ) ) ) as distance
+                from etablissements
+                join services service on etablissements.id = service.etablissement_id
+                group by etablissements.id
+            ', ['lat' => $lat, 'lat_2' => $lat, 'lon' => $lon]));
 
         // return the view
         return view('etablissement.index', compact('etablissements'));
