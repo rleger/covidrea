@@ -33,9 +33,9 @@ class EtablissementController extends Controller
 
         // Etablissement est soit la liste des établissements des services de l'utilisateur
         // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
-        if (auth()->user()->service()->count()) {
+        if (auth()->user()->services()->count()) {
             // Position of the user's etablissement
-            $etablissement = auth()->user()->service()->first()->etablissement;
+            $etablissement = auth()->user()->services()->first()->etablissement;
         } else {
             $etablissement = auth()->user()->etablissement()->first();
         }
