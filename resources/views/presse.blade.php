@@ -1,5 +1,6 @@
 @extends('layouts.static')
 
+@section('meta_desc', 'Revue de presse de covid moi un lit. Ils parlent de nous.');
 @section('page_title', 'Revue de presse')
 
 @section('content')

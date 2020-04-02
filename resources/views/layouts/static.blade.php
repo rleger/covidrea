@@ -11,8 +11,9 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="@yield('meta_desc')" />
 
-        <title></title>
+        <title>@yield('page_title') - Covid moi un lit</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="{{ asset('css/inter.css') }}">
