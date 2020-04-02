@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Etablissement;
 
 class UserServiceController extends Controller
@@ -18,14 +16,12 @@ class UserServiceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        $this->middleware('checkuserhasahospital');
     }
 
     /**
      * Edit the number of available beds for the user.
      *
-     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit()
     {
@@ -41,7 +37,10 @@ class UserServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param Request $request
+     * @param Service $service
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Service $service)
     {
@@ -79,6 +78,8 @@ class UserServiceController extends Controller
      * Create a new service attached to an etablissement
      *
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request)
     {
