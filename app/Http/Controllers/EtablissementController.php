@@ -24,12 +24,10 @@ class EtablissementController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        // $etablissements = Etablissement::with('service')->withCount('service')->get();
-
         // Etablissement est soit la liste des établissements des services de l'utilisateur
         // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
         if (auth()->user()->services()->count()) {
@@ -48,20 +46,20 @@ class EtablissementController extends Controller
             * cos( radians( etablissements.long )
             - radians('.$long.') )
             + sin( radians('.$lat.') )
-            * sin( radians( etablissements.lat ) ) ) )');
+            * sin( radians( etablissements.lat ) ) ) ) AS distance');
 
         // Construct the service count query
         // SELECT *, (SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id`) AS cnt FROM etablissements
-        $sqlCount = DB::raw('( SELECT count(*) FROM services WHERE services.etablissement_id=etablissements.`id` )');
+        $sqlServiceCount = DB::raw('count(services.id) AS service_count');
 
-        $sqlPlace = DB::raw('( SELECT sum(place_disponible) + sum(place_bientot_disponible) FROM services WHERE services.etablissement_id=etablissements.`id` )');
+        $sqlPlace = DB::raw('sum(place_disponible) AS place_disponible, sum(place_bientot_disponible) AS place_bientot_disponible');
+        $sqlUpdatedAt = DB::raw('(SELECT services.updated_at FROM services WHERE services.etablissement_id = etablissements.id ORDER BY updated_at DESC LIMIT 1) AS service_updated_at');
 
         // Run the query
         $paginator = DB::table('etablissements')
-            ->select('etablissements.*')
-            ->selectRaw("{$sqlDistance} AS distance, {$sqlCount} as service_count, {$sqlPlace} as places")
-            // ->orderBy('service_count', 'DESC')
-            // ->orderBy('places', 'DESC')
+            ->selectRaw(implode(', ', ['etablissements.*', $sqlDistance, $sqlServiceCount, $sqlPlace, $sqlUpdatedAt]))
+            ->leftJoin('services', 'services.etablissement_id', '=', 'etablissements.id')
+            ->groupBy('etablissements.id')
             ->orderBy('distance', 'ASC')
             ->paginate(10);
 
