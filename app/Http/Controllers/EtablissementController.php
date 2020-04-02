@@ -45,7 +45,10 @@ class EtablissementController extends Controller
 
         $etablissements = Etablissement::hydrate(DB::select(
             'select max(service.updated_at) as last_service_update, 
+                count(service.etablissement_id)  as number_of_services,
                 etablissements.*,
+                sum(service.place_disponible) as number_of_available_beds ,
+                sum(service.place_bientot_disponible) as number_of_soon_available_beds,         
                 ( 6371 * acos( cos( radians(:lat) )
                 * cos( radians( etablissements.lat ) )
                 * cos( radians( etablissements.long )
