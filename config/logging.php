@@ -37,7 +37,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily', 'flare'],
             'ignore_exceptions' => false,
         ],
 
@@ -59,7 +59,11 @@ return [
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
             'username' => 'Laravel Log',
             'emoji' => ':boom:',
-            'level' => 'critical',
+            'level' => env('LOG_SLACK_LEVEL', 'critical'),
+        ],
+
+        'flare' => [
+            'driver' => 'flare',
         ],
 
         'papertrail' => [

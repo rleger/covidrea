@@ -75,4 +75,12 @@ class User extends Authenticatable implements Auditable
     {
         return (bool) $this->etablissement->count();
     }
+
+    /**
+     * Is the user an daministrator
+     */
+    public function isAdmin()
+    {
+        return (bool) ($this->role === 'admin');
+    }
 }

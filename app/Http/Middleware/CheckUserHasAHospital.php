@@ -16,6 +16,9 @@ class CheckUserHasAHospital
      */
     public function handle($request, Closure $next)
     {
+        if(!auth()->check()) {
+            return redirect('/');
+        }
         if (!auth()->user()->services()->exists()) {
             Log::error("User " . auth()->user()->id . " has no service and cannot go further");
             // Logout

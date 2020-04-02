@@ -2,15 +2,15 @@
 
 namespace App\Mail;
 
+use App\Prospect;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Prospect;
 
 class ProspectInvite extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $prospect;
 
@@ -24,7 +24,6 @@ class ProspectInvite extends Mailable
         $this->prospect = $prospect;
     }
 
-
     /**
      * Build the message.
      *
@@ -32,12 +31,22 @@ class ProspectInvite extends Mailable
      */
     public function build()
     {
-
         $etablissement_name = $this->prospect->etab_name;
 
-        $subject = "Invitation de $etablissement_name à rejoindre Covid moi un lit";
+        $mailgunVariables =  json_encode([
+            'type' => 'prospect',
+            'name' => 'initial invite',
+            'id' => $this->prospect->id,
+        ]);
 
-        return $this->from(config('covidrea.email.default_sender'))
+        $subject = "Gestion de lits de réanimation  ($etablissement_name)";
+
+        $this->withSwiftMessage(function ($message) use ($mailgunVariables) {
+            $message->getHeaders()
+                    ->addTextHeader('X-Mailgun-Variables', $mailgunVariables);
+        });
+
+        return $this->from(config('covidrea.email.default_sender'), config('covidrea.email.default_sender_name'))
                     ->subject($subject)
                     ->markdown('emails.prospect');
     }

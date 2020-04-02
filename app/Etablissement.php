@@ -12,7 +12,7 @@ class Etablissement extends Model implements Auditable
     /**
      * Guarded properties.
      *
-     * @var mixed
+     * @var array
      */
     protected $guarded = [];
 
@@ -22,6 +22,14 @@ class Etablissement extends Model implements Auditable
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * L'établissement a un seul prospect de REFERENCE (potentiellement aucun).
+     */
+    public function prospect()
+    {
+        return $this->belongsTo(Prospect::class);
     }
 
     /**
@@ -57,7 +65,7 @@ class Etablissement extends Model implements Auditable
      * Scope is within distance (km).
      *
      * @param mixed $query
-     * @param mixed $coordinates
+     * @param array $coordinates
      * @param int   $radius
      */
     public function scopeIsWithinMaxDistance($query, $coordinates, $radius = 5)
