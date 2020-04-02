@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 // Welcome page
 Route::view('/', 'welcome');
 
-// Press page
-Route::view('/presse', 'presse');
-
 // Register routes without the baked in register fonctionnalities
 Auth::routes(['register' => false]);
 
