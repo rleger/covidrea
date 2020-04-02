@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Mail\InviteCreated;
 use App\Service;
 use App\Etablissement;
+use App\Mail\InviteCreated;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

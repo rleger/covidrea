@@ -29,6 +29,25 @@ class AdminEtablissementController extends Controller
     }
 
     /**
+     * Create an etablissement
+     */
+    public function create()
+    {
+        return view('admin.etablissement.create');
+    }
+
+    /**
+     * Stores an etablissement
+     */
+    public function store(Request $request)
+    {
+        dd($request->all());
+        return back()->with([
+            'status' => "Etablissement ajouté",
+        ]);
+    }
+
+    /**
      * Edit an etablissement
      */
     public function edit()
