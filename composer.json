@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "doctrine/dbal": "^2.10",
-        "facade/ignition": "^2.0.2",
+        "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "genealabs/laravel-caffeine": "^7.0",
