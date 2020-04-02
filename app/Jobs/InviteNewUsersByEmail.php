@@ -107,7 +107,7 @@ class InviteNewUsersByEmail implements ShouldQueue
     protected function sendConfirmationEmail()
     {
         // send the email
-        $user = Etablissement::find($this->etablissement_id)->user();
+        $user = Etablissement::find($this->etablissement_id)->user()->first();
         Mail::to($user->email)->send(new InvitationConfirmation($this->etablissement_id, $this->emails));
     }
 }
