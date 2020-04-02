@@ -61,6 +61,11 @@ class Etablissement extends Model implements Auditable
       }, 0);
     }
 
+    public function numberOfServices(): int 
+    {
+        return count($this->service->all());
+    }
+
     /**
      * Scope is within distance (km).
      *
