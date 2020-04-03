@@ -9,6 +9,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\ProspectNotification;
 use App\InviteNotification;
+use App\Prospect;
+use App\Invite;
 
 class RecordMailgunWebhook implements ShouldQueue
 {
@@ -35,33 +37,44 @@ class RecordMailgunWebhook implements ShouldQueue
     {
         // If there is no type var defined in the mail don't do anything
         if(!in_array('type', $this->request['event-data']['user-variables'])) {
+            \Log::info("From RecordMailgunWebhook missing type information");
             return;
         }
 
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
 
-
-        // define the recorders
+        // Define the recorders
         $recorder = [
             'prospect' => ProspectNotification::class,
             'invite'   => InviteNotification::class,
         ];
+        $objectClasses = [
+            'prospect' => Prospect::class,
+            'invite'   => Invite::class,
+        ];
 
+        // Find the handler
         if(!in_array($type, $recorder)) {
             \Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
             return;
         }
-
-        // Find a handler
         $handler = $recorder[$type];
+        $objectClass = $objectClasses[$type];
 
-        // name of id
+        // foreign key
         $name_id = $type.'_id';
+        $id = $this->request['event-data']['user-variables']['id'];
+
+        // Check the notification still exists in DB
+        if (!$objectClass::find($id)) {
+            \Log::info("From RecordMailgunWebhook no notification corresponding to object $type id $id");
+            return;
+        }
 
         // Create the object
         $handler::firstOrCreate([
-            $name_id   => $this->request['event-data']['user-variables']['id'],
+            $name_id   => $id,
             'type'     => 'email',
             'name'     => $this->request['event-data']['user-variables']['name'],
             'feedback' => $this->request['event-data']['event'],
