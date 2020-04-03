@@ -2,8 +2,6 @@
 
 namespace App\Mail;
 
-use App\Invite;
-use App\Etablissement;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -35,12 +33,12 @@ class InvitationConfirmation extends Mailable
     public function build()
     {
         $mailgunVariables = json_encode([
-            'type' => 'invitation_confirmation',
-            'name' => 'invitation confirmation',
+            'type' => 'prospect',
+            'name' => 'recap invite emails',
             'id'   => $this->etablissement_id,
         ]);
 
-        $subject = "Vos invitations à rejoindre COVID moi un lit";
+        $subject = 'Vos invitations à rejoindre COVID moi un lit';
 
         $this->withSwiftMessage(function ($message) use ($mailgunVariables) {
             $message->getHeaders()

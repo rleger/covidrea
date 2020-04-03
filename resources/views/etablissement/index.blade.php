@@ -27,11 +27,11 @@
                                             </div>
                                             <div class="sm:ml-2 flex-shrink-0 flex">
                                                 <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    {{ $etablissement->service()->sum('place_disponible') }} disponibles
+                                                    {{ $etablissement->place_disponible }} disponibles
                                                 </span>
 
                                                 <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                                    {{ $etablissement->service()->sum('place_bientot_disponible') }} prochainement
+                                                    {{ $etablissement->place_bientot_disponible }} prochainement
                                                 </span>
 
                                             </div>
@@ -61,7 +61,7 @@
                                                     </span>
                                                     <span>
                                                         {{-- <time datetime="2020-01-07">January 7, 2020</time> --}}
-                                                        {{ $etablissement->service()->orderBy('updated_at', 'DESC')->first()->updated_at->diffForHumans() }}
+                                                        {{ Carbon\Carbon::parse($etablissement->updated_at)->diffForHumans() }}
                                                     </span>
                                                 @endif
                                             </div>
