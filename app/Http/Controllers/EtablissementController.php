@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Etablissement;
+use Illuminate\Contracts\Pagination\Paginator as PaginatorContract;
+use Illuminate\Pagination\Paginator;
+
 
 class EtablissementController extends Controller
 {
@@ -15,10 +18,6 @@ class EtablissementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        // The user needs either to have a hospital or to have services
-        // (that are linked to hospitals)
-        $this->middleware('checkuserhasahospitalorservice');
     }
 
     /**
@@ -37,11 +36,34 @@ class EtablissementController extends Controller
             $etablissement = auth()->user()->etablissement()->first();
         }
 
+        $paginator = $this->getPaginator($etablissement);
+
+        // https://laracasts.com/discuss/channels/laravel/hydraterawfromquery-with-pagination
+        $etablissements = Etablissement::hydrate($paginator->items());
+
+        // return the view
+        return view('etablissement.index', compact('etablissements', 'paginator'));
+    }
+
+    /**
+     * Show etablissement.
+     */
+    public function show(Etablissement $etablissement)
+    {
+        return view('etablissement.show', compact('etablissement'));
+    }
+
+    private function getPaginator(Etablissement $etablissement = null): PaginatorContract
+    {
+        if ($etablissement === null) {
+            return new Paginator([], 0);
+        }
+
         $lat = $etablissement->lat;
         $long = $etablissement->long;
 
         // Construct the sqlDistance query
-        $sqlDistance = DB::raw('( 6371 * acos( cos( radians('.$lat.') )
+        $sqlDistance = DB::raw('( 6371 * acos( cos( radians(' . $lat . ') )
             * cos( radians( etablissements.lat ) )
             * cos( radians( etablissements.long )
             - radians('.$long.') )
@@ -63,18 +85,6 @@ class EtablissementController extends Controller
             ->orderBy('distance', 'ASC')
             ->paginate(10);
 
-        // https://laracasts.com/discuss/channels/laravel/hydraterawfromquery-with-pagination
-        $etablissements = Etablissement::hydrate($paginator->items());
-
-        // return the view
-        return view('etablissement.index', compact('etablissements', 'paginator'));
-    }
-
-    /**
-     * Show etablissement.
-     */
-    public function show(Etablissement $etablissement)
-    {
-        return view('etablissement.show', compact('etablissement'));
+        return $paginator;
     }
 }
