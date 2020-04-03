@@ -82,7 +82,7 @@
                                         <option value="suisse">Suisse</option>
                                         <option value="allemagne">Allemagne</option>
                                         <option value="italie">Italie</option>
-                                        <option value="Espagne">Italie</option>
+                                        <option value="espagne">Espagne</option>
                                         <option value="angleterre">Angleterre</option>
                                     </select>
                                 </div>
