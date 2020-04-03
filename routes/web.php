@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 // Welcome page
 Route::view('/', 'welcome');
 
+// Press page
+Route::view('/presse', 'presse');
+
 // Register routes without the baked in register fonctionnalities
 Auth::routes(['register' => false]);
 
@@ -49,7 +52,9 @@ Route::post('register', 'RegisterController@process')->name('register.process');
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::redirect('/', '/admin/etablissement')->name('admin.index');
     Route::get('etablissement', 'AdminEtablissementController@index')->name('admin.etablissement.index');
+    Route::get('etablissement/create', 'AdminEtablissementController@create')->name('admin.etablissement.create');
     Route::get('etablissement/edit/{etablissement}', 'AdminEtablissementController@edit')->name('admin.etablissement.edit');
+    Route::post('etablissement/store', 'AdminEtablissementController@store')->name('admin.etablissement.store');
     Route::get('etablissement/{etablissement}/invite', 'AdminEtablissementController@invite')->name('admin.etablissement.invite');
     Route::get('notifications/{type}', 'AdminNotificationController@index')->name('admin.notifications.index');
 });

@@ -33,6 +33,11 @@ class RecordMailgunWebhook implements ShouldQueue
      */
     public function handle()
     {
+        // If there is no type var defined in the mail don't do anything
+        if(!in_array('type', $this->request['event-data']['user-variables'])) {
+            return;
+        }
+
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
 
@@ -42,6 +47,11 @@ class RecordMailgunWebhook implements ShouldQueue
             'prospect' => ProspectNotification::class,
             'invite'   => InviteNotification::class,
         ];
+
+        if(!in_array($type, $recorder)) {
+            \Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
+            return;
+        }
 
         // Find a handler
         $handler = $recorder[$type];

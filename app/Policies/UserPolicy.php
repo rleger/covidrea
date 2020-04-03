@@ -28,7 +28,22 @@ class UserPolicy
         return $user->isAdmin();
     }
 
+    /**
+     * Only a user with an etablissement can invite others
+     *
+     * @param User $user
+     */
     public function invite(User $user) {
         return $user->hasEtablissement();
+    }
+
+    /**
+     * Only an admin can create an etablissement
+     *
+     * @param User $user
+     */
+    public function createEtablissement(User $user)
+    {
+        return $user->isAdmin();
     }
 }

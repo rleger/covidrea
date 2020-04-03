@@ -246,7 +246,7 @@
         <div class="px-6 py-6 bg-indigo-700 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
             <div class="xl:w-0 xl:flex-1">
                 <h2 class="text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-3xl sm:leading-9">
-                Manifestez-nous votre intérêt
+                <a name="inscription">Manifestez-nous votre intérêt</a>
                 </h2>
                 <p class="mt-3 max-w-3xl text-lg font-bold leading-6 text-indigo-200">
                 Nous débutons en Bourgogne Franche Comté mais nous n'allons pas nous arrêter là.
