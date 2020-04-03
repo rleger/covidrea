@@ -56,4 +56,5 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('etablissement/edit/{etablissement}', 'AdminEtablissementController@edit')->name('admin.etablissement.edit');
     Route::post('etablissement/store', 'AdminEtablissementController@store')->name('admin.etablissement.store');
     Route::get('etablissement/{etablissement}/invite', 'AdminEtablissementController@invite')->name('admin.etablissement.invite');
+    Route::get('notifications/{type}', 'AdminNotificationController@index')->name('admin.notifications.index');
 });
