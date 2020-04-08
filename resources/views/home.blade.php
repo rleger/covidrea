@@ -28,24 +28,24 @@
                                 {{-- </select> --}}
                             {{-- </div> --}}
                             <div class="hidden sm:block">
-                                <nav class="flex items-center justify-center text-center bg-white rounded-full border border-indigo-200 px-4 py-2 mt-2 text-gray-500">
+                                <nav class="flex items-center justify-center text-center bg-white rounded-full border border-indigo-300 px-4 py-2 mt-2 text-gray-500">
                                     <span>
                                         Dans un rayon de
                                     </span>
-                                    <a href="{{ route('home', ['radius' => 20]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 20 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-gray-500 hover:text-gray-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
+                                    <a href="{{ route('home', ['radius' => 20]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 20 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-indigo-500 hover:text-indigo-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
                                         20 km
                                     </a>
-                                    <a href="{{ route('home', ['radius' => 80]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 80 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-gray-500 hover:text-gray-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
+                                    <a href="{{ route('home', ['radius' => 80]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 80 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-indigo-500 hover:text-indigo-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
                                         80 km
                                     </a>
-                                    <a href="{{ route('home', ['radius' => 150]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 150 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-gray-500 hover:text-gray-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
+                                    <a href="{{ route('home', ['radius' => 150]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 150 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-indigo-500 hover:text-indigo-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
                                         150 km
                                     </a>
-                                    <a href="{{ route('home', ['radius' => 999999]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 999999 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-gray-500 hover:text-gray-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
+                                    <a href="{{ route('home', ['radius' => 999999]) }}" class="ml-4 px-3 py-2 font-bold text-sm leading-5 rounded-md {{ Request::input('radius', 20) == 999999 ? 'text-indigo-700 bg-indigo-100 focus:outline-none focus:text-indigo-800 focus:bg-indigo-200' : 'text-indigo-500 hover:text-indigo-700 focus:outline-none focus:text-indigo-600 focus:bg-indigo-50' }}">
                                         99999+ km
                                     </a>
                                     <span>
-                                        &nbsp;autour de {{ $etablissement->ville }}
+                                        &nbsp;autour de {{ ucfirst($etablissement->ville) }}
                                     </span>
                                 </nav>
                             </div>
