@@ -2,17 +2,20 @@
 
 namespace App\Jobs;
 
+use App\InviteNotification;
+use App\ProspectNotification;
 use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use App\ProspectNotification;
-use App\InviteNotification;
 
 class RecordMailgunWebhook implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $request;
 
@@ -34,13 +37,12 @@ class RecordMailgunWebhook implements ShouldQueue
     public function handle()
     {
         // If there is no type var defined in the mail don't do anything
-        if(!in_array('type', $this->request['event-data']['user-variables'])) {
+        if (!in_array('type', $this->request['event-data']['user-variables'])) {
             return;
         }
 
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
-
 
         // define the recorders
         $recorder = [
@@ -48,8 +50,9 @@ class RecordMailgunWebhook implements ShouldQueue
             'invite'   => InviteNotification::class,
         ];
 
-        if(!in_array($type, $recorder)) {
+        if (!in_array($type, $recorder)) {
             \Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
+
             return;
         }
 

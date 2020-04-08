@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\RecordMailgunWebhook;
 use Illuminate\Http\Request;
+use App\Jobs\RecordMailgunWebhook;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class WebhookMailgunController extends Controller
