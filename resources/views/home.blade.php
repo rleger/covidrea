@@ -45,7 +45,7 @@
                                         99999+ km
                                     </a>
                                     <span>
-                                        &nbsp;autour de {{ $etablissement->ville }}
+                                        &nbsp;autour de {{ ucfirst($etablissement->ville) }}
                                     </span>
                                 </nav>
                             </div>
