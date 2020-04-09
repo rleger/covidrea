@@ -8,12 +8,15 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class WebhookMailgunController extends Controller
 {
+    /**
+     * Record a new webhook.
+     */
     public function index(Request $request)
     {
         // \Log::info('request : '.print_r($request->all(), true));
         $request = $request->all();
 
-        //verify mailgun token
+        // Verify mailgun token
         if (!$this->isFromMailgun($request['signature'])) {
             // \Log::info('auth failed');
             throw new UnauthorizedHttpException('Mailgun webhook failed !');

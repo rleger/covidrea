@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Log;
 use App\InviteNotification;
 use App\ProspectNotification;
 use Illuminate\Bus\Queueable;
@@ -38,11 +39,14 @@ class RecordMailgunWebhook implements ShouldQueue
     {
         // If there is no type var defined in the mail don't do anything
         if (!in_array('type', $this->request['event-data']['user-variables'])) {
+            Log::info("If there is no type var defined in the mail don't do anything");
+
             return;
         }
 
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
+        Log::info("type: $type");
 
         // define the recorders
         $recorder = [
@@ -58,16 +62,18 @@ class RecordMailgunWebhook implements ShouldQueue
 
         // Find a handler
         $handler = $recorder[$type];
+        Log::info("handler : $handler");
 
         // name of id
         $name_id = $type.'_id';
 
         // Create the object
-        $handler::firstOrCreate([
+        $recorded = $handler::firstOrCreate([
             $name_id   => $this->request['event-data']['user-variables']['id'],
             'type'     => 'email',
             'name'     => $this->request['event-data']['user-variables']['name'],
             'feedback' => $this->request['event-data']['event'],
         ]);
+        Log::info("created" . print_r($recorded, true));
     }
 }
