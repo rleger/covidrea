@@ -55,7 +55,7 @@ class RecordMailgunWebhook implements ShouldQueue
         ];
 
         if (!in_array($type, $recorder)) {
-            \Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
+            Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
 
             return;
         }
