@@ -49,7 +49,7 @@ Route::post('finalize', 'InviteController@finalize')->name('invite.finalize');
 Route::get('register/{prospect}', 'RegisterController@register')->name('register')->middleware('signed');
 Route::post('register', 'RegisterController@process')->name('register.process');
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function() {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::redirect('/', '/admin/etablissement')->name('admin.index');
     Route::get('etablissement', 'AdminEtablissementController@index')->name('admin.etablissement.index');
     Route::get('etablissement/create', 'AdminEtablissementController@create')->name('admin.etablissement.create');
