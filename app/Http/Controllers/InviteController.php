@@ -142,6 +142,6 @@ class InviteController extends Controller
         auth()->login($user);
 
         // return the view
-        return redirect()->route('home');
+        return redirect()->route('user.services.edit');
     }
 }
