@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\EmailWasSentToInvite;
-use App\InviteNotification;
 use Log;
+use App\InviteNotification;
+use App\Events\EmailWasSentToInvite;
 
 class RecordEmailToInvite
 {
@@ -26,9 +26,10 @@ class RecordEmailToInvite
     {
         // Record a invite notificiation
         InviteNotification::create([
-            'type'        => 'email',
-            'name'        => 'initial invite',
-            'invite_id'   => $event->invite->id,
+            'type'            => 'email',
+            'name'            => 'initial invite',
+            'feedback'        => 'sent',
+            'invite_id'       => $event->invite->id,
         ]);
 
         Log::info('Email sent to : '.$event->invite->user_email);
