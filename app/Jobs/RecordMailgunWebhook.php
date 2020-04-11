@@ -55,7 +55,7 @@ class RecordMailgunWebhook implements ShouldQueue
     protected function checkHookIsValid()
     {
         // Verify mailgun token
-        if (!$this->isFromMailgun($request['signature'])) {
+        if (!$this->isFromMailgun($this->request['signature'])) {
             Log::notice('[incoming MG webhook] : invalid signature !');
 
             return false;
