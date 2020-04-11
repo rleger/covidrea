@@ -38,12 +38,12 @@ class RecordMailgunWebhook implements ShouldQueue
     public function handle()
     {
         // If there is no type var defined in the mail don't do anything
-        if (!in_array('type', $this->request['event-data']['user-variables'])) {
-            Log::info("If there is no type var defined in the mail don't do anything");
-            Log::info(print_r($this->request, true));
+        // if (!in_array('type', $this->request['event-data']['user-variables'])) {
+            // Log::info("If there is no type var defined in the mail don't do anything");
+            // Log::info(print_r($this->request, true));
 
-            return;
-        }
+            // return;
+        // }
 
         // Get the type
         $type = $this->request['event-data']['user-variables']['type'];
