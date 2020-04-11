@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRppsToInvitesTable extends Migration
+class AddRppsNomToInvitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddRppsToInvitesTable extends Migration
     {
         Schema::table('invites', function (Blueprint $table) {
             $table->string('rpps')->after('id')->nullable();
+            $table->string('nom')->after('id')->nullable();
         });
     }
 
@@ -28,6 +29,9 @@ class AddRppsToInvitesTable extends Migration
         Schema::table('invites', function (Blueprint $table) {
             if (Schema::hasColumn('invites', 'rpps')) {
                 $table->dropColumn(['rpps']);
+            }
+            if (Schema::hasColumn('invites', 'nom')) {
+                $table->dropColumn(['nom']);
             }
         });
     }
