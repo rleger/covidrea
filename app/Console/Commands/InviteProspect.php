@@ -43,7 +43,7 @@ class InviteProspect extends Command
 
         $nb_emails_sent = 0;
 
-        $prospects->each(function($prospect) use (&$i) {
+        $prospects->each(function($prospect) use (&$nb_emails_sent) {
             // Send invite email
             MailInviteProspect::dispatch($prospect);
 
