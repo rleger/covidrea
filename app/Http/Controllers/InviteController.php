@@ -90,11 +90,16 @@ class InviteController extends Controller
         // Look up the invite
         if (!$invite = Invite::where('token', $token)->first()) {
             //if the invite doesn't exist do something more graceful than this
-            abort(404);
+            abort(403, "Cette invitation n'existe pas");
+        }
+
+        // If invite is not active do not allow the invitation to go through
+        if (!$invite->active) {
+            abort(403, "Cette invitation a déjà été utilisée");
         }
 
         // The user will fill in the missing fields (name, etc..)
-        return view('invite.finalize', compact('etablissement', 'services', 'token'));
+        return view('invite.finalize', compact('invite', 'etablissement', 'services', 'token'));
     }
 
     /**
@@ -106,7 +111,8 @@ class InviteController extends Controller
 
         // Validate the request
         Validator::make($request->all(), [
-            'name'                           => 'required|alpha_dash|max:30',
+            'nom'                            => 'required|alpha_spaces|max:50',
+            'rpps'                           => 'required|integer|exists:professionnels|unique:users',
             'email'                          => 'required|email:rfc,dns|unique:users,email',
             'phone_mobile'                   => 'phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
@@ -118,7 +124,8 @@ class InviteController extends Controller
 
         // Create the user
         $user = User::create([
-            'name'              => ucfirst(strtolower($inputs['name'])),
+            'name'              => ucfirst(strtolower($inputs['nom'])),
+            'rpps'              => $inputs['rpps'],
             'email'             => strtolower($inputs['email']),
             'phone_mobile'      => $inputs['phone_mobile'],
             'password'          => bcrypt($inputs['password']),

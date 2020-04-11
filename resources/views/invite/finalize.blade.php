@@ -45,12 +45,23 @@
                             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <input name="etablissement_id" id="etablissement_id" type="hidden" value="{{ $etablissement->id }}" />
                                 <input name="token" id="token" type="hidden" value="{{ $token }}" />
-                                <label for="name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+                                <label for="nom" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
                                     Nom
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-xs rounded-md shadow-sm">
-                                        <input name="name" id="name" autocomplete="name" maxlength=30 value="{{ old('name') }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" autofocus />
+                                        <input name="nom" id="nom" autocomplete="name" maxlength=50 value="{{ old('nom') ? old('nom') : ucfirst(strtolower($invite->nom)) }}" class="@error('nom') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" autofocus />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                <label for="rpps" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+                                    RPPS
+                                </label>
+                                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                    <div class="max-w-xs rounded-md shadow-sm">
+                                        <input name="rpps" id="rpps" type="number" maxlength=15 value="{{ old('rpps') ? old('rpps') : $invite->rpps }}" class="@error('rpps') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" autofocus />
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +72,7 @@
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-xs rounded-md shadow-sm">
-                                        <input name="email" type="email" id="email" autocomplete="email" value="{{ old('email') ?? app('request')->input('email') }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                        <input name="email" type="email" id="email" autocomplete="email" value="{{ old('email') ?? app('request')->input('email') }}" class="@error('email') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +83,7 @@
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-xs rounded-md shadow-sm">
-                                        <input name="phone_mobile" type="tel" autocomplete="tel" value="{{ old('phone_mobile') }}" id="phone_mobile" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                        <input name="phone_mobile" type="tel" autocomplete="tel" value="{{ old('phone_mobile') }}" id="phone_mobile" class="@error('phone_mobile') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     <p class="mt-2 text-sm text-gray-500">Ne sera PAS rendu public mais uniquement pour vous contacter par SMS en cas de nécessité.</p>
                                 </div>
@@ -84,7 +95,7 @@
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-lg rounded-md shadow-sm">
-                                        <input name="password" id="password" type="password" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                        <input name="password" id="password" type="password" class="@error('password') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     <p class="mt-2 text-sm text-gray-500">Le mot de passe doit comporter 8 caractères au minimum</p>
                                 </div>
@@ -96,7 +107,7 @@
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-lg rounded-md shadow-sm">
-                                        <input id="password_confirm" name="password_confirm" type="password" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                        <input id="password_confirm" name="password_confirm" type="password" class="@error('password_confirm') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +135,7 @@
                                             <div class="max-w-lg">
                                                 @foreach($services as $service_key => $service)
                                                     <div class="{{ !$service_key ? 'relative flex items-start' : ''}} mt-4">
-                                                        <div class="relative flex items-start">
+                                                        <div class=" relative flex items-start">
                                                             <div class="absolute flex items-center h-5">
                                                                 <input id="candidates" name="service[{{$service->id}}]" type="checkbox"  class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
                                                             </div>
