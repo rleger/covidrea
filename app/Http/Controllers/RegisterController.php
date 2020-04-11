@@ -10,20 +10,27 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function __construct()
-    {
-    }
-
+    /**
+     * Register a new Prospect.
+     */
     public function register(Prospect $prospect)
     {
+        if (!$prospect->active) {
+            abort(403, "Cette invitation n'est plus active");
+        }
+
         return view('register.form', compact('prospect'));
     }
 
+    /**
+     * Process new prospect registration.
+     */
     public function process(Request $request)
     {
         Validator::make($request->all(), [
             'etab_name'                      => 'required|alpha_spaces|max:80',
             'etab_type'                      => 'required',
+            'etab_finess'                    => 'required',
             'etab_adresse'                   => 'required',
             'etab_codepostal'                => 'required',
             'etab_ville'                     => 'required',
@@ -35,7 +42,7 @@ class RegisterController extends Controller
             'user_phone'                     => 'required|phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
             'password_confirm'               => 'required',
-            'prospect'                       => 'required'
+            'prospect'                       => 'required',
         ])->validate();
 
         $prospectId = $request->get('prospect');
@@ -55,6 +62,7 @@ class RegisterController extends Controller
             ['prospect_id' => $prospectId],
             [
                 'name'       => $request->get('etab_name'),
+                'finess'     => $request->get('etab_finess'),
                 'type'       => $request->get('etab_type'),
                 'adresse'    => $request->get('etab_adresse'),
                 'codepostal' => $request->get('etab_codepostal'),
@@ -62,7 +70,7 @@ class RegisterController extends Controller
                 'region'     => $request->get('etab_region'),
                 'long'       => $request->get('etab_long'),
                 'lat'        => $request->get('etab_lat'),
-                'user_id'    => $user->id
+                'user_id'    => $user->id,
             ]
         );
 

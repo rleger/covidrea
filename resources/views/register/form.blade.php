@@ -55,15 +55,19 @@
                             @endif
 
                             <div class="grid grid-cols-6 gap-6">
-                                <div class="col-span-6 sm:col-span-3">
+                                <div class="col-span-6 sm:col-span-4">
                                     <label for="etab_name" class="block text-sm font-medium leading-5 text-gray-700">Nom de l'établissement</label>
                                     <input id="etab_name" name="etab_name" value="{{ $prospect->etab_name }}" readonly class="disabled:opacity-75 bg-gray-100 text-gray-500 mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                 </div>
 
-
-                                <div class="col-span-6 sm:col-span-3">
+                                <div class="col-span-6 sm:col-span-2">
                                     <label for="etab_region" class="block text-sm font-medium leading-5 text-gray-700">Country / Region</label>
                                     <input id="etab_region" name="etab_region" value="{{ $prospect->etab_region }}" readonly class="disabled:opacity-75 bg-gray-100 text-gray-500 mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm bg-gray-100 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-4">
+                                    <label for="etab_finess" class="block text-sm font-medium leading-5 text-gray-700">Finess</label>
+                                    <input id="etab_finess" name="etab_finess" value="{{ $prospect->etab_finess }}" readonly class="disabled:opacity-75 bg-gray-100 text-gray-500 mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                 </div>
 
 
