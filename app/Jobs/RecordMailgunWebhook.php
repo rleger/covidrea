@@ -148,6 +148,8 @@ class RecordMailgunWebhook implements ShouldQueue
         // Notification Handler
         $handler = $this->resolveNotificationClass();
 
+        $type = $this->request['event-data']['user-variables']['type'];
+
         // name of id
         $name_id = $type.'_id';
 
