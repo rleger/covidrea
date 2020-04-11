@@ -11,8 +11,9 @@ return [
     | the validator class. Some of these rules have multiple versions such
     | as the size rules. Feel free to tweak each of these messages.
     |
-    */
+     */
 
+    'alpha_spaces'    => 'Le champ :attribute ne peut contenir que des lettres, tirets et espaces',
     'accepted'        => 'Le champ :attribute doit être accepté.',
     'active_url'      => "Le champ :attribute n'est pas une URL valide.",
     'after'           => 'Le champ :attribute doit être une date postérieure au :date.',
@@ -137,7 +138,7 @@ return [
     | convention "attribute.rule" to name the lines. This makes it quick to
     | specify a specific custom language line for a given attribute rule.
     |
-    */
+     */
 
     'custom' => [
         'attribute-name' => [
@@ -154,7 +155,7 @@ return [
     | with something more reader friendly such as E-Mail Address instead
     | of "email". This simply helps us make messages a little cleaner.
     |
-    */
+     */
 
     'attributes' => [
         'place_totales'                             => 'places totales',
@@ -191,5 +192,17 @@ return [
         'time'                                      => 'heure',
         'available'                                 => 'disponible',
         'size'                                      => 'taille',
+        'etab_name'                      => "nom d'établissemnet",
+        'etab_type'                      => "type d'établissement",
+        'etab_adresse'                   => "adresse",
+        'etab_codepostal'                => "code postal",
+        'etab_ville'                     => 'ville',
+        'etab_region'                    => 'région',
+        'etab_long'                      => 'longitude',
+        'etab_lat'                       => 'latitude',
+        'user_name'                      => "nom",
+        'user_email'                     => "email",
+        'user_phone'                     => "téléphone",
+
     ],
 ];
