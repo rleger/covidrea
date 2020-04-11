@@ -2,15 +2,15 @@
 
 namespace App\Jobs;
 
-use App\Etablissement;
 use Str;
 use Mail;
+use App\User;
 use App\Invite;
+use App\Etablissement;
 use App\Mail\InviteCreated;
 use Illuminate\Bus\Queueable;
 use App\Events\EmailWasSentToInvite;
 use App\Mail\InvitationConfirmation;
-use App\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
