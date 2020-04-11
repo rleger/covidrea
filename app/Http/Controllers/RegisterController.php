@@ -22,7 +22,7 @@ class RegisterController extends Controller
     public function process(Request $request)
     {
         Validator::make($request->all(), [
-            'etab_name'                      => 'required',
+            'etab_name'                      => 'required|alpha_spaces|max:80',
             'etab_type'                      => 'required',
             'etab_adresse'                   => 'required',
             'etab_codepostal'                => 'required',
@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'etab_region'                    => 'required',
             'etab_long'                      => 'required',
             'etab_lat'                       => 'required',
-            'user_name'                      => 'required',
+            'user_name'                      => 'required|alpha_spaces|max:50',
             'user_email'                     => 'required|email:rfc,dns|unique:users,email',
             'user_phone'                     => 'required|phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
