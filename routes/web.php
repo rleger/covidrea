@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Welcome page
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 // Press page
 Route::view('/presse', 'presse');
