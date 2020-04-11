@@ -82,7 +82,7 @@ class RecordMailgunWebhook implements ShouldQueue
      */
     protected function checkHookHasExpired()
     {
-        if (array_key_exists('timestamp', $this->request['event-data']['timestamp'])) {
+        if (array_key_exists('timestamp', $this->request['event-data'])) {
             $ts_hook = $this->request['event-data']['timestamp'];
 
             // If the hook is older than x days
