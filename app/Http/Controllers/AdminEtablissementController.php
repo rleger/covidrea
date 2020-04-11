@@ -43,15 +43,15 @@ class AdminEtablissementController extends Controller
 
         // Validation
         $validatedData = $request->validate([
-            'name'       => 'required',
-            'type'       => 'required',
-            'adresse'    => 'required',
-            'codepostal' => 'required',
-            'ville'       => 'required|alpha_dash',
-            'pays'       => 'required',
-            'region'     => 'required',
-            'lat'        => 'required',
-            'long'       => 'required',
+            'name'        => 'required',
+            'type'        => 'required',
+            'adresse'     => 'required',
+            'codepostal'  => 'required',
+            'ville'       => 'required|alpha_spaces',
+            'pays'        => 'required',
+            'region'      => 'required',
+            'lat'         => 'required',
+            'long'        => 'required',
         ]);
 
         // Model creation
