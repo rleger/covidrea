@@ -32,6 +32,6 @@ class RecordEmailToInvite
             'invite_id'       => $event->invite->id,
         ]);
 
-        Log::info('Email sent to : '.$event->invite->user_email);
+        Log::info('Email sent to : '.$event->invite->email);
     }
 }
