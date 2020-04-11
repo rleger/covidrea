@@ -13,7 +13,7 @@ class Invite extends Model
 
     public function scopeIsActive($query)
     {
-        return $query->where('active', '>', 0);
+        return $query->where('active', 1);
     }
 
     /**
