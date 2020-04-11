@@ -55,11 +55,11 @@ class RecordMailgunWebhook implements ShouldQueue
             'invite'   => InviteNotification::class,
         ];
 
-        if (!in_array($type, $recorder)) {
-            Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
+        // if (!in_array($type, $recorder)) {
+            // Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
 
-            return;
-        }
+            // return;
+        // }
 
         // Find a handler
         $handler = $recorder[$type];
