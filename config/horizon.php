@@ -149,7 +149,7 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
-                'connection' => 'redis',
+                'connection' => 'sqs',
                 'queue' => ['default'],
                 'balance' => 'simple',
                 'processes' => 10,
@@ -157,14 +157,14 @@ return [
             ],
         ],
 
-        'local' => [
-            'supervisor-1' => [
-                'connection' => 'redis',
-                'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 3,
-                'tries' => 1,
-            ],
-        ],
+        // 'local' => [
+            // 'supervisor-1' => [
+                // 'connection' => 'redis',
+                // 'queue' => ['default'],
+                // 'balance' => 'simple',
+                // 'processes' => 3,
+                // 'tries' => 1,
+            // ],
+        // ],
     ],
 ];

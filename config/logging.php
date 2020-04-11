@@ -43,7 +43,7 @@ return [
 
         'vapor' => [
             'driver' => 'stack',
-            'channels' => ['flare', 'stderr'],
+            'channels' => ['flare', 'slack', 'stderr'],
             'ignore_exceptions' => false,
         ],
 
