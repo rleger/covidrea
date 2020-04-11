@@ -162,7 +162,8 @@ class RecordMailgunWebhook implements ShouldQueue
                 'feedback' => $this->request['event-data']['event'],
             ]);
         } catch (Exception $e) {
-            Log::warning("Cannot log $type notification. $e->getMessage()");
+            $message = $e->getMessage();
+            Log::warning("Cannot log $type notification. $message");
         }
     }
 }
