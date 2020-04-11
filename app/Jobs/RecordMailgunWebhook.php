@@ -54,6 +54,14 @@ class RecordMailgunWebhook implements ShouldQueue
      */
     protected function checkHookIsValid()
     {
+        // Check the environment match (avoid logging hooks from test environments)
+        if(array_key_exists('environment', $this->request['event-data']['user-variables'])
+        && config('app.env') != $this->request['event-data']['user-variables']['environment']) {
+            Log::notice("[incoming MG webhook] : Webhook from another environment or environment not set");
+
+            return false;
+        }
+
         // Verify mailgun token
         if (!$this->isFromMailgun($this->request['signature'])) {
             Log::notice('[incoming MG webhook] : invalid signature !');
@@ -162,8 +170,7 @@ class RecordMailgunWebhook implements ShouldQueue
                 'feedback' => $this->request['event-data']['event'],
             ]);
         } catch (Exception $e) {
-            $message = $e->getMessage();
-            Log::warning("Cannot log $type notification. $message");
+            Log::warning("Cannot log $type notification, most probably a webhook from a deleted resource");
         }
     }
 }

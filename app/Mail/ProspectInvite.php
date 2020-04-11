@@ -33,10 +33,11 @@ class ProspectInvite extends Mailable
     {
         $etablissement_name = $this->prospect->etab_name;
 
-        $mailgunVariables =  json_encode([
-            'type' => 'prospect',
-            'name' => 'initial invite',
-            'id' => $this->prospect->id,
+        $mailgunVariables = json_encode([
+            'type'        => 'prospect',
+            'name'        => 'initial invite',
+            'id'          => $this->prospect->id,
+            'environment' => config('app.env'),
         ]);
 
         $subject = "Gestion de lits de réanimation  ($etablissement_name)";
