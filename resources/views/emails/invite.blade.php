@@ -9,7 +9,7 @@ Vous avez été invité à rejoindre **gratuitement** l'application covid-moi-un
 
 Cette application est **collaborative**.
 
-@component('mail::button', ['url' => route('invite.accept', ['token' => $invite->token, 'etablissement_id' => $invite->etablissement_id, 'email' => $invite->email ]) ])
+@component('mail::button', ['url' => $invite->makeTemporarySignedUrl('invite.accept', 7, ['token' => $invite->token, 'etablissement_id' => $invite->etablissement_id, 'email' => $invite->email ]) ])
 Activer mon compte
 @endcomponent
 
