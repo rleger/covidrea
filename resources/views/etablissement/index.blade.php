@@ -5,8 +5,19 @@
 
 @section('content')
     @if (count($etablissements) === 0)
-        <div class="row justify-content-center">
-            Vous n’avez pas d'établissement ni de services de référence.
+        <div class="relative">
+            <div class="bg-white max-w-2xl mx-auto sm:rounded-lg">
+                <div class="px-4 py-5 sm:p-8">
+                    <h3 class="text-indigo-600 text-lg leading-6 font-medium text-gray-900">
+                        Vous n’avez pas d’établissement de référence.
+                    </h3>
+                    <div class="mt-2 max-w-2xl text-sm leading-5 text-gray-500">
+                        <p>
+                            Cette page ne peut pas être affichée si vous n'êtes rattaché à aucun établissement. Nous vous invitons à vous rapprocher de votre directeur pour procéder à votre rattachement.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     @else
         <div class="row justify-content-center">
@@ -22,7 +33,7 @@
                                             <div class="pb-2 sm:pb-0 text-md sm:text-lg leading-6 font-medium text-indigo-600">
                                                 {{ $etablissement->name }}
                                                 <span class="text-sm sm:text-md text-gray-400">
-                                                ({{ $etablissement->service_count }} {{Str::plural('service', $etablissement->service_count)}})
+                                                    ({{ $etablissement->service_count }} {{Str::plural('service', $etablissement->service_count)}})
                                                 </span>
                                             </div>
                                             <div class="sm:ml-2 flex-shrink-0 flex">

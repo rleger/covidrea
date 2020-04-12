@@ -5,7 +5,18 @@
 @section('content')
     @if (count($services) === 0)
         <div class="relative">
-            Vous n’avez pas de services de référence.
+            <div class="bg-white max-w-2xl mx-auto sm:rounded-lg">
+                <div class="px-4 py-5 sm:p-8">
+                    <h3 class="text-indigo-600 text-lg leading-6 font-medium text-gray-900">
+                        Votre compte n'a pas de service
+                    </h3>
+                    <div class="mt-2 max-w-2xl text-sm leading-5 text-gray-500">
+                        <p>
+                            Cette page ne peut pas être affichée si votre compte n'est pas lié à un service. Nous vous invitons à vous rapprocher de votre directeur pour procéder à votre rattachement.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     @else
         @foreach($services->all() as $etablissement_id => $grouped_service)

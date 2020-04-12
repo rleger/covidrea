@@ -1,18 +1,27 @@
 @extends('layouts.app')
-
 @section('page_title', 'Tableau de bord')
-
 @section('content')
     @if ($etablissement === null)
         <div class="relative">
-            Vous n’avez pas d’établissement de référence.
+            <div class="bg-white max-w-2xl mx-auto sm:rounded-lg">
+                <div class="px-4 py-5 sm:p-8">
+                    <h3 class="text-indigo-600 text-lg leading-6 font-medium text-gray-900">
+                        Vous n’avez pas d’établissement de référence.
+                    </h3>
+                    <div class="mt-2 max-w-2xl text-sm leading-5 text-gray-500">
+                        <p>
+                            Cette page ne peut pas être affichée si vous n'êtes rattaché à aucun établissement. Nous vous invitons à vous rapprocher de votre directeur pour procéder à votre rattachement.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     @else
         <div class="bg-gray-50 pt-12 sm:pt-16">
             <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
                     <h2 class="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-                       Lits de réanimation COVID
+                        Lits de réanimation COVID
                     </h2>
                     <p class="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
                         Disponibilités des lits
@@ -25,8 +34,8 @@
                                     {{-- <option>Company</option> --}}
                                     {{-- <option selected>Team Members</option> --}}
                                     {{-- <option>Billing</option> --}}
-                                {{-- </select> --}}
-                            {{-- </div> --}}
+                                    {{-- </select> --}}
+                                {{-- </div> --}}
                             <div class="hidden sm:block">
                                 <nav class="flex items-center justify-center text-center bg-white rounded-full border border-indigo-300 px-4 py-2 mt-2 text-gray-500">
                                     <span>
@@ -51,8 +60,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     {{-- <form action="{{ route('home', ['radius' => '']) }}" method="GET"> --}}
                         {{-- <p class="flex flex-wrap mt-3 text-xl leading-7 text-gray-500 sm:mt-4"> --}}
                             {{-- <div> --}}
