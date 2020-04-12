@@ -162,7 +162,7 @@ return [
         'place_bientot_disponible'                  => 'places bientôt disponible',
         'name'                                      => 'nom',
         'username'                                  => "nom d'utilisateur",
-        'email'                                     => 'adresse email',
+        'email'                                     => 'email',
         'first_name'                                => 'prénom',
         'last_name'                                 => 'nom',
         'password'                                  => 'mot de passe',
