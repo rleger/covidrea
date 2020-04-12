@@ -72,8 +72,9 @@
                                 </label>
                                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                                     <div class="max-w-xs rounded-md shadow-sm">
-                                        <input name="email" type="email" id="email" autocomplete="email" value="{{ old('email') ?? app('request')->input('email') }}" class="@error('email') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                        <input readonly name="email" type="email" id="email" autocomplete="email" value="{{ $invite->email }}" class="@error('email') ? {{ 'border-red-400 text-red-600' }} : {{ '' }} @enderror disabled:opacity-75 bg-gray-100 text-gray-500 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
+                                    <p class="mt-2 text-sm text-gray-500">Pour des raisons de sécurité vous ne pouvez pas modifier le mail lié à votre invition</p>
                                 </div>
                             </div>
 
@@ -135,12 +136,12 @@
                                             <div class="max-w-lg">
                                                 @foreach($services as $service_key => $service)
                                                     <div class="{{ !$service_key ? 'relative flex items-start' : ''}} mt-4">
-                                                        <div class=" relative flex items-start">
+                                                        <div class="relative flex items-start">
                                                             <div class="absolute flex items-center h-5">
                                                                 <input id="candidates" name="service[{{$service->id}}]" type="checkbox"  class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
                                                             </div>
                                                             <div class="pl-7 text-sm leading-5">
-                                                                <label for="candidates" class="font-medium text-gray-700">{{ $service->name }}</label>
+                                                                <label for="candidates" class="font-medium @error('service') ? {{ 'border-red-400 text-red-600' }} : {{ 'text-gray-700' }} @enderror ">{{ $service->name }}</label>
                                                                 {{-- <p class="text-gray-500">{{ $service->type}}</p> --}}
                                                             </div>
                                                         </div>

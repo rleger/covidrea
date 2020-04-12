@@ -110,10 +110,10 @@ class InviteController extends Controller
         // Such a mess I'm ashamed.. pleasssse clean this up !!
 
         // Validate the request
-        Validator::make($request->all(), [
+        $v = Validator::make($request->all(), [
             'nom'                            => 'required|alpha_spaces|max:50',
             'rpps'                           => 'required|integer|exists:professionnels|unique:users',
-            'email'                          => 'required|email:rfc,dns|unique:users,email',
+            'email'                          => 'required|email:rfc,dns|unique:users,email|exists:invites',
             'phone_mobile'                   => 'phone:FR,mobile',
             'password'                       => 'required|same:password_confirm',
             'password_confirm'               => 'required',
@@ -121,7 +121,6 @@ class InviteController extends Controller
         ])->validate();
 
         $inputs = $request->all();
-
         // Create the user
         $user = User::create([
             'name'              => ucfirst(strtolower($inputs['nom'])),

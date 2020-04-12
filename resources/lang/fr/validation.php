@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -192,17 +191,17 @@ return [
         'time'                                      => 'heure',
         'available'                                 => 'disponible',
         'size'                                      => 'taille',
-        'etab_name'                      => "nom d'établissemnet",
-        'etab_type'                      => "type d'établissement",
-        'etab_adresse'                   => "adresse",
-        'etab_codepostal'                => "code postal",
-        'etab_ville'                     => 'ville',
-        'etab_region'                    => 'région',
-        'etab_long'                      => 'longitude',
-        'etab_lat'                       => 'latitude',
-        'user_name'                      => "nom",
-        'user_email'                     => "email",
-        'user_phone'                     => "téléphone",
-
+        'etab_name'                                 => "nom d'établissemnet",
+        'etab_type'                                 => "type d'établissement",
+        'etab_adresse'                              => 'adresse',
+        'etab_codepostal'                           => 'code postal',
+        'etab_ville'                                => 'ville',
+        'etab_region'                               => 'région',
+        'etab_long'                                 => 'longitude',
+        'etab_lat'                                  => 'latitude',
+        'user_name'                                 => 'nom',
+        'user_email'                                => 'email',
+        'user_phone'                                => 'téléphone',
+        'rpps'                                      => 'RPPS',
     ],
 ];
