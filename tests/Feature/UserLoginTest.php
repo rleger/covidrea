@@ -3,9 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
-use App\Service;
 use Tests\TestCase;
-use App\Etablissement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserLoginTest extends TestCase
@@ -61,22 +59,41 @@ class UserLoginTest extends TestCase
     public function a_guest_user_cannot_access_protected_pages()
     {
         $user = factory(User::class)->make();
-        // $etablissement = factory(Etablissement::class)->make();
-        // $service = factory(Service::class)->make();
 
-        // dd(printf('/etablissement/%d', $etablissement->id));
-        $protectedRoutes = [
+        $routes = [
             '/home',
             '/etablissements',
             '/etablissement/100',
+            '/service/100',
             '/user/service',
             '/user/etablissement',
+            '/user/etablissement/100/edit',
             '/admin',
-            '/admin/create',
+            '/admin/etablissement/create',
+            '/admin/etablissement/edit/100',
+            '/admin/etablissement/100/invite',
         ];
 
-        foreach ($protectedRoutes as $route) {
+        foreach ($routes as $route) {
             $response = $this->get($route);
+            $response->assertRedirect('/login');
+        }
+    }
+
+    /** @test */
+    public function a_guest_user_cannot_post_to_protected_pages()
+    {
+        $user = factory(User::class)->make();
+
+        $routes = [
+            '/user/service',
+            '/etablissement/service',
+            '/invite',
+            // '/interested',
+        ];
+
+        foreach ($routes as $route) {
+            $response = $this->post($route);
             $response->assertRedirect('/login');
         }
     }

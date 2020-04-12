@@ -11,6 +11,9 @@ use App\Jobs\InviteNewUsersByEmail;
 
 class InviteController extends Controller
 {
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth')->only(['process']);
@@ -110,7 +113,7 @@ class InviteController extends Controller
         // Such a mess I'm ashamed.. pleasssse clean this up !!
 
         // Validate the request
-        $v = Validator::make($request->all(), [
+        Validator::make($request->all(), [
             'nom'                            => 'required|alpha_spaces|max:50',
             'rpps'                           => 'required|integer|exists:professionnels|unique:users',
             'email'                          => 'required|email:rfc,dns|unique:users,email|exists:invites',
