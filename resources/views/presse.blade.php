@@ -21,7 +21,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://www.lesechos.fr/pme-regions/innovateurs/covid-moi-un-lit-lappli-qui-recense-en-temps-reel-les-places-en-reanimation-1190691" target="_blank">
-                            <img src="images/partners/les-echos.jpg">
+                            <img src="{{ asset('images/partners/les-echos.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "Covid-moi-un-lit, l'appli qui recense en temps réel les places en réanimation"
                             </p>
@@ -33,7 +33,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://www.infos-dijon.com/news/bourgogne-franche-comte/bourgogne-franche-comte/numerique-lancement-de-l-application-covid-moi-un-lit.html" target="_blank">
-                            <img src="images/partners/tec-hopital.jpg">
+                            <img src="{{ asset('images/partners/tec-hopital.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "NUMÉRIQUE : Lancement de l'application Covid-Moi-Un-Lit"
                             </p>
@@ -45,7 +45,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="">
-                            <img src="images/partners/quotidien-medecin.jpg">
+                            <img src="{{ asset('images/partners/quotidien-medecin.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                             </p>
                         </a>
@@ -56,7 +56,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/doubs/besancon/coronavirus-covid-19-deux-medecins-creent-application-recenser-lits-reanimation-disponibles-1807296.html" target="_blank">
-                            <img src="images/partners/france-3.jpg">
+                            <img src="{{ asset('images/partners/france-3.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "Coronavirus Covid-19 : deux médecins créent une application pour recenser les lits de réanimation disponibles"
                             </p>
@@ -68,7 +68,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://www.macommune.info/covid-moi-un-lit-com-une-application-lancee-a-besancon-pour-aider-les-professionnels-de-sante-a-trouver-des-lits-de-reanimation/" target="_blank">
-                            <img src="images/partners/ma-commune.jpg">
+                            <img src="{{ asset('images/partners/ma-commune.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "covid-moi-un-lit.com : une application pour trouver des lits de réanimation"
                             </p>
@@ -80,7 +80,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://www.estrepublicain.fr/sante/2020/03/30/coronavirus-une-appli-pour-gerer-les-lits-de-reanimation-creee-en-six-jours-a-besancon" target="_blank">
-                            <img src="images/partners/est-republicain.jpg">
+                            <img src="{{ asset('images/partners/est-republicain.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "Coronavirus : une appli pour gérer les lits de réanimation créée en six jours à Besançon"
                             </p>
@@ -92,7 +92,7 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="https://www.infos-dijon.com/news/bourgogne-franche-comte/bourgogne-franche-comte/numerique-lancement-de-l-application-covid-moi-un-lit.html" target="_blank">
-                            <img src="images/partners/infos-dijon.jpg">
+                            <img src="{{ asset('images/partners/infos-dijon.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
                                 "NUMÉRIQUE : Lancement de l'application Covid-Moi-Un-Lit
 "</a>
@@ -105,9 +105,9 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="">
-                            <img src="images/partners/la-presse-bisontine.jpg">
+                            <img src="{{ asset('images/partners/la-presse-bisontine.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
-                                
+
                             </p>
                         </a>
                     </div>
@@ -117,9 +117,9 @@
                 <div class="flex">
                     <div class="ml-4">
                         <a href="">
-                            <img src="images/partners/france-bleu.jpg">
+                            <img src="{{ asset('images/partners/france-bleu.jpg') }}">
                             <p class="mt-2 text-base leading-6 text-gray-500">
-                                
+
                             </p>
                         </a>
                     </div>
