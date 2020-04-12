@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Etablissement;
+use App\Service;
 
 class UserLoginTest extends TestCase
 {
@@ -58,8 +60,6 @@ class UserLoginTest extends TestCase
     /** @test */
     public function a_guest_user_cannot_access_protected_pages()
     {
-        $user = factory(User::class)->make();
-
         $routes = [
             '/home',
             '/etablissements',
@@ -83,12 +83,13 @@ class UserLoginTest extends TestCase
     /** @test */
     public function a_guest_user_cannot_post_to_protected_pages()
     {
-        $user = factory(User::class)->make();
-
         $routes = [
             '/user/service',
             '/etablissement/service',
             '/invite',
+            '/admin/etablissement/store',
+            // '/register',
+            // '/finalize',
             // '/interested',
         ];
 
