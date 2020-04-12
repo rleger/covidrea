@@ -52,6 +52,11 @@ class EtablissementController extends Controller
         return view('etablissement.show', compact('etablissement'));
     }
 
+    /**
+     * Get paginated results.
+     *
+     * @param Etablissement $etablissement
+     */
     private function getPaginator(Etablissement $etablissement = null): PaginatorContract
     {
         if (null === $etablissement) {
