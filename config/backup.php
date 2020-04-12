@@ -1,9 +1,7 @@
 <?php
 
 return [
-
     'backup' => [
-
         /*
          * The name of this application. You can use this name to monitor
          * the backups.
@@ -11,9 +9,7 @@ return [
         'name' => env('APP_NAME', 'laravel-backup'),
 
         'source' => [
-
             'files' => [
-
                 /*
                  * The list of directories and files that will be included in the backup.
                  */
@@ -86,7 +82,6 @@ return [
         'database_dump_compressor' => null,
 
         'destination' => [
-
             /*
              * The filename prefix used for the backup zip file.
              */
@@ -114,14 +109,13 @@ return [
      * the `Spatie\Backup\Events` classes.
      */
     'notifications' => [
-
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['slack', 'mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class         => ['slack', 'mail'],
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['slack', 'mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['slack', 'mail'],
-            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['slack'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class        => ['slack', 'mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class     => ['slack'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class   => ['slack'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class    => ['slack'],
         ],
 
         /*
@@ -135,7 +129,7 @@ return [
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-                'name' => env('MAIL_FROM_NAME', 'Example'),
+                'name'    => env('MAIL_FROM_NAME', 'Example'),
             ],
         ],
 
@@ -150,7 +144,6 @@ return [
             'username' => null,
 
             'icon' => null,
-
         ],
     ],
 
@@ -161,10 +154,10 @@ return [
      */
     'monitor_backups' => [
         [
-            'name' => env('APP_NAME', 'laravel-backup'),
-            'disks' => ['local'],
+            'name'          => env('APP_NAME', 'laravel-backup'),
+            'disks'         => ['local'],
             'health_checks' => [
-                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class          => 1,
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,
             ],
         ],
@@ -194,7 +187,6 @@ return [
         'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
 
         'default_strategy' => [
-
             /*
              * The number of days for which backups must be kept.
              */
@@ -227,5 +219,4 @@ return [
             'delete_oldest_backups_when_using_more_megabytes_than' => 5000,
         ],
     ],
-
 ];

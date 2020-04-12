@@ -43,18 +43,18 @@ class InviteProspect extends Command
 
         $nb_emails_sent = 0;
 
-        $prospects->each(function($prospect) use (&$nb_emails_sent) {
+        $prospects->each(function ($prospect) use (&$nb_emails_sent) {
             // Send invite email
             MailInviteProspect::dispatch($prospect);
 
             // Show message in command line
-            $this->info("Envoi email à " . $prospect->etab_name . " (" . $prospect->user_email . ")");
+            $this->info('Envoi email à '.$prospect->etab_name.' ('.$prospect->user_email.')');
 
             // Increase counter
-            $nb_emails_sent++;
+            ++$nb_emails_sent;
         });
 
-        $this->info("-----------------------------------");
-        $this->info($nb_emails_sent ." emails envoyés");
+        $this->info('-----------------------------------');
+        $this->info($nb_emails_sent.' emails envoyés');
     }
 }

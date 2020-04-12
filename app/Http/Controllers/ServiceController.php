@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class ServiceController extends Controller
 {

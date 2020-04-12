@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Interested;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class InterestedController extends Controller

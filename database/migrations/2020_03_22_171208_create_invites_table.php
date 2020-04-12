@@ -13,17 +13,17 @@ class CreateInvitesTable extends Migration
      */
     public function up()
     {
-    Schema::create('invites', function (Blueprint $table) {
-        $table->id();
-        $table->string('email');
-        $table->string('token', 16)->unique();
+        Schema::create('invites', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->string('token', 16)->unique();
 
-        $table->integer('active')->default(1)->nullable();
-        // Etablissement lié à cette nouvelle invitation
-        $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');
+            $table->integer('active')->default(1)->nullable();
+            // Etablissement lié à cette nouvelle invitation
+            $table->foreignId('etablissement_id')->constrained()->onUpdate('cascade');
 
-        $table->timestamps();
-    });
+            $table->timestamps();
+        });
     }
 
     /**

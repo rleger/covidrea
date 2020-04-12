@@ -16,12 +16,10 @@ class UserPolicy
      */
     public function __construct()
     {
-        //
     }
 
     /**
-     * Define user's ability to admin the app
-     *
+     * Define user's ability to admin the app.
      */
     public function administer(User $user)
     {
@@ -29,18 +27,15 @@ class UserPolicy
     }
 
     /**
-     * Only a user with an etablissement can invite others
-     *
-     * @param User $user
+     * Only a user with an etablissement can invite others.
      */
-    public function invite(User $user) {
+    public function invite(User $user)
+    {
         return $user->hasEtablissement();
     }
 
     /**
-     * Only an admin can create an etablissement
-     *
-     * @param User $user
+     * Only an admin can create an etablissement.
      */
     public function createEtablissement(User $user)
     {

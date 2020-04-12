@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Service;
-use Illuminate\Http\Request;
 use App\Etablissement;
+use Illuminate\Http\Request;
 
 class UserServiceController extends Controller
 {
@@ -37,9 +37,8 @@ class UserServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Service $service
      * @return \Illuminate\Http\Response
+     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Service $service)
@@ -53,12 +52,12 @@ class UserServiceController extends Controller
         // Validation
         $validatedData = $request->validate([
             'place_totales'            => ['required', 'integer',
-            function($attribute, $value, $fail) {
+            function ($attribute, $value, $fail) {
                 // Le nombre de place totales ne peut exceder la somme des 2 autres
-                if(((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
-                    $fail("Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles");
+                if (((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
+                    $fail('Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles');
                 }
-            }],
+            }, ],
             'place_disponible'         => 'required|integer',
             'place_bientot_disponible' => 'required|integer',
         ]);
@@ -75,10 +74,10 @@ class UserServiceController extends Controller
     }
 
     /**
-     * Create a new service attached to an etablissement
+     * Create a new service attached to an etablissement.
      *
-     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request)

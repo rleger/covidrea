@@ -14,7 +14,10 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class MailInviteProspect implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $prospect;
 

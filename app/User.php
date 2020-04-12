@@ -9,7 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements Auditable
 {
-    use Notifiable, SoftDeletes, \OwenIt\Auditing\Auditable;
+    use Notifiable;
+    use SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -77,10 +79,10 @@ class User extends Authenticatable implements Auditable
     }
 
     /**
-     * Is the user an daministrator
+     * Is the user an daministrator.
      */
     public function isAdmin()
     {
-        return (bool) ($this->role === 'admin');
+        return (bool) ('admin' === $this->role);
     }
 }

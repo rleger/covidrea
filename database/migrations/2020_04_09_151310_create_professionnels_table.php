@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateProfessionnelsTable extends Migration
 {
@@ -43,7 +43,6 @@ class CreateProfessionnelsTable extends Migration
             // 11. Libellé type autorisation;
             // 12. Code discipline autorisation;
             // 13. Libellé discipline autorisation;
-
         });
     }
 

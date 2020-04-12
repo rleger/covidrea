@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateProspectNotificationsTable extends Migration
 {
@@ -15,10 +15,10 @@ class CreateProspectNotificationsTable extends Migration
     {
         Schema::create('prospect_notifications', function (Blueprint $table) {
             $table->id();
-            $table->string("type")->nullable();
-            $table->string("name")->nullable();
+            $table->string('type')->nullable();
+            $table->string('name')->nullable();
 
-            $table->string("feedback")->nullable();
+            $table->string('feedback')->nullable();
             // Prospect
             $table->foreignId('prospect_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

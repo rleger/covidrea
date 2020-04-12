@@ -7,6 +7,5 @@ use Faker\Generator as Faker;
 
 $factory->define(InviteNotification::class, function (Faker $faker) {
     return [
-        //
     ];
 });

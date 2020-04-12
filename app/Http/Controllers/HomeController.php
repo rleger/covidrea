@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use App\Etablissement;
-use App\Mail\InviteCreated;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     private const DEFAULT_RADIUS = 20;
+
     /**
      * Create a new controller instance.
      *
@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         // Etablissement est soit la liste des établissements des services de l'utilisateur
         // soit l'établissement pour lequel l'utilisateur est référent (etablissement.user_id)
-        if(auth()->user()->services()->count()) {
+        if (auth()->user()->services()->count()) {
             // Position of the user's etablissement
             $etablissement = auth()->user()->services()->first()->etablissement;
         } else {
@@ -44,20 +44,19 @@ class HomeController extends Controller
     }
 
     /**
-     * Get places status in Etablissement within a radius
+     * Get places status in Etablissement within a radius.
      *
-     * @param int $radius
      * @param Etablissement $etablissement
      */
     private function getPlaces(int $radius, Etablissement $etablissement = null): array
     {
-        if ($etablissement === null) {
+        if (null === $etablissement) {
             return [];
         }
 
         $coordinates = [
-            'lat' => $etablissement->lat,
-            'long' => $etablissement->long
+            'lat'  => $etablissement->lat,
+            'long' => $etablissement->long,
         ];
 
         $etablissements_within_radius = Etablissement::select('id')->isWithinMaxDistance($coordinates, $radius)->get();
@@ -67,8 +66,8 @@ class HomeController extends Controller
         });
 
         return [
-            'places_totales' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_totales'),
-            'place_disponible' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_disponible'),
+            'places_totales'           => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_totales'),
+            'place_disponible'         => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_disponible'),
             'place_bientot_disponible' => Service::whereIn('etablissement_id', $etablissements_within_radius)->sum('place_bientot_disponible'),
         ];
     }

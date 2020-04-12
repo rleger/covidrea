@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends Model implements Auditable
 {
-    use SoftDeletes, \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
     /**
      * Guarded properties.
      *
@@ -17,7 +18,7 @@ class Service extends Model implements Auditable
     protected $guarded = [];
 
     /**
-     * Le service appartient à un établissement
+     * Le service appartient à un établissement.
      */
     public function etablissement()
     {
@@ -25,9 +26,10 @@ class Service extends Model implements Auditable
     }
 
     /**
-     * Un service a plusieurs utilisateurs
+     * Un service a plusieurs utilisateurs.
      */
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany(User::class);
     }
 }

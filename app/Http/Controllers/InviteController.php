@@ -95,7 +95,7 @@ class InviteController extends Controller
 
         // If invite is not active do not allow the invitation to go through
         if (!$invite->active) {
-            abort(403, "Cette invitation a déjà été utilisée");
+            abort(403, 'Cette invitation a déjà été utilisée');
         }
 
         // The user will fill in the missing fields (name, etc..)

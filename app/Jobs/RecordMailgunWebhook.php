@@ -55,9 +55,9 @@ class RecordMailgunWebhook implements ShouldQueue
     protected function checkHookIsValid()
     {
         // Check the environment match (avoid logging hooks from test environments)
-        if(array_key_exists('environment', $this->request['event-data']['user-variables'])
+        if (array_key_exists('environment', $this->request['event-data']['user-variables'])
         && config('app.env') != $this->request['event-data']['user-variables']['environment']) {
-            Log::notice("[incoming MG webhook] : Webhook from another environment or environment not set");
+            Log::notice('[incoming MG webhook] : Webhook from another environment or environment not set');
 
             return false;
         }
@@ -76,7 +76,7 @@ class RecordMailgunWebhook implements ShouldQueue
         }
 
         // Check the payload has a 'type'
-        if(!array_key_exists('type', $this->request['event-data']['user-variables'])) {
+        if (!array_key_exists('type', $this->request['event-data']['user-variables'])) {
             Log::notice('[incoming MG webhook] : invalid, missing type field');
 
             return false;

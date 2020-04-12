@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSoignantsTable extends Migration
 {
@@ -121,7 +121,6 @@ class CreateSoignantsTable extends Migration
             // Libellé secteur d'activité|
             // Code section tableau pharmaciens|
             // Libellé section tableau pharmaciens|
-
 
             // 8|10100271385|810100271385|DR|Docteur|M|Monsieur|LEGER|ROMAIN|10|Médecin|C|Civil|S|Spécialité ordinale|SM53|Spécialiste en Médecine Générale|S|Salarié|26250462400012||250000700|250000452|F250000700|CHI HC SITE RIVES DU DOUBS PONTARLIER||||2||FG|Faubourg|SAINT ETIENNE|CS 10329|25304 PONTARLIER CEDEX|25304|25462|Pontarlier|||0381385454||0381385480|contact@chi-hautecomte.fr|||1250000700|CNOM/CNOM/ARS|SA01|Etablissement Public de santé|||
 

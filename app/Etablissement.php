@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Etablissement extends Model implements Auditable
 {
-    use SoftDeletes, \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
     /**
      * Guarded properties.
      *

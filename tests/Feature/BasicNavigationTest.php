@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BasicNavigationTest extends TestCase
 {
@@ -26,5 +25,4 @@ class BasicNavigationTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs('auth.login');
     }
-
 }

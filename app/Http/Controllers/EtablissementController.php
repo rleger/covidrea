@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Etablissement;
-use Illuminate\Contracts\Pagination\Paginator as PaginatorContract;
 use Illuminate\Pagination\Paginator;
-
+use Illuminate\Contracts\Pagination\Paginator as PaginatorContract;
 
 class EtablissementController extends Controller
 {
@@ -55,7 +54,7 @@ class EtablissementController extends Controller
 
     private function getPaginator(Etablissement $etablissement = null): PaginatorContract
     {
-        if ($etablissement === null) {
+        if (null === $etablissement) {
             return new Paginator([], 0);
         }
 
@@ -63,7 +62,7 @@ class EtablissementController extends Controller
         $long = $etablissement->long;
 
         // Construct the sqlDistance query
-        $sqlDistance = DB::raw('( 6371 * acos( cos( radians(' . $lat . ') )
+        $sqlDistance = DB::raw('( 6371 * acos( cos( radians('.$lat.') )
             * cos( radians( etablissements.lat ) )
             * cos( radians( etablissements.long )
             - radians('.$long.') )

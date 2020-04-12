@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Etablissement;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Log;
+use App\User;
+use App\Etablissement;
+use Illuminate\Http\Request;
 
 class UserEtablissementController extends Controller
 {

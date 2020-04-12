@@ -11,6 +11,5 @@ class InviteNotificationSeeder extends Seeder
      */
     public function run()
     {
-        //
     }
 }

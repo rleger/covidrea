@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Etablissement;
 use App\Invite;
+use App\Etablissement;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

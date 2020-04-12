@@ -3,27 +3,25 @@
 namespace App\Events;
 
 use App\Invite;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class EmailWasSentToInvite
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
-     * Invite object
+     * Invite object.
      *
      * @var mixed
      */
     public $invite;
 
     /**
-     * Create a event instance
+     * Create a event instance.
      *
      * @return void
      */

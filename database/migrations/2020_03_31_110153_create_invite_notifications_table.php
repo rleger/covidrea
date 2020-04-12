@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateInviteNotificationsTable extends Migration
 {
@@ -15,10 +15,10 @@ class CreateInviteNotificationsTable extends Migration
     {
         Schema::create('invite_notifications', function (Blueprint $table) {
             $table->id();
-            $table->string("type")->nullable();
-            $table->string("name")->nullable();
+            $table->string('type')->nullable();
+            $table->string('name')->nullable();
 
-            $table->string("feedback")->nullable();
+            $table->string('feedback')->nullable();
 
             // Invite
             $table->foreignId('invite_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

@@ -8,7 +8,7 @@ use Closure;
 class CheckUserHasAHospital
 {
     /**
-     * Check that a user is attached to a service
+     * Check that a user is attached to a service.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -16,11 +16,11 @@ class CheckUserHasAHospital
      */
     public function handle($request, Closure $next)
     {
-        if(!auth()->check()) {
+        if (!auth()->check()) {
             return redirect('/');
         }
         if (!auth()->user()->services()->exists()) {
-            Log::error("User " . auth()->user()->id . " has no service and cannot go further");
+            Log::error('User '.auth()->user()->id.' has no service and cannot go further');
             // Logout
             auth()->logout();
 
