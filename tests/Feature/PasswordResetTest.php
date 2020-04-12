@@ -6,9 +6,10 @@ use Str;
 use Hash;
 use App\User;
 use Password;
-use Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PasswordResetTest extends TestCase
