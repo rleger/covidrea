@@ -22,7 +22,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
         <!-- App -->
-        <script src="{{ asset('{{ asset('js/app.js') }}') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         @if(config('app.env') != 'production')
         <!-- Global site tag (gtag.js) - Google Analytics -->
