@@ -158,8 +158,8 @@ return [
 
     'attributes' => [
         'place_totales'                             => 'places totales',
-        'place_disponibles'                         => 'places disponibles',
-        'place_bientot_disponible'                  => 'places bientôt disponible',
+        'place_disponible'                          => 'places disponibles',
+        'place_bientot_disponible'                  => 'places bientôt disponibles',
         'name'                                      => 'nom',
         'username'                                  => "nom d'utilisateur",
         'email'                                     => 'email',
