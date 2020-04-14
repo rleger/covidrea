@@ -38,11 +38,11 @@
                                             </div>
                                             <div class="sm:ml-2 flex-shrink-0 flex">
                                                 <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    {{ $etablissement->place_disponible }} disponibles
+                                                    {{ $etablissement->place_disponible ?? 0 }} disponibles
                                                 </span>
 
                                                 <span class="mr-2 px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                                    {{ $etablissement->place_bientot_disponible }} prochainement
+                                                    {{ $etablissement->place_bientot_disponible ?? 0 }} prochainement
                                                 </span>
 
                                             </div>
@@ -74,6 +74,8 @@
                                                         {{-- <time datetime="2020-01-07">January 7, 2020</time> --}}
                                                         {{ Carbon\Carbon::parse($etablissement->updated_at)->diffForHumans() }}
                                                     </span>
+                                                @else
+                                                    <span>Pas de mise à jour</span>
                                                 @endif
                                             </div>
                                         </div>
