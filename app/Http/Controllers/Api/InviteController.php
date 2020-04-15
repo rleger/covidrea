@@ -33,7 +33,7 @@ class InviteController extends Controller
                 'rpps' => $invite['rpps'],
                 'email' => $invite['email'],
                 'active' => 1,
-                'etablissement_id' => $invite['etablissement_id'],
+                'etab_finess' => $invite['etab_finess'],
                 'token' => $invite['token']
             ]);
         }
@@ -43,6 +43,10 @@ class InviteController extends Controller
 
     private function validateRequest(array $inviteToCreate): array
     {
+        if (count($inviteToCreate) === 0) {
+            return [['error' => 'no invite to create']];
+        }
+
         $errorList = [];
         foreach ($inviteToCreate as $invite) {
             try {
@@ -51,7 +55,7 @@ class InviteController extends Controller
                     'nom' => 'required|alpha_spaces|max:50',
                     'rpps' => 'required|integer',
                     'email' => 'required|email:rfc,dns|unique:users',
-                    'etablissement_id' => 'required|exists:etablissements,id',
+                    'etab_finess' => 'required:alpha',
                     'token' => 'required:alpha|max:16'
                 ])->validate();
             } catch (ValidationException $e) {
