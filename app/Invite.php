@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Invite extends Model
 {
     protected $fillable = [
-        'email', 'rpps', 'token', 'etablissement_id', 'active',
+        'nom', 'email', 'rpps', 'token', 'etablissement_id', 'active',
     ];
 
     public function scopeIsActive($query)
