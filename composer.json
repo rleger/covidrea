@@ -16,6 +16,7 @@
         "genealabs/laravel-caffeine": "^7.0",
         "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^7.0",
+        "laravel/passport": "^8.4",
         "laravel/slack-notification-channel": "^2.0",
         "laravel/telescope": "^3.2",
         "laravel/tinker": "^2.0",

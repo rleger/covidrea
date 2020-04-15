@@ -21,7 +21,7 @@ class InviteController extends Controller
     {
         $inviteToCreate = $request->json();
 
-        $errorList = $this->validateRequest($inviteToCreate);
+        $errorList = $this->validateRequest($inviteToCreate->all());
         if (!empty($errorList)) {
             return response()->json($errorList, 400);
         }
