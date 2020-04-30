@@ -15,7 +15,7 @@ class RegisterController extends Controller
      */
     public function register(Prospect $prospect)
     {
-        if (!$prospect->active) {
+        if (! $prospect->active) {
             abort(403, "Cette invitation n'est plus active");
         }
 
