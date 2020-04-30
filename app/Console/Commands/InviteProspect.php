@@ -51,7 +51,7 @@ class InviteProspect extends Command
             $this->info('Envoi email à '.$prospect->etab_name.' ('.$prospect->user_email.')');
 
             // Increase counter
-            ++$nb_emails_sent;
+            $nb_emails_sent++;
         });
 
         $this->info('-----------------------------------');

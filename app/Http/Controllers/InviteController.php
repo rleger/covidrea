@@ -91,13 +91,13 @@ class InviteController extends Controller
         $services = $etablissement->service;
 
         // Look up the invite
-        if (!$invite = Invite::where('token', $token)->first()) {
+        if (! $invite = Invite::where('token', $token)->first()) {
             //if the invite doesn't exist do something more graceful than this
             abort(403, "Cette invitation n'est plus active");
         }
 
         // If invite is not active do not allow the invitation to go through
-        if (!$invite->active) {
+        if (! $invite->active) {
             abort(403, 'Cette invitation a déjà été utilisée');
         }
 

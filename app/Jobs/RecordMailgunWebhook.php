@@ -63,7 +63,7 @@ class RecordMailgunWebhook implements ShouldQueue
         }
 
         // Verify mailgun token
-        if (!$this->isFromMailgun($this->request['signature'])) {
+        if (! $this->isFromMailgun($this->request['signature'])) {
             Log::notice('[incoming MG webhook] : invalid signature !');
 
             return false;
@@ -76,7 +76,7 @@ class RecordMailgunWebhook implements ShouldQueue
         }
 
         // Check the payload has a 'type'
-        if (!array_key_exists('type', $this->request['event-data']['user-variables'])) {
+        if (! array_key_exists('type', $this->request['event-data']['user-variables'])) {
             Log::notice('[incoming MG webhook] : invalid, missing type field');
 
             return false;
@@ -133,7 +133,7 @@ class RecordMailgunWebhook implements ShouldQueue
         $type = $this->request['event-data']['user-variables']['type'];
 
         // define the recorders
-        if (!array_key_exists($type, $this->recorder)) {
+        if (! array_key_exists($type, $this->recorder)) {
             Log::info("From RecordMailgunWebhook no logger corresponding to type $type");
 
             return;
@@ -149,7 +149,7 @@ class RecordMailgunWebhook implements ShouldQueue
      */
     public function handle()
     {
-        if (!$this->checkHookIsValid()) {
+        if (! $this->checkHookIsValid()) {
             return;
         }
 
