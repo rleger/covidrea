@@ -37,8 +37,8 @@ class LitDisponiblesTest extends TestCase
                 );
             });
 
-        $lits_disponbibles = $etablissement->first()->service()->sum('place_disponible') . " disponibles";
-        $lits_bientot_disponbibles = $etablissement->first()->service()->sum('place_bientot_disponible') . " prochainement";
+        $lits_disponbibles = $etablissement->first()->service()->sum('place_disponible').' disponibles';
+        $lits_bientot_disponbibles = $etablissement->first()->service()->sum('place_bientot_disponible').' prochainement';
 
         // Assert response
         $response = $this->actingAs($user)->get(route('etablissements.index'));
