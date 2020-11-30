@@ -27,9 +27,9 @@ class UserServiceController extends Controller
     {
         // Attention get() doit être ici dans la chaine
         $services = auth()->user()->services()
-                                  ->with('etablissement')
-                                  ->get()
-                                  ->groupBy(['etablissement_id']);
+            ->with('etablissement')
+            ->get()
+            ->groupBy(['etablissement_id']);
 
         return view('user.service.edit', compact('services'));
     }
@@ -51,13 +51,15 @@ class UserServiceController extends Controller
 
         // Validation
         $validatedData = $request->validate([
-            'place_totales'            => ['required', 'integer', 'max:100',
-            function ($attribute, $value, $fail) {
-                // Le nombre de place totales ne peut exceder la somme des 2 autres
-                if (((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
-                    $fail('Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles');
-                }
-            }, ],
+            'place_totales'            => [
+                'required', 'integer', 'max:100',
+                function ($attribute, $value, $fail) {
+                    // Le nombre de place totales ne peut exceder la somme des 2 autres
+                    if (((int) request()->get('place_disponible') + (int) request()->get('place_bientot_disponible')) > (int) $value) {
+                        $fail('Le nombre de places totales ne peut pas exceder la somme des places disponibles et bientôt disponibles');
+                    }
+                },
+            ],
             'place_disponible'         => 'required|integer|max:100',
             'place_bientot_disponible' => 'required|integer|max:100',
         ]);
