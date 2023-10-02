@@ -24,7 +24,7 @@
         <server name="DB_HOST" value="127.0.0.1"/>
         <server name="DB_DATABASE" value="covidreatest"/>
         <server name="DB_USERNAME" value="root"/>
-        <server name="DB_PASSWORD" value="hYpnosuf"/>
+        <server name="DB_PASSWORD" value=""/>
         <server name="MAIL_DRIVER" value="log"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
